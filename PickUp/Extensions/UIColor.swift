@@ -14,8 +14,16 @@ extension UIColor {
         self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: alpha)
     }
     
-    static var iron: UIColor {
-        return UIColor(r: 245, g: 245, b: 245)
+    static var customWhite: UIColor {
+        return UIColor(r: 252, g: 253, b: 253)
+    }
+    
+    static var customLightBlue: UIColor {
+        return UIColor(r: 38, g: 200, b: 255)
+    }
+    
+    static var customDarkBlue: UIColor {
+        return UIColor(r: 42, g: 160, b: 255)
     }
 
 }
