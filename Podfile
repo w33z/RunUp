@@ -15,6 +15,7 @@ target 'PickUp' do
     pod 'RxCocoa',    '~> 4.0'
     pod 'Alamofire',  '~> 4.7'
     pod 'RealmSwift'
+    pod 'BEMCheckBox'
 
   target 'PickUpTests' do
     inherit! :search_paths

@@ -1,5 +1,5 @@
 //
-//  ShadowRoundedButton.swift
+//  ShadowRoundedView.swift
 //  PickUp
 //
 //  Created by Bartosz Pawełczyk on 08/08/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIButton {
+extension UIView {
     
     func makeShadowRounded() {
         layer.cornerRadius = 25
