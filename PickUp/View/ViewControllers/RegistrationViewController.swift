@@ -55,6 +55,7 @@ class RegistrationViewController: UIViewController {
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
         imageView.image = UIImage(named: "profile")
+        imageView.contentMode = .scaleAspectFit
         
         textField.rightView = imageView
         textField.rightViewMode = .always
@@ -68,6 +69,8 @@ class RegistrationViewController: UIViewController {
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
         imageView.image = UIImage(named: "username")
+        imageView.contentMode = .scaleAspectFit
+
         
         textField.rightView = imageView
         textField.rightViewMode = .always
@@ -81,6 +84,8 @@ class RegistrationViewController: UIViewController {
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
         imageView.image = UIImage(named: "mail")
+        imageView.contentMode = .scaleAspectFit
+
         
         textField.rightView = imageView
         textField.rightViewMode = .always
@@ -95,6 +100,8 @@ class RegistrationViewController: UIViewController {
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
         imageView.image = UIImage(named: "view")
+        imageView.contentMode = .scaleAspectFit
+
         
         textField.rightView = imageView
         textField.rightViewMode = .always
@@ -112,14 +119,50 @@ class RegistrationViewController: UIViewController {
     
     private let signUpButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor.customLightBlue
+        button.backgroundColor = .cLightBlue
         button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.makeShadowRounded()
         return button
     }()
     
-    var checkbox: UIView!
+    private let facebookButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .cBlue
+    
+        let signUpAttributedString = NSMutableAttributedString(string: "Sign Up With ", attributes: [
+            NSAttributedStringKey.foregroundColor : UIColor.white
+            ])
+        let facebookAttributedString = NSAttributedString(string: "Facebook", attributes: [
+                NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: UIFont.buttonFontSize),
+                NSAttributedStringKey.foregroundColor : UIColor.white
+            ])
+        signUpAttributedString.append(facebookAttributedString)
+        button.setAttributedTitle(signUpAttributedString, for: .normal)
+
+        
+        button.setTitleColor(.white, for: .normal)
+        button.makeShadowRounded()
+        return button
+    }()
+    
+    private let restorePasswordLabel: UILabel = {
+        let label = UILabel()
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        
+        let forgotAttributedString = NSAttributedString(string: "Forgot password?", attributes: [
+                NSAttributedStringKey.foregroundColor : UIColor.gray,
+                NSAttributedStringKey.paragraphStyle : paragraphStyle
+            ])
+        
+        label.attributedText = forgotAttributedString
+        label.isUserInteractionEnabled = true
+        return label
+    }()
+    
+    var checkboxes: GenderCheckboxesView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,6 +171,7 @@ class RegistrationViewController: UIViewController {
         
         addSubviews()
         makeConstraints()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -138,96 +182,6 @@ class RegistrationViewController: UIViewController {
         signUpButton.clipsToBounds = true
     }
     
-    fileprivate func addSubviews() {
-        view.backgroundColor = .customWhite
-        
-        view.addSubview(gradientView)
-        view.addSubview(logoBGView)
-        logoBGView.addSubview(logoImageView)
-        view.addSubview(titleLabel)
-        view.addSubview(registerBGView)
-        registerBGView.addSubview(fullnameTextField)
-        registerBGView.addSubview(usernameTextField)
-        registerBGView.addSubview(emailTextField)
-        registerBGView.addSubview(passwordTextField)
-        registerBGView.addSubview(genderImageView)
-        
-        checkbox = UIView.instanceFromNib(name: "GenderCheckboxes")
-        registerBGView.addSubview(checkbox)
-        registerBGView.addSubview(signUpButton)
-    }
-    
-    fileprivate func makeConstraints() {
-        
-        gradientView.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(view.frame.height / 2)
-        }
-        
-        logoBGView.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(80)
-            make.centerX.equalTo(view.snp.centerX)
-            make.width.height.equalTo(120)
-        }
-        
-        logoImageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(10, 5, 5, 10))
-        }
-        
-        titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(logoBGView.snp.bottom).offset(20)
-            make.centerX.equalTo(logoBGView.snp.centerX)
-        }
-        
-        registerBGView.snp.makeConstraints { (make) in
-            make.top.equalTo(gradientView.snp.bottom).offset(-80)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(280)
-        }
-        
-        fullnameTextField.snp.makeConstraints { (make) in
-            make.top.equalTo(registerBGView.snp.top).offset(10)
-            make.leading.equalToSuperview().offset(15)
-            make.trailing.equalToSuperview().offset(-15)
-            make.height.equalTo(40)
-        }
-        
-        usernameTextField.snp.makeConstraints { (make) in
-            make.top.equalTo(fullnameTextField.snp.bottom).offset(10)
-            make.leading.trailing.height.equalTo(fullnameTextField)
-        }
-        
-        emailTextField.snp.makeConstraints { (make) in
-            make.top.equalTo(usernameTextField.snp.bottom).offset(10)
-            make.leading.trailing.height.equalTo(usernameTextField)
-        }
-        
-        passwordTextField.snp.makeConstraints { (make) in
-            make.top.equalTo(emailTextField.snp.bottom).offset(10)
-            make.leading.trailing.height.equalTo(emailTextField)
-        }
-        
-        genderImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(passwordTextField.snp.bottom).offset(10)
-            make.right.equalTo(-15)
-            make.width.height.equalTo(18)
-        }
-        
-        checkbox.snp.makeConstraints { (make) in
-            make.top.equalTo(passwordTextField.snp.bottom)
-            make.leading.equalTo(passwordTextField.snp.leading)
-            make.right.equalTo(genderImageView.snp.left).offset(-10)
-            make.height.equalTo(45)
-        }
-        
-        signUpButton.snp.makeConstraints { (make) in
-            make.top.equalTo(registerBGView.snp.bottom).offset(-25)
-            make.leading.equalTo(view.snp.leading).offset(50)
-            make.trailing.equalTo(view.snp.trailing).offset(-50)
-            make.height.equalTo(50)
-        }
-    }
 }
 
 extension RegistrationViewController: UITextFieldDelegate {
@@ -252,5 +206,115 @@ extension RegistrationViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField){
         print("textFieldDidBeginEditing:")
+    }
+}
+
+extension RegistrationViewController {
+    fileprivate func addSubviews() {
+        view.backgroundColor = .cWhite
+        
+        view.addSubview(gradientView)
+        view.addSubview(logoBGView)
+        logoBGView.addSubview(logoImageView)
+        view.addSubview(titleLabel)
+        view.addSubview(registerBGView)
+        registerBGView.addSubview(fullnameTextField)
+        registerBGView.addSubview(usernameTextField)
+        registerBGView.addSubview(emailTextField)
+        registerBGView.addSubview(passwordTextField)
+        registerBGView.addSubview(genderImageView)
+        
+        checkboxes = UIView.instanceFromNib(name: "GenderCheckboxes") as! GenderCheckboxesView
+        
+        registerBGView.addSubview(checkboxes)
+        registerBGView.addSubview(signUpButton)
+        view.addSubview(facebookButton)
+        view.addSubview(restorePasswordLabel)
+    }
+    
+    fileprivate func makeConstraints() {
+        
+        gradientView.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(view.frame.height / 2)
+        }
+        
+        logoBGView.snp.makeConstraints { (make) in
+            //          make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(view.frame.height / 12)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(80)
+            make.centerX.equalTo(view)
+            make.width.height.equalTo(120)
+        }
+        
+        logoImageView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(10, 5, 5, 10))
+        }
+        
+        titleLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(logoBGView.snp.bottom).offset(20)
+            make.centerX.equalTo(logoBGView)
+        }
+        
+        registerBGView.snp.makeConstraints { (make) in
+            make.top.equalTo(gradientView.snp.bottom).offset(-80)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            //            make.height.equalTo(view.frame.height / 2.5)
+            make.height.equalTo(280)
+        }
+        
+        fullnameTextField.snp.makeConstraints { (make) in
+            make.top.equalTo(registerBGView).offset(10)
+            make.leading.equalToSuperview().offset(15)
+            make.trailing.equalToSuperview().offset(-15)
+            //            make.height.equalTo(view.frame.height / 18)
+            make.height.equalTo(40)
+        }
+        
+        usernameTextField.snp.makeConstraints { (make) in
+            make.top.equalTo(fullnameTextField.snp.bottom).offset(10)
+            make.leading.trailing.height.equalTo(fullnameTextField)
+        }
+        
+        emailTextField.snp.makeConstraints { (make) in
+            make.top.equalTo(usernameTextField.snp.bottom).offset(10)
+            make.leading.trailing.height.equalTo(usernameTextField)
+        }
+        
+        passwordTextField.snp.makeConstraints { (make) in
+            make.top.equalTo(emailTextField.snp.bottom).offset(10)
+            make.leading.trailing.height.equalTo(emailTextField)
+        }
+        
+        genderImageView.snp.makeConstraints { (make) in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(10)
+            make.right.equalTo(-15)
+            make.width.height.equalTo(18)
+        }
+        
+        checkboxes.snp.makeConstraints { (make) in
+            make.top.equalTo(passwordTextField.snp.bottom)
+            make.leading.equalTo(passwordTextField)
+            make.right.equalTo(genderImageView.snp.left).offset(-10)
+            make.height.equalTo(45)
+        }
+        
+        signUpButton.snp.makeConstraints { (make) in
+            make.top.equalTo(registerBGView.snp.bottom).offset(-25)
+            make.leading.equalTo(view).offset(50)
+            make.trailing.equalTo(view).offset(-50)
+            make.height.equalTo(50)
+        }
+        
+        facebookButton.snp.makeConstraints { (make) in
+            make.top.equalTo(signUpButton.snp.bottom).offset(15)
+            make.leading.trailing.height.equalTo(signUpButton)
+        }
+        
+        restorePasswordLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(facebookButton).offset(25)
+            make.leading.trailing.equalTo(facebookButton)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
     }
 }

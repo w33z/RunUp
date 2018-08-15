@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="DIO-72-im9">
+        <view contentMode="scaleToFill" id="DIO-72-im9" customClass="GenderCheckboxesView" customModule="PickUp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="35"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -72,6 +72,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="Neb-xv-rY4"/>
+            <connections>
+                <outlet property="femaleCheckbox" destination="LcE-9t-tmm" id="8Se-1w-H2U"/>
+                <outlet property="maleCheckbox" destination="5xM-uI-EEq" id="27n-Yv-L6Z"/>
+            </connections>
             <point key="canvasLocation" x="302" y="-421.5"/>
         </view>
     </objects>

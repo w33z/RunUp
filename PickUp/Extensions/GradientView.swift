@@ -14,7 +14,7 @@ extension UIView {
     func makeGradientView() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
-        gradientLayer.colors = [UIColor.customDarkBlue.cgColor, UIColor.customLightBlue.cgColor]
+        gradientLayer.colors = [UIColor.cDarkBlue.cgColor, UIColor.cLightBlue.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
         layer.insertSublayer(gradientLayer, at: 0)
