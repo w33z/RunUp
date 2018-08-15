@@ -146,7 +146,7 @@ class RegistrationViewController: UIViewController {
         return button
     }()
     
-    private let restorePasswordLabel: UILabel = {
+    private lazy var restorePasswordLabel: UILabel = {
         let label = UILabel()
         
         let paragraphStyle = NSMutableParagraphStyle()
@@ -154,11 +154,35 @@ class RegistrationViewController: UIViewController {
         
         let forgotAttributedString = NSAttributedString(string: "Forgot password?", attributes: [
                 NSAttributedStringKey.foregroundColor : UIColor.gray,
-                NSAttributedStringKey.paragraphStyle : paragraphStyle
+                NSAttributedStringKey.paragraphStyle : paragraphStyle,
+                NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)
             ])
         
         label.attributedText = forgotAttributedString
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(presentResetPassword(_:)))
         label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tap)
+        return label
+    }()
+    
+    private lazy var backLabel: UILabel = {
+        let label = UILabel()
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        
+        let forgotAttributedString = NSAttributedString(string: "Already have an account? Sign in", attributes: [
+            NSAttributedStringKey.foregroundColor : UIColor.gray,
+            NSAttributedStringKey.paragraphStyle : paragraphStyle,
+            NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12)
+            ])
+        
+        label.attributedText = forgotAttributedString
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissRegistration(_:)))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tap)
         return label
     }()
     
@@ -171,7 +195,6 @@ class RegistrationViewController: UIViewController {
         
         addSubviews()
         makeConstraints()
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -182,6 +205,14 @@ class RegistrationViewController: UIViewController {
         signUpButton.clipsToBounds = true
     }
     
+    @objc func presentResetPassword(_ sender: UITapGestureRecognizer) {
+        let resetVC = ResetPasswordViewController()
+        presentDetail(resetVC)
+    }
+    
+    @objc func dismissRegistration(_ sender: UITapGestureRecognizer) {
+        dismissDetail()
+    }
 }
 
 extension RegistrationViewController: UITextFieldDelegate {
@@ -230,6 +261,7 @@ extension RegistrationViewController {
         registerBGView.addSubview(signUpButton)
         view.addSubview(facebookButton)
         view.addSubview(restorePasswordLabel)
+        view.addSubview(backLabel)
     }
     
     fileprivate func makeConstraints() {
@@ -265,8 +297,8 @@ extension RegistrationViewController {
         
         fullnameTextField.snp.makeConstraints { (make) in
             make.top.equalTo(registerBGView).offset(10)
-            make.leading.equalToSuperview().offset(15)
-            make.trailing.equalToSuperview().offset(-15)
+            make.leading.equalToSuperview().offset(30)
+            make.trailing.equalToSuperview().offset(-30)
             //            make.height.equalTo(view.frame.height / 18)
             make.height.equalTo(40)
         }
@@ -312,8 +344,14 @@ extension RegistrationViewController {
         }
         
         restorePasswordLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(facebookButton).offset(25)
+            make.top.equalTo(facebookButton.snp.bottom).offset(15)
             make.leading.trailing.equalTo(facebookButton)
+            make.height.equalTo(30)
+        }
+        
+        backLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(restorePasswordLabel.snp.bottom).offset(15)
+            make.leading.trailing.equalTo(restorePasswordLabel)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
