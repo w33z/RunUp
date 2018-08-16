@@ -9,6 +9,7 @@
 import UIKit
 
 enum ControllerType: String {
+    case MainCtrl = "MainViewController"
     case LoginCtrl = "LoginViewController"
     case RegistrationCtrl = "RegistrationViewController"
     case ResetPasswordCtrl = "ResetPasswordViewController"

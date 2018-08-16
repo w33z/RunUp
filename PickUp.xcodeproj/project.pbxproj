@@ -17,7 +17,8 @@
 		253D92D1211C9D6900E381D2 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253D92D0211C9D6900E381D2 /* RegistrationViewController.swift */; };
 		2548FEBA2124A7F800B881F5 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2548FEB92124A7F800B881F5 /* ResetPasswordViewController.swift */; };
 		2548FEBC2124AF2900B881F5 /* PresentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2548FEBB2124AF2900B881F5 /* PresentDetail.swift */; };
-		256DD55B210F96310097818E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256DD55A210F96310097818E /* LoginViewController.swift */; };
+		2548FEBE2125F16600B881F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2548FEBD2125F16600B881F5 /* LoginViewController.swift */; };
+		256DD55B210F96310097818E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256DD55A210F96310097818E /* MainViewController.swift */; };
 		2574865720F369D600FB3DF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2574865620F369D600FB3DF1 /* GoogleService-Info.plist */; };
 		259B4BD120EF7DC2001DBB23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B4BD020EF7DC2001DBB23 /* AppDelegate.swift */; };
 		259B4BD320EF7DC2001DBB23 /* HomeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B4BD220EF7DC2001DBB23 /* HomeMapViewController.swift */; };
@@ -50,7 +51,8 @@
 		253D92D0211C9D6900E381D2 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		2548FEB92124A7F800B881F5 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		2548FEBB2124AF2900B881F5 /* PresentDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDetail.swift; sourceTree = "<group>"; };
-		256DD55A210F96310097818E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2548FEBD2125F16600B881F5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		256DD55A210F96310097818E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2574865620F369D600FB3DF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Users/bartoszpawelczyk/Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		259B4BCD20EF7DC2001DBB23 /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259B4BD020EF7DC2001DBB23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				259B4BD220EF7DC2001DBB23 /* HomeMapViewController.swift */,
-				256DD55A210F96310097818E /* LoginViewController.swift */,
+				256DD55A210F96310097818E /* MainViewController.swift */,
+				2548FEBD2125F16600B881F5 /* LoginViewController.swift */,
 				253D92D0211C9D6900E381D2 /* RegistrationViewController.swift */,
 				2548FEB92124A7F800B881F5 /* ResetPasswordViewController.swift */,
 			);
@@ -488,9 +491,10 @@
 				252C22542120B2070033814F /* GenderCheckboxesView.swift in Sources */,
 				253388DF2113AAD9005FBAD7 /* BaseViewController.swift in Sources */,
 				253D92CD211B6D3500E381D2 /* ShadowRoundedView.swift in Sources */,
+				2548FEBE2125F16600B881F5 /* LoginViewController.swift in Sources */,
 				252FD9FF211B4EF2005175EB /* UIColor.swift in Sources */,
 				253D92D1211C9D6900E381D2 /* RegistrationViewController.swift in Sources */,
-				256DD55B210F96310097818E /* LoginViewController.swift in Sources */,
+				256DD55B210F96310097818E /* MainViewController.swift in Sources */,
 				259B4BD320EF7DC2001DBB23 /* HomeMapViewController.swift in Sources */,
 				253388DD2113A4C0005FBAD7 /* ControllersFactory.swift in Sources */,
 				253D92CF211B7CC900E381D2 /* GradientView.swift in Sources */,

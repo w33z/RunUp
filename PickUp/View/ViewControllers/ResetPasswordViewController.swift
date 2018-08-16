@@ -124,10 +124,7 @@ class ResetPasswordViewController: UIViewController {
     }
     
     @objc func dismissResetPassword(_ sender: UITapGestureRecognizer) {
-        let presentingViewController = self.presentingViewController
-        self.dismissDetail {
-            presentingViewController?.dismissDetail()
-        }
+        dismissDetail()
     }
 }
 
@@ -153,7 +150,7 @@ extension ResetPasswordViewController {
         }
         
         logoBGView.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(80)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(view.frame.height / 12)
             make.centerX.equalTo(view)
             make.width.height.equalTo(120)
         }
@@ -171,14 +168,14 @@ extension ResetPasswordViewController {
             make.top.equalTo(gradientView.snp.bottom).offset(-80)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(180)
+            make.height.equalTo(view.frame.height / 3)
         }
         
         usernameTextField.snp.makeConstraints { (make) in
             make.top.equalTo(resetBGView).offset(25)
             make.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().offset(-30)
-            make.height.equalTo(40)
+            make.height.equalTo(view.frame.height / 18)
         }
         
         emailTextField.snp.makeConstraints { (make) in

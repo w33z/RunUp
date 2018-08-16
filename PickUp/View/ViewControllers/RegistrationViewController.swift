@@ -146,41 +146,27 @@ class RegistrationViewController: UIViewController {
         return button
     }()
     
-    private lazy var restorePasswordLabel: UILabel = {
-        let label = UILabel()
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-        
-        let forgotAttributedString = NSAttributedString(string: "Forgot password?", attributes: [
-                NSAttributedStringKey.foregroundColor : UIColor.gray,
-                NSAttributedStringKey.paragraphStyle : paragraphStyle,
-                NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)
-            ])
-        
-        label.attributedText = forgotAttributedString
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(presentResetPassword(_:)))
-        label.isUserInteractionEnabled = true
-        label.addGestureRecognizer(tap)
-        return label
-    }()
-    
     private lazy var backLabel: UILabel = {
         let label = UILabel()
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         
-        let forgotAttributedString = NSAttributedString(string: "Already have an account? Sign in", attributes: [
+        let forgotAttributedString = NSMutableAttributedString(string: "Already have an account? ", attributes: [
             NSAttributedStringKey.foregroundColor : UIColor.gray,
             NSAttributedStringKey.paragraphStyle : paragraphStyle,
-            NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12)
+            NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)
             ])
         
+        let signInAttributedString = NSAttributedString(string: "Sign In", attributes: [
+            NSAttributedStringKey.foregroundColor : UIColor.gray,
+            NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)
+            ])
+        
+        forgotAttributedString.append(signInAttributedString)
         label.attributedText = forgotAttributedString
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissRegistration(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(presentSignIn(_:)))
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(tap)
         return label
@@ -205,13 +191,9 @@ class RegistrationViewController: UIViewController {
         signUpButton.clipsToBounds = true
     }
     
-    @objc func presentResetPassword(_ sender: UITapGestureRecognizer) {
-        let resetVC = ResetPasswordViewController()
-        presentDetail(resetVC)
-    }
-    
-    @objc func dismissRegistration(_ sender: UITapGestureRecognizer) {
-        dismissDetail()
+    @objc func presentSignIn(_ sender: UITapGestureRecognizer) {
+        let loginVC = LoginViewController()
+        presentDetail(loginVC)
     }
 }
 
@@ -260,7 +242,6 @@ extension RegistrationViewController {
         registerBGView.addSubview(checkboxes)
         registerBGView.addSubview(signUpButton)
         view.addSubview(facebookButton)
-        view.addSubview(restorePasswordLabel)
         view.addSubview(backLabel)
     }
     
@@ -272,8 +253,8 @@ extension RegistrationViewController {
         }
         
         logoBGView.snp.makeConstraints { (make) in
-            //          make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(view.frame.height / 12)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(80)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(view.frame.height / 12)
+//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(80)
             make.centerX.equalTo(view)
             make.width.height.equalTo(120)
         }
@@ -291,16 +272,16 @@ extension RegistrationViewController {
             make.top.equalTo(gradientView.snp.bottom).offset(-80)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            //            make.height.equalTo(view.frame.height / 2.5)
-            make.height.equalTo(280)
+            make.height.equalTo(view.frame.height / 2.5)
+//            make.height.equalTo(280)
         }
         
         fullnameTextField.snp.makeConstraints { (make) in
             make.top.equalTo(registerBGView).offset(10)
             make.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().offset(-30)
-            //            make.height.equalTo(view.frame.height / 18)
-            make.height.equalTo(40)
+            make.height.equalTo(view.frame.height / 18)
+//            make.height.equalTo(40)
         }
         
         usernameTextField.snp.makeConstraints { (make) in
@@ -320,14 +301,14 @@ extension RegistrationViewController {
         
         genderImageView.snp.makeConstraints { (make) in
             make.top.equalTo(passwordTextField.snp.bottom).offset(10)
-            make.right.equalTo(-15)
+            make.trailing.equalTo(passwordTextField)
             make.width.height.equalTo(18)
         }
         
         checkboxes.snp.makeConstraints { (make) in
             make.top.equalTo(passwordTextField.snp.bottom)
-            make.leading.equalTo(passwordTextField)
-            make.right.equalTo(genderImageView.snp.left).offset(-10)
+            make.leading.equalTo(passwordTextField).offset(25)
+            make.right.equalTo(genderImageView.snp.left).offset(-25)
             make.height.equalTo(45)
         }
         
@@ -343,15 +324,9 @@ extension RegistrationViewController {
             make.leading.trailing.height.equalTo(signUpButton)
         }
         
-        restorePasswordLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(facebookButton.snp.bottom).offset(15)
-            make.leading.trailing.equalTo(facebookButton)
-            make.height.equalTo(30)
-        }
-        
         backLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(restorePasswordLabel.snp.bottom).offset(15)
-            make.leading.trailing.equalTo(restorePasswordLabel)
+            make.top.equalTo(facebookButton.snp.bottom)
+            make.leading.trailing.equalTo(facebookButton)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }

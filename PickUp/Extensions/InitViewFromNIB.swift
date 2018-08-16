@@ -13,5 +13,4 @@ extension UIView {
     class func instanceFromNib(name: String) -> UIView {
         return UINib(nibName: name, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
-    
 }

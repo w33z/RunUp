@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         if Auth.auth().currentUser == nil {
+            let loginViewController = ControllersFactory.allocController(.MainCtrl) as! MainViewController
 //            let loginViewController = ControllersFactory.allocController(.LoginCtrl) as! LoginViewController
-            let loginViewController = ControllersFactory.allocController(.RegistrationCtrl) as! RegistrationViewController
             window?.rootViewController = loginViewController
         } else {
             let homeMapViewController = HomeMapViewController()
@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         window?.makeKeyAndVisible()
 
+        
         return true
     }
 
