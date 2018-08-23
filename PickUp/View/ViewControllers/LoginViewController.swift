@@ -64,11 +64,11 @@ class LoginViewController: UIViewController {
     
     private let passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Email.."
+        textField.placeholder = "Password.."
         textField.addBottomBorder(color: .lightGray, thickness: 0.25)
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
-        imageView.image = UIImage(named: "mail")
+        imageView.image = UIImage(named: "view")
         imageView.contentMode = .scaleAspectFit
         
         
@@ -82,6 +82,26 @@ class LoginViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .cLightBlue
         button.setTitle("Sign In", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.makeShadowRounded()
+        return button
+    }()
+    
+    private let facebookButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .cBlue
+        
+        let signUpAttributedString = NSMutableAttributedString(string: "Sign In With ", attributes: [
+            NSAttributedStringKey.foregroundColor : UIColor.white
+            ])
+        let facebookAttributedString = NSAttributedString(string: "Facebook", attributes: [
+            NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: UIFont.buttonFontSize),
+            NSAttributedStringKey.foregroundColor : UIColor.white
+            ])
+        signUpAttributedString.append(facebookAttributedString)
+        button.setAttributedTitle(signUpAttributedString, for: .normal)
+        
+        
         button.setTitleColor(.white, for: .normal)
         button.makeShadowRounded()
         return button
@@ -146,6 +166,7 @@ class LoginViewController: UIViewController {
         
         addSubviews()
         makeConstraints()
+        bind()
     }
     
     override func viewDidLayoutSubviews() {
@@ -179,6 +200,7 @@ extension LoginViewController {
         resetBGView.addSubview(usernameTextField)
         resetBGView.addSubview(passwordTextField)
         resetBGView.addSubview(signInButton)
+        resetBGView.addSubview(facebookButton)
         view.addSubview(restorePasswordLabel)
         view.addSubview(dontHaveAccountLabel)
     }
@@ -223,21 +245,33 @@ extension LoginViewController {
             make.leading.trailing.height.equalTo(usernameTextField)
         }
         
-        signInButton.snp.makeConstraints { (make) in
+        facebookButton.snp.makeConstraints { (make) in
             make.top.equalTo(resetBGView.snp.bottom).offset(-25)
             make.leading.equalTo(view).offset(50)
             make.trailing.equalTo(view).offset(-50)
             make.height.equalTo(50)
         }
         
+        signInButton.snp.makeConstraints { (make) in
+            make.bottom.equalTo(facebookButton.snp.top).offset(-15)
+            make.leading.trailing.equalTo(facebookButton)
+            make.height.equalTo(facebookButton)
+        }
+        
         restorePasswordLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(signInButton.snp.bottom).offset(15)
-            make.leading.trailing.equalTo(signInButton)
+            make.top.equalTo(facebookButton.snp.bottom).offset(15)
+            make.leading.trailing.equalTo(facebookButton)
         }
         
         dontHaveAccountLabel.snp.makeConstraints { (make) in
             make.top.equalTo(restorePasswordLabel.snp.bottom).offset(15)
             make.leading.trailing.equalTo(restorePasswordLabel)
         }
+    }
+    
+    fileprivate func bind() {
+//        usernameTextField.rx.text
+//            .orEmpty
+//            .bind(to: <#T##BehaviorRelay<String>#>)
     }
 }

@@ -21,8 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
         if Auth.auth().currentUser == nil {
-            let loginViewController = ControllersFactory.allocController(.MainCtrl) as! MainViewController
+            let loginViewController = ControllersFactory.allocController(.RegistrationCtrl) as! RegistrationViewController
 //            let loginViewController = ControllersFactory.allocController(.LoginCtrl) as! LoginViewController
             window?.rootViewController = loginViewController
         } else {

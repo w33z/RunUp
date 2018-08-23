@@ -12,12 +12,18 @@
 		252FD9FF211B4EF2005175EB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FD9FE211B4EF2005175EB /* UIColor.swift */; };
 		253388DD2113A4C0005FBAD7 /* ControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253388DC2113A4C0005FBAD7 /* ControllersFactory.swift */; };
 		253388DF2113AAD9005FBAD7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253388DE2113AAD9005FBAD7 /* BaseViewController.swift */; };
+		2536C4F6212DE0310005A7EA /* ShakeAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2536C4F5212DE0310005A7EA /* ShakeAnimationView.swift */; };
+		253CCA32212C97BC00C4AFED /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253CCA31212C97BC00C4AFED /* Event.swift */; };
 		253D92CD211B6D3500E381D2 /* ShadowRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253D92CC211B6D3500E381D2 /* ShadowRoundedView.swift */; };
 		253D92CF211B7CC900E381D2 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253D92CE211B7CC900E381D2 /* GradientView.swift */; };
 		253D92D1211C9D6900E381D2 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253D92D0211C9D6900E381D2 /* RegistrationViewController.swift */; };
 		2548FEBA2124A7F800B881F5 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2548FEB92124A7F800B881F5 /* ResetPasswordViewController.swift */; };
 		2548FEBC2124AF2900B881F5 /* PresentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2548FEBB2124AF2900B881F5 /* PresentDetail.swift */; };
 		2548FEBE2125F16600B881F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2548FEBD2125F16600B881F5 /* LoginViewController.swift */; };
+		2559B82D21283101006A5E5E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559B82C21283101006A5E5E /* Settings.swift */; };
+		2559B82F21283170006A5E5E /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559B82E21283170006A5E5E /* UserService.swift */; };
+		2559B83121283348006A5E5E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559B83021283348006A5E5E /* AuthService.swift */; };
+		2559B833212836B6006A5E5E /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559B832212836B6006A5E5E /* RegistrationViewModel.swift */; };
 		256DD55B210F96310097818E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256DD55A210F96310097818E /* MainViewController.swift */; };
 		2574865720F369D600FB3DF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2574865620F369D600FB3DF1 /* GoogleService-Info.plist */; };
 		259B4BD120EF7DC2001DBB23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B4BD020EF7DC2001DBB23 /* AppDelegate.swift */; };
@@ -46,12 +52,18 @@
 		252FD9FE211B4EF2005175EB /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		253388DC2113A4C0005FBAD7 /* ControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersFactory.swift; sourceTree = "<group>"; };
 		253388DE2113AAD9005FBAD7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2536C4F5212DE0310005A7EA /* ShakeAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeAnimationView.swift; sourceTree = "<group>"; };
+		253CCA31212C97BC00C4AFED /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		253D92CC211B6D3500E381D2 /* ShadowRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRoundedView.swift; sourceTree = "<group>"; };
 		253D92CE211B7CC900E381D2 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		253D92D0211C9D6900E381D2 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		2548FEB92124A7F800B881F5 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		2548FEBB2124AF2900B881F5 /* PresentDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDetail.swift; sourceTree = "<group>"; };
 		2548FEBD2125F16600B881F5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2559B82C21283101006A5E5E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		2559B82E21283170006A5E5E /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		2559B83021283348006A5E5E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		2559B832212836B6006A5E5E /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		256DD55A210F96310097818E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2574865620F369D600FB3DF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Users/bartoszpawelczyk/Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		259B4BCD20EF7DC2001DBB23 /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +117,8 @@
 		252FD9FD211B4ECE005175EB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2536C4F3212DCEE10005A7EA /* Languages */,
+				2559B82C21283101006A5E5E /* Settings.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -128,6 +142,13 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		2536C4F3212DCEE10005A7EA /* Languages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Languages;
+			sourceTree = "<group>";
+		};
 		2548FEB2212492EF00B881F5 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +159,7 @@
 		2574865820F36B8400FB3DF1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				253CCA31212C97BC00C4AFED /* Event.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -158,6 +180,7 @@
 		2574865A20F36B9100FB3DF1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2559B832212836B6006A5E5E /* RegistrationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -165,6 +188,8 @@
 		2574865B20F36B9500FB3DF1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2559B82E21283170006A5E5E /* UserService.swift */,
+				2559B83021283348006A5E5E /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -178,6 +203,7 @@
 				25CF9186211CC4B9009BD14C /* AddBorderToEdgeView.swift */,
 				25CF918D211CD21F009BD14C /* InitViewFromNIB.swift */,
 				2548FEBB2124AF2900B881F5 /* PresentDetail.swift */,
+				2536C4F5212DE0310005A7EA /* ShakeAnimationView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -491,13 +517,19 @@
 				252C22542120B2070033814F /* GenderCheckboxesView.swift in Sources */,
 				253388DF2113AAD9005FBAD7 /* BaseViewController.swift in Sources */,
 				253D92CD211B6D3500E381D2 /* ShadowRoundedView.swift in Sources */,
+				2536C4F6212DE0310005A7EA /* ShakeAnimationView.swift in Sources */,
+				2559B833212836B6006A5E5E /* RegistrationViewModel.swift in Sources */,
+				253CCA32212C97BC00C4AFED /* Event.swift in Sources */,
+				2559B83121283348006A5E5E /* AuthService.swift in Sources */,
 				2548FEBE2125F16600B881F5 /* LoginViewController.swift in Sources */,
 				252FD9FF211B4EF2005175EB /* UIColor.swift in Sources */,
 				253D92D1211C9D6900E381D2 /* RegistrationViewController.swift in Sources */,
+				2559B82F21283170006A5E5E /* UserService.swift in Sources */,
 				256DD55B210F96310097818E /* MainViewController.swift in Sources */,
 				259B4BD320EF7DC2001DBB23 /* HomeMapViewController.swift in Sources */,
 				253388DD2113A4C0005FBAD7 /* ControllersFactory.swift in Sources */,
 				253D92CF211B7CC900E381D2 /* GradientView.swift in Sources */,
+				2559B82D21283101006A5E5E /* Settings.swift in Sources */,
 				2548FEBA2124A7F800B881F5 /* ResetPasswordViewController.swift in Sources */,
 				2548FEBC2124AF2900B881F5 /* PresentDetail.swift in Sources */,
 				25CF9187211CC4B9009BD14C /* AddBorderToEdgeView.swift in Sources */,
@@ -540,6 +572,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -600,6 +633,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

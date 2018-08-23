@@ -8,6 +8,8 @@
 
 import UIKit
 import BEMCheckBox
+import RxSwift
+import RxCocoa
 
 class RegistrationViewController: UIViewController {
     
@@ -173,6 +175,7 @@ class RegistrationViewController: UIViewController {
     }()
     
     var checkboxes: GenderCheckboxesView!
+    let viewmodel: RegistrationViewModel = RegistrationViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,6 +184,10 @@ class RegistrationViewController: UIViewController {
         
         addSubviews()
         makeConstraints()
+        bind()
+        
+        checkboxes.maleCheckbox.delegate = self
+        checkboxes.femaleCheckbox.delegate = self
     }
     
     override func viewDidLayoutSubviews() {
@@ -191,10 +198,23 @@ class RegistrationViewController: UIViewController {
         signUpButton.clipsToBounds = true
     }
     
+    let alert = UIAlertAction()
+    
+    func showAlertController(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default) { (_) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
     @objc func presentSignIn(_ sender: UITapGestureRecognizer) {
         let loginVC = LoginViewController()
         presentDetail(loginVC)
     }
+    
+    var springness = CGFloat(0.9)
 }
 
 extension RegistrationViewController: UITextFieldDelegate {
@@ -219,6 +239,13 @@ extension RegistrationViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField){
         print("textFieldDidBeginEditing:")
+    }
+}
+
+extension RegistrationViewController: BEMCheckBoxDelegate {
+    func didTap(_ checkBox: BEMCheckBox) {
+        checkboxes.title = (checkBox.tag == 0) ? CheckBoxType.male : CheckBoxType.female
+        viewmodel.gender.accept(checkboxes.title.rawValue)
     }
 }
 
@@ -329,5 +356,64 @@ extension RegistrationViewController {
             make.leading.trailing.equalTo(facebookButton)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+    }
+    
+    fileprivate func bind() {
+        fullnameTextField.rx.text
+            .orEmpty
+            .bind(to: viewmodel.fullname)
+            .disposed(by: viewmodel.disposeBag)
+        
+        usernameTextField.rx.text
+            .orEmpty
+            .bind(to: viewmodel.username)
+            .disposed(by: viewmodel.disposeBag)
+        
+        emailTextField.rx.text
+            .orEmpty
+            .bind(to: viewmodel.email)
+            .disposed(by: viewmodel.disposeBag)
+        
+        passwordTextField.rx.text
+            .orEmpty
+            .bind(to: viewmodel.password)
+            .disposed(by: viewmodel.disposeBag)
+        
+        viewmodel.registerButtonTappedEvent = signUpButton.rx.tap
+        
+        viewmodel.event.subscribe(onNext: { (event) in
+            
+            switch event.type {
+                case .registerButtonTappedEvent:
+                    [self.fullnameTextField,self.usernameTextField,self.emailTextField,self.passwordTextField].forEach({ $0.removeShakeAnimation() })
+                
+                case .registerSuccess:
+                    self.showAlertController(title: "Congratulations!", message: self.viewmodel.validationRegistrationSuccess.value)
+                
+                case .registerError:
+                    [self.fullnameTextField,self.usernameTextField,self.emailTextField,self.passwordTextField].forEach({ $0.addShakeAnimation() })
+                    self.showAlertController(title: "Error!", message: self.viewmodel.validationRegistrationError.value)
+                
+                case .invalidRegisterFullname:
+                    self.fullnameTextField.addShakeAnimation()
+                    self.showAlertController(title: "Error!", message: self.viewmodel.validationRegistrationError.value)
+                
+                case .invalidRegisterUsername:
+                    self.usernameTextField.addShakeAnimation()
+                    self.showAlertController(title: "Error!", message: self.viewmodel.validationRegistrationError.value)
+
+                case .invalidRegisterEmail:
+                    self.emailTextField.addShakeAnimation()
+                    self.showAlertController(title: "Error!", message: self.viewmodel.validationRegistrationError.value)
+
+                case .invalidRegisterPassword:
+                    self.passwordTextField.addShakeAnimation()
+                    self.showAlertController(title: "Error!", message: self.viewmodel.validationRegistrationError.value)
+
+            case .invalidRegisterGender:
+                    self.checkboxes.addShakeAnimation()
+                    self.showAlertController(title: "Error!", message: self.viewmodel.validationRegistrationError.value)
+            }
+        }).disposed(by: viewmodel.disposeBag)
     }
 }
