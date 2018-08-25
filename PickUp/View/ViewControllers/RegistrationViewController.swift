@@ -11,44 +11,7 @@ import BEMCheckBox
 import RxSwift
 import RxCocoa
 
-class RegistrationViewController: UIViewController {
-    
-    private let gradientView: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
-    private let logoBGView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 25
-        view.layer.masksToBounds = true
-        return view
-    }()
-    
-    private let logoImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "logo")
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        return imageView
-    }()
-    
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Sign Up"
-        label.font = UIFont.systemFont(ofSize: 22)
-        label.textColor = .white
-        return label
-    }()
-    
-    private let registerBGView: UIView = {
-        let view = UIImageView()
-        view.backgroundColor = .white
-        view.isUserInteractionEnabled = true
-        view.makeShadowRounded()
-        return view
-    }()
+class RegistrationViewController: BaseViewController {
     
     private let fullnameTextField: UITextField = {
         let textField = UITextField()
@@ -180,8 +143,6 @@ class RegistrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fullnameTextField.delegate = self
-        
         addSubviews()
         makeConstraints()
         bind()
@@ -193,28 +154,14 @@ class RegistrationViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        gradientView.makeGradientView()
         signUpButton.makeGradientView()
         signUpButton.clipsToBounds = true
-    }
-    
-    let alert = UIAlertAction()
-    
-    func showAlertController(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default) { (_) in
-            alert.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
     }
     
     @objc func presentSignIn(_ sender: UITapGestureRecognizer) {
         let loginVC = LoginViewController()
         presentDetail(loginVC)
     }
-    
-    var springness = CGFloat(0.9)
 }
 
 extension RegistrationViewController: UITextFieldDelegate {
@@ -251,64 +198,28 @@ extension RegistrationViewController: BEMCheckBoxDelegate {
 
 extension RegistrationViewController {
     fileprivate func addSubviews() {
-        view.backgroundColor = .cWhite
-        
-        view.addSubview(gradientView)
-        view.addSubview(logoBGView)
-        logoBGView.addSubview(logoImageView)
-        view.addSubview(titleLabel)
-        view.addSubview(registerBGView)
-        registerBGView.addSubview(fullnameTextField)
-        registerBGView.addSubview(usernameTextField)
-        registerBGView.addSubview(emailTextField)
-        registerBGView.addSubview(passwordTextField)
-        registerBGView.addSubview(genderImageView)
+
+        backgroundView.addSubview(fullnameTextField)
+        backgroundView.addSubview(usernameTextField)
+        backgroundView.addSubview(emailTextField)
+        backgroundView.addSubview(passwordTextField)
+        backgroundView.addSubview(genderImageView)
         
         checkboxes = UIView.instanceFromNib(name: "GenderCheckboxes") as! GenderCheckboxesView
         
-        registerBGView.addSubview(checkboxes)
-        registerBGView.addSubview(signUpButton)
+        backgroundView.addSubview(checkboxes)
+        backgroundView.addSubview(signUpButton)
         view.addSubview(facebookButton)
         view.addSubview(backLabel)
     }
     
     fileprivate func makeConstraints() {
         
-        gradientView.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(view.frame.height / 2)
-        }
-        
-        logoBGView.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(view.frame.height / 12)
-//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(80)
-            make.centerX.equalTo(view)
-            make.width.height.equalTo(120)
-        }
-        
-        logoImageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(10, 5, 5, 10))
-        }
-        
-        titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(logoBGView.snp.bottom).offset(20)
-            make.centerX.equalTo(logoBGView)
-        }
-        
-        registerBGView.snp.makeConstraints { (make) in
-            make.top.equalTo(gradientView.snp.bottom).offset(-80)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(view.frame.height / 2.5)
-//            make.height.equalTo(280)
-        }
-        
         fullnameTextField.snp.makeConstraints { (make) in
-            make.top.equalTo(registerBGView).offset(10)
+            make.top.equalTo(backgroundView).offset(10)
             make.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().offset(-30)
             make.height.equalTo(view.frame.height / 18)
-//            make.height.equalTo(40)
         }
         
         usernameTextField.snp.makeConstraints { (make) in
@@ -340,7 +251,7 @@ extension RegistrationViewController {
         }
         
         signUpButton.snp.makeConstraints { (make) in
-            make.top.equalTo(registerBGView.snp.bottom).offset(-25)
+            make.top.equalTo(backgroundView.snp.bottom).offset(-25)
             make.leading.equalTo(view).offset(50)
             make.trailing.equalTo(view).offset(-50)
             make.height.equalTo(50)
@@ -383,36 +294,40 @@ extension RegistrationViewController {
         
         viewmodel.event.subscribe(onNext: { (event) in
             
-            switch event.type {
+           switch event.type {
                 case .registerButtonTappedEvent:
+                    self.startAnimating(message: "Loading...")
                     [self.fullnameTextField,self.usernameTextField,self.emailTextField,self.passwordTextField].forEach({ $0.removeShakeAnimation() })
-                
-                case .registerSuccess:
+
+            case .registerSuccess:
+                    self.stopAnimating()
                     self.showAlertController(title: "Congratulations!", message: self.viewmodel.validationRegistrationSuccess.value)
-                
+
                 case .registerError:
+                    self.stopAnimating()
                     [self.fullnameTextField,self.usernameTextField,self.emailTextField,self.passwordTextField].forEach({ $0.addShakeAnimation() })
-                    self.showAlertController(title: "Error!", message: self.viewmodel.validationRegistrationError.value)
-                
+                    self.showAlertController(title: "Failure!", message: self.viewmodel.validationRegistrationError.value)
+
                 case .invalidRegisterFullname:
                     self.fullnameTextField.addShakeAnimation()
-                    self.showAlertController(title: "Error!", message: self.viewmodel.validationRegistrationError.value)
-                
+                    self.showAlertController(title: "Failure!", message: self.viewmodel.validationRegistrationError.value)
+
                 case .invalidRegisterUsername:
                     self.usernameTextField.addShakeAnimation()
-                    self.showAlertController(title: "Error!", message: self.viewmodel.validationRegistrationError.value)
+                    self.showAlertController(title: "Failure!", message: self.viewmodel.validationRegistrationError.value)
 
                 case .invalidRegisterEmail:
                     self.emailTextField.addShakeAnimation()
-                    self.showAlertController(title: "Error!", message: self.viewmodel.validationRegistrationError.value)
+                    self.showAlertController(title: "Failure!", message: self.viewmodel.validationRegistrationError.value)
 
                 case .invalidRegisterPassword:
                     self.passwordTextField.addShakeAnimation()
-                    self.showAlertController(title: "Error!", message: self.viewmodel.validationRegistrationError.value)
+                    self.showAlertController(title: "Failure!", message: self.viewmodel.validationRegistrationError.value)
 
-            case .invalidRegisterGender:
+                case .invalidRegisterGender:
                     self.checkboxes.addShakeAnimation()
-                    self.showAlertController(title: "Error!", message: self.viewmodel.validationRegistrationError.value)
+                    self.showAlertController(title: "Failure!", message: self.viewmodel.validationRegistrationError.value)
+
             }
         }).disposed(by: viewmodel.disposeBag)
     }

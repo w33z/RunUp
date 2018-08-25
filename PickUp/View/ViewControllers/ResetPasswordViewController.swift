@@ -8,44 +8,7 @@
 
 import UIKit
 
-class ResetPasswordViewController: UIViewController {
-
-    private let gradientView: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
-    private let logoBGView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 25
-        view.layer.masksToBounds = true
-        return view
-    }()
-    
-    private let logoImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "logo")
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        return imageView
-    }()
-    
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Reset Password"
-        label.font = UIFont.systemFont(ofSize: 22)
-        label.textColor = .white
-        return label
-    }()
-    
-    private let resetBGView: UIView = {
-        let view = UIImageView()
-        view.backgroundColor = .white
-        view.isUserInteractionEnabled = true
-        view.makeShadowRounded()
-        return view
-    }()
+class ResetPasswordViewController: BaseViewController {
     
     private let usernameTextField: UITextField = {
         let textField = UITextField()
@@ -118,7 +81,6 @@ class ResetPasswordViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        gradientView.makeGradientView()
         resetButton.makeGradientView()
         resetButton.clipsToBounds = true
     }
@@ -130,49 +92,19 @@ class ResetPasswordViewController: UIViewController {
 
 extension ResetPasswordViewController {
     fileprivate func addSubviews() {
-        view.backgroundColor = .cWhite
+        titleLabel.text = "Reset Password"
+        backgroundViewHeightConsraint?.update(offset: view.frame.height / 4.3)
         
-        view.addSubview(gradientView)
-        view.addSubview(logoBGView)
-        logoBGView.addSubview(logoImageView)
-        view.addSubview(titleLabel)
-        view.addSubview(resetBGView)
-        resetBGView.addSubview(usernameTextField)
-        resetBGView.addSubview(emailTextField)
-        resetBGView.addSubview(resetButton)
+        backgroundView.addSubview(usernameTextField)
+        backgroundView.addSubview(emailTextField)
+        backgroundView.addSubview(resetButton)
         view.addSubview(backLabel)
     }
     
     fileprivate func makeConstraints() {
-        gradientView.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(view.frame.height / 2)
-        }
-        
-        logoBGView.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(view.frame.height / 12)
-            make.centerX.equalTo(view)
-            make.width.height.equalTo(120)
-        }
-        
-        logoImageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(10, 5, 5, 10))
-        }
-        
-        titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(logoBGView.snp.bottom).offset(20)
-            make.centerX.equalTo(logoBGView)
-        }
-        
-        resetBGView.snp.makeConstraints { (make) in
-            make.top.equalTo(gradientView.snp.bottom).offset(-80)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(view.frame.height / 3)
-        }
         
         usernameTextField.snp.makeConstraints { (make) in
-            make.top.equalTo(resetBGView).offset(25)
+            make.top.equalTo(backgroundView).offset(25)
             make.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().offset(-30)
             make.height.equalTo(view.frame.height / 18)
@@ -184,7 +116,7 @@ extension ResetPasswordViewController {
         }
         
         resetButton.snp.makeConstraints { (make) in
-            make.top.equalTo(resetBGView.snp.bottom).offset(-25)
+            make.top.equalTo(backgroundView.snp.bottom).offset(-25)
             make.leading.equalTo(view).offset(50)
             make.trailing.equalTo(view).offset(-50)
             make.height.equalTo(50)

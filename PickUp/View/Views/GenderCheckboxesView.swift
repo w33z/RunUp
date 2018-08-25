@@ -20,7 +20,7 @@ class GenderCheckboxesView: UIView {
     @IBOutlet weak var femaleCheckbox: BEMCheckBox!
     
     var group: BEMCheckBoxGroup!
-    var title: CheckBoxType = .male
+    var title: CheckBoxType!
     
     override func awakeFromNib() {
         super.awakeFromNib()

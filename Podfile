@@ -16,6 +16,7 @@ target 'PickUp' do
     pod 'Alamofire',  '~> 4.7'
     pod 'RealmSwift'
     pod 'BEMCheckBox'
+    pod 'NVActivityIndicatorView'
 
   target 'PickUpTests' do
     inherit! :search_paths
