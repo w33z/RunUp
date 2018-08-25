@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if Auth.auth().currentUser == nil {
-            let loginViewController = ControllersFactory.allocController(.RegistrationCtrl) as! RegistrationViewController
+            let loginViewController = ControllersFactory.allocController(.RegisterCtrl) as! RegisterViewController
 //            let loginViewController = ControllersFactory.allocController(.LoginCtrl) as! LoginViewController
             window?.rootViewController = loginViewController
         } else {

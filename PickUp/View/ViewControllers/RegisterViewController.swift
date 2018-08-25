@@ -1,5 +1,5 @@
 //
-//  RegistrationViewController.swift
+//  RegisterViewController.swift
 //  PickUp
 //
 //  Created by Bartosz Pawełczyk on 09/08/2018.
@@ -8,10 +8,8 @@
 
 import UIKit
 import BEMCheckBox
-import RxSwift
-import RxCocoa
 
-class RegistrationViewController: BaseViewController {
+class RegisterViewController: BaseViewController {
     
     private let fullnameTextField: UITextField = {
         let textField = UITextField()
@@ -82,7 +80,7 @@ class RegistrationViewController: BaseViewController {
         return imageView
     }()
     
-    private let signUpButton: UIButton = {
+    private let registerButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .cLightBlue
         button.setTitle(NSLocalizedString("Sign Up", comment: ""), for: .normal)
@@ -154,8 +152,8 @@ class RegistrationViewController: BaseViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        signUpButton.makeGradientView()
-        signUpButton.clipsToBounds = true
+        registerButton.makeGradientView()
+        registerButton.clipsToBounds = true
     }
     
     @objc func presentSignIn(_ sender: UITapGestureRecognizer) {
@@ -164,7 +162,7 @@ class RegistrationViewController: BaseViewController {
     }
 }
 
-extension RegistrationViewController: UITextFieldDelegate {
+extension RegisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case fullnameTextField:
@@ -189,14 +187,14 @@ extension RegistrationViewController: UITextFieldDelegate {
     }
 }
 
-extension RegistrationViewController: BEMCheckBoxDelegate {
+extension RegisterViewController: BEMCheckBoxDelegate {
     func didTap(_ checkBox: BEMCheckBox) {
         checkboxes.title = (checkBox.tag == 0) ? CheckBoxType.male : CheckBoxType.female
         viewmodel.gender.accept(checkboxes.title.rawValue)
     }
 }
 
-extension RegistrationViewController {
+extension RegisterViewController {
     fileprivate func addSubviews() {
 
         backgroundView.addSubview(fullnameTextField)
@@ -208,7 +206,7 @@ extension RegistrationViewController {
         checkboxes = UIView.instanceFromNib(name: "GenderCheckboxes") as! GenderCheckboxesView
         
         backgroundView.addSubview(checkboxes)
-        backgroundView.addSubview(signUpButton)
+        backgroundView.addSubview(registerButton)
         view.addSubview(facebookButton)
         view.addSubview(backLabel)
     }
@@ -246,15 +244,12 @@ extension RegistrationViewController {
         checkboxes.snp.makeConstraints { (make) in
             make.top.equalTo(passwordTextField.snp.bottom)
             make.leading.greaterThanOrEqualTo(passwordTextField).offset(0)
-//            make.right.lessThanOrEqualTo(passwordTextField).offset(15)
             make.leading.lessThanOrEqualTo(passwordTextField).offset(25)
             make.right.greaterThanOrEqualTo(passwordTextField).offset(-35)
-//            make.leading.equalTo(passwordTextField).offset(25)
-//            make.right.equalTo(genderImageView.snp.left).offset(-25)
             make.height.equalTo(45)
         }
         
-        signUpButton.snp.makeConstraints { (make) in
+        registerButton.snp.makeConstraints { (make) in
             make.top.equalTo(backgroundView.snp.bottom).offset(-25)
             make.leading.equalTo(view).offset(50)
             make.trailing.equalTo(view).offset(-50)
@@ -262,8 +257,8 @@ extension RegistrationViewController {
         }
         
         facebookButton.snp.makeConstraints { (make) in
-            make.top.equalTo(signUpButton.snp.bottom).offset(15)
-            make.leading.trailing.height.equalTo(signUpButton)
+            make.top.equalTo(registerButton.snp.bottom).offset(15)
+            make.leading.trailing.height.equalTo(registerButton)
         }
         
         backLabel.snp.makeConstraints { (make) in
@@ -294,16 +289,16 @@ extension RegistrationViewController {
             .bind(to: viewmodel.password)
             .disposed(by: viewmodel.disposeBag)
         
-        viewmodel.registerButtonTappedEvent = signUpButton.rx.tap
+        viewmodel.registerButtonTappedEvent = registerButton.rx.tap
         
         viewmodel.event.subscribe(onNext: { (event) in
             
            switch event.type {
                 case .registerButtonTappedEvent:
                     self.startAnimating(message: NSLocalizedString("Loading...", comment: ""))
-                    [self.fullnameTextField,self.usernameTextField,self.emailTextField,self.passwordTextField].forEach({ $0.removeShakeAnimation() })
+                    [self.fullnameTextField, self.usernameTextField, self.emailTextField, self.passwordTextField].forEach({ $0.removeShakeAnimation() })
 
-            case .registerSuccess:
+                case .registerSuccess:
                     self.stopAnimating()
                     self.showAlertController(title: NSLocalizedString("Congratulations!", comment: ""), message: self.viewmodel.validationRegistrationSuccess.value)
 
@@ -331,7 +326,8 @@ extension RegistrationViewController {
                 case .invalidRegisterGender:
                     self.checkboxes.addShakeAnimation()
                     self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationRegistrationError.value)
-
+                default:
+                    break
             }
         }).disposed(by: viewmodel.disposeBag)
     }

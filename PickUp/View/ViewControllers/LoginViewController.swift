@@ -41,7 +41,7 @@ class LoginViewController: BaseViewController {
         return textField
     }()
     
-    private let signInButton: UIButton = {
+    private let loginButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .cLightBlue
         button.setTitle(NSLocalizedString("Sign In", comment: ""), for: .normal)
@@ -123,6 +123,7 @@ class LoginViewController: BaseViewController {
         return label
     }()
     
+    let viewmodel: LoginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,12 +136,12 @@ class LoginViewController: BaseViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        signInButton.makeGradientView()
-        signInButton.clipsToBounds = true
+        loginButton.makeGradientView()
+        loginButton.clipsToBounds = true
     }
     
     @objc func presentSignInPassword(_ sender: UITapGestureRecognizer) {
-        let registerVC = RegistrationViewController()
+        let registerVC = RegisterViewController()
         presentDetail(registerVC)
     }
     
@@ -157,7 +158,7 @@ extension LoginViewController {
 
         backgroundView.addSubview(usernameTextField)
         backgroundView.addSubview(passwordTextField)
-        backgroundView.addSubview(signInButton)
+        backgroundView.addSubview(loginButton)
         backgroundView.addSubview(facebookButton)
         view.addSubview(restorePasswordLabel)
         view.addSubview(dontHaveAccountLabel)
@@ -183,7 +184,7 @@ extension LoginViewController {
             make.height.equalTo(50)
         }
         
-        signInButton.snp.makeConstraints { (make) in
+        loginButton.snp.makeConstraints { (make) in
             make.bottom.equalTo(facebookButton.snp.top).offset(-15)
             make.leading.trailing.equalTo(facebookButton)
             make.height.equalTo(facebookButton)
@@ -201,6 +202,46 @@ extension LoginViewController {
     }
     
     fileprivate func bind() {
+        usernameTextField.rx.text
+            .orEmpty
+            .bind(to: viewmodel.username)
+            .disposed(by: viewmodel.disposeBag)
+        
+        passwordTextField.rx.text
+            .orEmpty
+            .bind(to: viewmodel.password)
+            .disposed(by: viewmodel.disposeBag)
+        
+        viewmodel.loginButtonTappedEvent = loginButton.rx.tap
+        
+        viewmodel.event.subscribe(onNext: { (event) in
+            
+            switch event.type {
+                case .loginButtonTappedEvent:
+                    self.startAnimating(message: NSLocalizedString("Loading...", comment: ""))
+                    [self.usernameTextField, self.passwordTextField].forEach({ $0.removeShakeAnimation() })
+                
+                case .loginSuccess:
+                    self.stopAnimating()
+                    self.showAlertController(title: "", message: self.viewmodel.validationLoginSuccess.value)
+                
+                case .loginError:
+                    self.stopAnimating()
+                    [self.usernameTextField, self.passwordTextField].forEach({ $0.addShakeAnimation() })
+                    self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationLoginError.value)
 
+                case .invalidLoginUsername:
+                    self.usernameTextField.addShakeAnimation()
+                    self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationLoginError.value)
+
+                
+                case .invalidLoginPassword:
+                    self.passwordTextField.addShakeAnimation()
+                    self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationLoginError.value)
+
+                default:
+                    break
+            }
+        }).disposed(by: viewmodel.disposeBag)
     }
 }

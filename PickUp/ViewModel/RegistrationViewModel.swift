@@ -33,12 +33,13 @@ class RegistrationViewModel {
     
     var registerButtonTappedEvent: ControlEvent<()>? {
         didSet {
-            registerButtonTappedEvent?.subscribe(onNext: { (_) in
+            registerButtonTappedEvent?.subscribe({ (_) in
                 if self.validateRegistrationData() {
                     var subscribeEvent = Event(type: .registerButtonTappedEvent)
                     self.event.onNext(subscribeEvent)
 
-                    let userData = ["fullname": self.fullname.value, "username": self.username.value.lowercased(), "email": self.email.value.lowercased(), "password": self.password.value, "gender": self.gender.value] as [String: AnyObject]
+                    let usernameLogin = self.username.value.lowercased() + "@pickUp.com"
+                    let userData = ["fullname": self.fullname.value, "username": self.username.value.lowercased(), "usernameLogin": usernameLogin, "email": self.email.value.lowercased(), "password": self.password.value, "gender": self.gender.value] as [String: AnyObject]
 
                     AuthService.instance.registerUser(userData: userData, completion: { (status, error) in
                         
@@ -54,27 +55,27 @@ class RegistrationViewModel {
                     })
                 
                 } else {
-                    if(!self.isFullnameValid) {
+                    if (!self.isFullnameValid) {
                         self.validationRegistrationError.accept(NSLocalizedString("Invalid Fullname", comment: ""))
                         let subscripeEvent = Event(type: .invalidRegisterFullname)
                         self.event.onNext(subscripeEvent)
                     }
-                    if(!self.isUsernameValid) {
+                    if (!self.isUsernameValid) {
                         self.validationRegistrationError.accept(NSLocalizedString("Invalid Username", comment: ""))
                         let subscripeEvent = Event(type: .invalidRegisterUsername)
                         self.event.onNext(subscripeEvent)
                     }
-                    if(!self.isEmailValid) {
+                    if (!self.isEmailValid) {
                         self.validationRegistrationError.accept(NSLocalizedString("Invalid E-mail", comment: ""))
                         let subscripeEvent = Event(type: .invalidRegisterEmail)
                         self.event.onNext(subscripeEvent)
                     }
-                    if(!self.isPasswordValid) {
+                    if (!self.isPasswordValid) {
                         self.validationRegistrationError.accept(NSLocalizedString("Password must contain at least 8 characters, lowercase, uppercase and special character", comment: ""))
                         let subscripeEvent = Event(type: .invalidRegisterPassword)
                         self.event.onNext(subscripeEvent)
                     }
-                    if(!self.isGenderValid) {
+                    if (!self.isGenderValid) {
                         self.validationRegistrationError.accept(NSLocalizedString("Choose right gender", comment: ""))
                         let subscripeEvent = Event(type: .invalidRegisterGender)
                         self.event.onNext(subscripeEvent)

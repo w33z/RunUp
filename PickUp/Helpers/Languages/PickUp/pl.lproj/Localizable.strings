@@ -28,8 +28,8 @@
 "Reset Password" = "Resetuj hasło";
 "Your account has been created." = "Twoje konto zostało utworzone.";
 "Invalid Fullname" = "Nieprawidłowe imię i nazwisko";
-"Invalid Username" = "Nieprawidłowy login"
+"Invalid Username" = "Nieprawidłowy login";
 "Invalid E-mail" = "Nieprawidłowy adres E-mail";
 "Password must contain at least 8 characters, lowercase, uppercase and special character" = "Hasło musi składać się z minimum 8 znaków, małych i dużych liter oraz zawierać specjalny znak";
 "Choose right gender" = "Wybierz prawidłową płeć";
-
+"Login successful" = "Zalogowano pomyślnie";

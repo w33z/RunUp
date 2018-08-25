@@ -28,7 +28,8 @@
 "Reset Password" = "Reset Password";
 "Your account has been created." = "Your account has been created.";
 "Invalid Fullname" = "Invalid Fullname";
-"Invalid Username" = "Invalid Username"
+"Invalid Username" = "Invalid Username";
 "Invalid E-mail" = "Invalid E-mail";
 "Password must contain at least 8 characters, lowercase, uppercase and special character" = "Password must contain at least 8 characters, lowercase, uppercase and special character";
 "Choose right gender" = "Choose right gender";
+"Login successful" = "Login successful";

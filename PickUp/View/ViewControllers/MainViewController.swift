@@ -42,7 +42,7 @@ class MainViewController: UIViewController {
         return label
     }()
     
-    private let signUpButton: UIButton = {
+    private let registerButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .cLightBlue
         button.setTitle(NSLocalizedString("Sign Up", comment: ""), for: .normal)
@@ -52,7 +52,7 @@ class MainViewController: UIViewController {
         return button
     }()
     
-    private let signInButton: UIButton = {
+    private let loginButton: UIButton = {
         let button = UIButton()
         button.layer.borderColor = UIColor.cLightBlue.cgColor
         button.layer.borderWidth = 0.5        
@@ -73,12 +73,12 @@ class MainViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        signUpButton.makeGradientView()
-        signUpButton.clipsToBounds = true
+        registerButton.makeGradientView()
+        registerButton.clipsToBounds = true
     }
     
     @objc func presentSignUp() {
-        let registrationVC = RegistrationViewController()
+        let registrationVC = RegisterViewController()
         presentDetail(registrationVC)
     }
     
@@ -94,8 +94,8 @@ extension MainViewController {
         
         view.addSubview(logoImageView)
         view.addSubview(appTitle)
-        view.addSubview(signUpButton)
-        view.addSubview(signInButton)
+        view.addSubview(registerButton)
+        view.addSubview(loginButton)
     }
     
     fileprivate func makeConstraints() {
@@ -110,18 +110,18 @@ extension MainViewController {
             make.centerX.equalTo(view.snp.centerX)
         }
         
-        signUpButton.snp.makeConstraints { (make) in
+        registerButton.snp.makeConstraints { (make) in
             make.top.equalTo(appTitle.snp.bottom).offset(50)
             make.leading.equalTo(view.snp.leading).offset(50)
             make.trailing.equalTo(view.snp.trailing).offset(-50)
             make.height.equalTo(50)
         }
         
-        signInButton.snp.makeConstraints { (make) in
-            make.top.equalTo(signUpButton.snp.bottom).offset(25)
-            make.leading.equalTo(signUpButton.snp.leading)
-            make.trailing.equalTo(signUpButton.snp.trailing)
-            make.height.equalTo(signUpButton.snp.height)
+        loginButton.snp.makeConstraints { (make) in
+            make.top.equalTo(registerButton.snp.bottom).offset(25)
+            make.leading.equalTo(registerButton.snp.leading)
+            make.trailing.equalTo(registerButton.snp.trailing)
+            make.height.equalTo(registerButton.snp.height)
         }
     }
 }

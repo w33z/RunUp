@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum EventType: String {
+enum EventType {
     case registerButtonTappedEvent
     case registerSuccess
     case registerError
@@ -17,6 +17,11 @@ enum EventType: String {
     case invalidRegisterEmail
     case invalidRegisterPassword
     case invalidRegisterGender
+    case loginButtonTappedEvent
+    case loginSuccess
+    case loginError
+    case invalidLoginUsername
+    case invalidLoginPassword
 }
 
 class Event {
