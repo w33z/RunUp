@@ -35,7 +35,7 @@ class BaseViewController: UIViewController, NVActivityIndicatorViewable {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Sign Up"
+        label.text = NSLocalizedString("Sign Up", comment: "")
         label.font = UIFont.systemFont(ofSize: 22)
         label.textColor = .white
         return label

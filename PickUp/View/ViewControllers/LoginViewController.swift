@@ -12,7 +12,7 @@ class LoginViewController: BaseViewController {
     
     private let usernameTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Username.."
+        textField.placeholder = NSLocalizedString("Username", comment: "")
         textField.addBottomBorder(color: .lightGray, thickness: 0.25)
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
@@ -27,7 +27,7 @@ class LoginViewController: BaseViewController {
     
     private let passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Password.."
+        textField.placeholder = NSLocalizedString("Password", comment: "")
         textField.addBottomBorder(color: .lightGray, thickness: 0.25)
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
@@ -44,7 +44,7 @@ class LoginViewController: BaseViewController {
     private let signInButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .cLightBlue
-        button.setTitle("Sign In", for: .normal)
+        button.setTitle(NSLocalizedString("Sign In", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.makeShadowRounded()
         return button
@@ -54,7 +54,7 @@ class LoginViewController: BaseViewController {
         let button = UIButton()
         button.backgroundColor = .cBlue
         
-        let signUpAttributedString = NSMutableAttributedString(string: "Sign In With ", attributes: [
+        let signUpAttributedString = NSMutableAttributedString(string: NSLocalizedString("Sign In With ", comment: ""), attributes: [
             NSAttributedStringKey.foregroundColor : UIColor.white
             ])
         let facebookAttributedString = NSAttributedString(string: "Facebook", attributes: [
@@ -76,13 +76,13 @@ class LoginViewController: BaseViewController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         
-        let dontHaveAttributedString = NSMutableAttributedString(string: "Don't Have an Account? ", attributes: [
+        let dontHaveAttributedString = NSMutableAttributedString(string: NSLocalizedString("Don't Have an Account? ", comment: ""), attributes: [
             NSAttributedStringKey.foregroundColor : UIColor.gray,
             NSAttributedStringKey.paragraphStyle : paragraphStyle,
             NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)
             ])
         
-        let signUpAttributedString = NSAttributedString(string: "Sign Up", attributes: [
+        let signUpAttributedString = NSAttributedString(string: NSLocalizedString("Sign Up", comment: ""), attributes: [
             NSAttributedStringKey.foregroundColor : UIColor.gray,
             NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)
             ])
@@ -103,13 +103,13 @@ class LoginViewController: BaseViewController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
 
-        let forgotAttributedString = NSMutableAttributedString(string: "Forgot password? ", attributes: [
+        let forgotAttributedString = NSMutableAttributedString(string: NSLocalizedString("Forgot password? ", comment: ""), attributes: [
                 NSAttributedStringKey.foregroundColor : UIColor.gray,
                 NSAttributedStringKey.paragraphStyle : paragraphStyle,
                 NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)
             ])
         
-        let resetAttributedString = NSAttributedString(string: "Reset", attributes: [
+        let resetAttributedString = NSAttributedString(string: NSLocalizedString("Reset", comment: ""), attributes: [
             NSAttributedStringKey.foregroundColor : UIColor.gray,
             NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)
             ])

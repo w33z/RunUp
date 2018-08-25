@@ -12,7 +12,7 @@ class ResetPasswordViewController: BaseViewController {
     
     private let usernameTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Username.."
+        textField.placeholder = NSLocalizedString("Username", comment: "")
         textField.addBottomBorder(color: .lightGray, thickness: 0.25)
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
@@ -27,7 +27,7 @@ class ResetPasswordViewController: BaseViewController {
     
     private let emailTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Email.."
+        textField.placeholder = "Email"
         textField.addBottomBorder(color: .lightGray, thickness: 0.25)
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
@@ -44,7 +44,7 @@ class ResetPasswordViewController: BaseViewController {
     private let resetButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .cLightBlue
-        button.setTitle("Reset", for: .normal)
+        button.setTitle(NSLocalizedString("Reset", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.makeShadowRounded()
         return button
@@ -56,7 +56,7 @@ class ResetPasswordViewController: BaseViewController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         
-        let forgotAttributedString = NSAttributedString(string: "Back to login", attributes: [
+        let forgotAttributedString = NSAttributedString(string: NSLocalizedString("Back to login", comment: ""), attributes: [
             NSAttributedStringKey.foregroundColor : UIColor.gray,
             NSAttributedStringKey.paragraphStyle : paragraphStyle,
             NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)
@@ -92,7 +92,7 @@ class ResetPasswordViewController: BaseViewController {
 
 extension ResetPasswordViewController {
     fileprivate func addSubviews() {
-        titleLabel.text = "Reset Password"
+        titleLabel.text = NSLocalizedString("Reset Password", comment: "")
         backgroundViewHeightConsraint?.update(offset: view.frame.height / 4.3)
         
         backgroundView.addSubview(usernameTextField)

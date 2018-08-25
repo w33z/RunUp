@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.center
         
-        let subtitle = NSMutableAttributedString(string: "Drive where you want", attributes: [
+        let subtitle = NSMutableAttributedString(string: NSLocalizedString("Drive where you want", comment: ""), attributes: [
                 NSAttributedStringKey.foregroundColor : UIColor.gray,
                 NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15),
                 NSAttributedStringKey.paragraphStyle : paragraphStyle
@@ -45,7 +45,7 @@ class MainViewController: UIViewController {
     private let signUpButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .cLightBlue
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle(NSLocalizedString("Sign Up", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.makeShadowRounded()
         button.addTarget(self, action: #selector(presentSignUp), for: .touchUpInside)
@@ -56,7 +56,7 @@ class MainViewController: UIViewController {
         let button = UIButton()
         button.layer.borderColor = UIColor.cLightBlue.cgColor
         button.layer.borderWidth = 0.5        
-        button.setTitle("Sign In", for: .normal)
+        button.setTitle(NSLocalizedString("Sign In", comment: ""), for: .normal)
         button.setTitleColor(.cLightBlue, for: .normal)
         button.makeShadowRounded()
         button.addTarget(self, action: #selector(presentSignIn), for: .touchUpInside)

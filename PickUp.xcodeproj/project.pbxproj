@@ -24,6 +24,8 @@
 		2559B82F21283170006A5E5E /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559B82E21283170006A5E5E /* UserService.swift */; };
 		2559B83121283348006A5E5E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559B83021283348006A5E5E /* AuthService.swift */; };
 		2559B833212836B6006A5E5E /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559B832212836B6006A5E5E /* RegistrationViewModel.swift */; };
+		256896992131BB4A0087E6E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 256896972131BB4A0087E6E0 /* Localizable.strings */; };
+		2568969B2131BD3A0087E6E0 /* GenderCheckboxes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2568969D2131BD3A0087E6E0 /* GenderCheckboxes.xib */; };
 		256DD55B210F96310097818E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256DD55A210F96310097818E /* MainViewController.swift */; };
 		2574865720F369D600FB3DF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2574865620F369D600FB3DF1 /* GoogleService-Info.plist */; };
 		259B4BD120EF7DC2001DBB23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B4BD020EF7DC2001DBB23 /* AppDelegate.swift */; };
@@ -32,7 +34,6 @@
 		259B4BDB20EF7DC2001DBB23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 259B4BD920EF7DC2001DBB23 /* LaunchScreen.storyboard */; };
 		259B4BE620EF7DC3001DBB23 /* PickUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B4BE520EF7DC3001DBB23 /* PickUpTests.swift */; };
 		25CF9187211CC4B9009BD14C /* AddBorderToEdgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF9186211CC4B9009BD14C /* AddBorderToEdgeView.swift */; };
-		25CF918C211CCFD6009BD14C /* GenderCheckboxes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25CF918B211CCFD6009BD14C /* GenderCheckboxes.xib */; };
 		25CF918E211CD21F009BD14C /* InitViewFromNIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF918D211CD21F009BD14C /* InitViewFromNIB.swift */; };
 		DBEE9E3E18D01490BF10EDCD /* Pods_PickUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A6716B21C2F446E37A2B07 /* Pods_PickUp.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,11 @@
 		2559B82E21283170006A5E5E /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		2559B83021283348006A5E5E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		2559B832212836B6006A5E5E /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		256896962131BACA0087E6E0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		256896982131BB4A0087E6E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = PickUp/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2568969A2131BB5A0087E6E0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = PickUp/pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2568969C2131BD3A0087E6E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GenderCheckboxes.xib; sourceTree = "<group>"; };
+		2568969F2131BD3B0087E6E0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/GenderCheckboxes.strings; sourceTree = "<group>"; };
 		256DD55A210F96310097818E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2574865620F369D600FB3DF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Users/bartoszpawelczyk/Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		259B4BCD20EF7DC2001DBB23 /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,7 +82,6 @@
 		259B4BE520EF7DC3001DBB23 /* PickUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpTests.swift; sourceTree = "<group>"; };
 		259B4BE720EF7DC3001DBB23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25CF9186211CC4B9009BD14C /* AddBorderToEdgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBorderToEdgeView.swift; sourceTree = "<group>"; };
-		25CF918B211CCFD6009BD14C /* GenderCheckboxes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenderCheckboxes.xib; sourceTree = "<group>"; };
 		25CF918D211CD21F009BD14C /* InitViewFromNIB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitViewFromNIB.swift; sourceTree = "<group>"; };
 		A6E9E70F736A19C0FA73C8A1 /* Pods-PickUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PickUpTests/Pods-PickUpTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B5D2C72BEA55A004E114B4B5 /* Pods-PickUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PickUpTests/Pods-PickUpTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +150,7 @@
 		2536C4F3212DCEE10005A7EA /* Languages */ = {
 			isa = PBXGroup;
 			children = (
+				256896972131BB4A0087E6E0 /* Localizable.strings */,
 			);
 			path = Languages;
 			sourceTree = "<group>";
@@ -259,7 +265,7 @@
 		25CF9188211CCF5A009BD14C /* XIB's */ = {
 			isa = PBXGroup;
 			children = (
-				25CF918B211CCFD6009BD14C /* GenderCheckboxes.xib */,
+				2568969D2131BD3A0087E6E0 /* GenderCheckboxes.xib */,
 			);
 			path = "XIB's";
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = 259B4BC420EF7DC2001DBB23;
 			productRefGroup = 259B4BCE20EF7DC2001DBB23 /* Products */;
@@ -371,8 +378,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				256896992131BB4A0087E6E0 /* Localizable.strings in Resources */,
 				259B4BDB20EF7DC2001DBB23 /* LaunchScreen.storyboard in Resources */,
-				25CF918C211CCFD6009BD14C /* GenderCheckboxes.xib in Resources */,
+				2568969B2131BD3A0087E6E0 /* GenderCheckboxes.xib in Resources */,
 				2574865720F369D600FB3DF1 /* GoogleService-Info.plist in Resources */,
 				259B4BD820EF7DC2001DBB23 /* Assets.xcassets in Resources */,
 			);
@@ -561,10 +569,29 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		256896972131BB4A0087E6E0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				256896982131BB4A0087E6E0 /* Base */,
+				2568969A2131BB5A0087E6E0 /* pl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		2568969D2131BD3A0087E6E0 /* GenderCheckboxes.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2568969C2131BD3A0087E6E0 /* Base */,
+				2568969F2131BD3B0087E6E0 /* pl */,
+			);
+			name = GenderCheckboxes.xib;
+			sourceTree = "<group>";
+		};
 		259B4BD920EF7DC2001DBB23 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				259B4BDA20EF7DC2001DBB23 /* Base */,
+				256896962131BACA0087E6E0 /* pl */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -696,7 +723,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B49P7Y77SE;
 				INFOPLIST_FILE = PickUp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.BartoszPawelczyk.PickUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -713,7 +743,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B49P7Y77SE;
 				INFOPLIST_FILE = PickUp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.BartoszPawelczyk.PickUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -731,7 +764,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B49P7Y77SE;
 				INFOPLIST_FILE = PickUpTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.BartoszPawelczyk.PickUpTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -749,7 +786,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B49P7Y77SE;
 				INFOPLIST_FILE = PickUpTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.BartoszPawelczyk.PickUpTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

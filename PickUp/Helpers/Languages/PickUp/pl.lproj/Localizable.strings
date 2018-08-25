@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  PickUp
+
+  Created by Bartosz Pawełczyk on 25/08/2018.
+  Copyright © 2018 Bartosz Pawełczyk. All rights reserved.
+*/
+
+//Auth
+"Male" = "Mężczyzna";
+"Female" = "Kobieta";
+"Drive where you want" = "Drive where you want";
+"Sign Up" = "Zarejestruj się";
+"Sign In" = "Zaloguj się";
+"Username" = "Login";
+"Password" = "Hasło";
+"Sign In With " = "Zaloguj się przez ";
+"Don't Have an Account? " = "Nie masz konta? ";
+"Forgot password? " = "Zapomniałeś hasła? ";
+"Reset" = "Resetuj";
+"Fullname" = "Imię i nazwisko";
+"Sign Up With " = "Zarejestruj się przez ";
+"Already have an account? " = "Posiadasz już konto? ";
+"Loading..." = "Ładowanie...";
+"Congratulations!" = "Wspaniale!";
+"Failure!" = "Niepowodzenie!";
+"Back to login" = "Wróć do logowania";
+"Reset Password" = "Resetuj hasło";

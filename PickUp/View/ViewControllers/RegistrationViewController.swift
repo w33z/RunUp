@@ -15,7 +15,7 @@ class RegistrationViewController: BaseViewController {
     
     private let fullnameTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Fullname.."
+        textField.placeholder = NSLocalizedString("Fullname", comment: "")
         textField.addBottomBorder(color: .lightGray, thickness: 0.25)
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
@@ -29,7 +29,7 @@ class RegistrationViewController: BaseViewController {
     
     private let usernameTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Username.."
+        textField.placeholder = NSLocalizedString("Username", comment: "")
         textField.addBottomBorder(color: .lightGray, thickness: 0.25)
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
@@ -44,7 +44,7 @@ class RegistrationViewController: BaseViewController {
     
     private let emailTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Email.."
+        textField.placeholder = "Email"
         textField.addBottomBorder(color: .lightGray, thickness: 0.25)
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
@@ -60,7 +60,7 @@ class RegistrationViewController: BaseViewController {
     
     private let passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Password.."
+        textField.placeholder = NSLocalizedString("Password", comment: "")
         textField.addBottomBorder(color: .lightGray, thickness: 0.25)
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
@@ -85,7 +85,7 @@ class RegistrationViewController: BaseViewController {
     private let signUpButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .cLightBlue
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle(NSLocalizedString("Sign Up", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.makeShadowRounded()
         return button
@@ -95,7 +95,7 @@ class RegistrationViewController: BaseViewController {
         let button = UIButton()
         button.backgroundColor = .cBlue
     
-        let signUpAttributedString = NSMutableAttributedString(string: "Sign Up With ", attributes: [
+        let signUpAttributedString = NSMutableAttributedString(string: NSLocalizedString("Sign Up With ", comment: ""), attributes: [
             NSAttributedStringKey.foregroundColor : UIColor.white
             ])
         let facebookAttributedString = NSAttributedString(string: "Facebook", attributes: [
@@ -117,13 +117,13 @@ class RegistrationViewController: BaseViewController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         
-        let forgotAttributedString = NSMutableAttributedString(string: "Already have an account? ", attributes: [
+        let forgotAttributedString = NSMutableAttributedString(string: NSLocalizedString("Already have an account? ", comment: ""), attributes: [
             NSAttributedStringKey.foregroundColor : UIColor.gray,
             NSAttributedStringKey.paragraphStyle : paragraphStyle,
             NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)
             ])
         
-        let signInAttributedString = NSAttributedString(string: "Sign In", attributes: [
+        let signInAttributedString = NSAttributedString(string: NSLocalizedString("Sign In", comment: ""), attributes: [
             NSAttributedStringKey.foregroundColor : UIColor.gray,
             NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)
             ])
@@ -245,8 +245,12 @@ extension RegistrationViewController {
         
         checkboxes.snp.makeConstraints { (make) in
             make.top.equalTo(passwordTextField.snp.bottom)
-            make.leading.equalTo(passwordTextField).offset(25)
-            make.right.equalTo(genderImageView.snp.left).offset(-25)
+            make.leading.greaterThanOrEqualTo(passwordTextField).offset(0)
+//            make.right.lessThanOrEqualTo(passwordTextField).offset(15)
+            make.leading.lessThanOrEqualTo(passwordTextField).offset(25)
+            make.right.greaterThanOrEqualTo(passwordTextField).offset(-35)
+//            make.leading.equalTo(passwordTextField).offset(25)
+//            make.right.equalTo(genderImageView.snp.left).offset(-25)
             make.height.equalTo(45)
         }
         
@@ -296,37 +300,37 @@ extension RegistrationViewController {
             
            switch event.type {
                 case .registerButtonTappedEvent:
-                    self.startAnimating(message: "Loading...")
+                    self.startAnimating(message: NSLocalizedString("Loading...", comment: ""))
                     [self.fullnameTextField,self.usernameTextField,self.emailTextField,self.passwordTextField].forEach({ $0.removeShakeAnimation() })
 
             case .registerSuccess:
                     self.stopAnimating()
-                    self.showAlertController(title: "Congratulations!", message: self.viewmodel.validationRegistrationSuccess.value)
+                    self.showAlertController(title: NSLocalizedString("Congratulations!", comment: ""), message: self.viewmodel.validationRegistrationSuccess.value)
 
                 case .registerError:
                     self.stopAnimating()
                     [self.fullnameTextField,self.usernameTextField,self.emailTextField,self.passwordTextField].forEach({ $0.addShakeAnimation() })
-                    self.showAlertController(title: "Failure!", message: self.viewmodel.validationRegistrationError.value)
+                    self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationRegistrationError.value)
 
                 case .invalidRegisterFullname:
                     self.fullnameTextField.addShakeAnimation()
-                    self.showAlertController(title: "Failure!", message: self.viewmodel.validationRegistrationError.value)
+                    self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationRegistrationError.value)
 
                 case .invalidRegisterUsername:
                     self.usernameTextField.addShakeAnimation()
-                    self.showAlertController(title: "Failure!", message: self.viewmodel.validationRegistrationError.value)
+                    self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationRegistrationError.value)
 
                 case .invalidRegisterEmail:
                     self.emailTextField.addShakeAnimation()
-                    self.showAlertController(title: "Failure!", message: self.viewmodel.validationRegistrationError.value)
+                    self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationRegistrationError.value)
 
                 case .invalidRegisterPassword:
                     self.passwordTextField.addShakeAnimation()
-                    self.showAlertController(title: "Failure!", message: self.viewmodel.validationRegistrationError.value)
+                    self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationRegistrationError.value)
 
                 case .invalidRegisterGender:
                     self.checkboxes.addShakeAnimation()
-                    self.showAlertController(title: "Failure!", message: self.viewmodel.validationRegistrationError.value)
+                    self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationRegistrationError.value)
 
             }
         }).disposed(by: viewmodel.disposeBag)
