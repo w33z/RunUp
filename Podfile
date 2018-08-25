@@ -17,6 +17,7 @@ target 'PickUp' do
     pod 'RealmSwift'
     pod 'BEMCheckBox'
     pod 'NVActivityIndicatorView'
+    pod 'IQKeyboardManagerSwift'
 
   target 'PickUpTests' do
     inherit! :search_paths
