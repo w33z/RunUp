@@ -189,7 +189,9 @@ extension RegisterViewController: UITextFieldDelegate {
 
 extension RegisterViewController: BEMCheckBoxDelegate {
     func didTap(_ checkBox: BEMCheckBox) {
+        checkboxes.group.mustHaveSelection = true
         checkboxes.title = (checkBox.tag == 0) ? CheckBoxType.male : CheckBoxType.female
+        
         viewmodel.gender.accept(checkboxes.title.rawValue)
     }
 }

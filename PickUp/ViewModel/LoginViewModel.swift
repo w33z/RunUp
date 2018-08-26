@@ -31,7 +31,7 @@ class LoginViewModel {
                     var subscripeEvent = Event(type: .loginButtonTappedEvent)
                     self.event.onNext(subscripeEvent)
                     
-                    AuthService.instance.loginUser(username: self.username.value, password: self.password.value, completion: { (status, error) in
+                    AuthService.instance.loginUser(username: self.username.value.lowercased(), password: self.password.value, completion: { (status, error) in
                         
                         if status {
                             self.validationLoginSuccess.accept(NSLocalizedString("Login successful", comment: ""))

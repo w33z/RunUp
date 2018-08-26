@@ -31,5 +31,10 @@
 "Invalid Username" = "Invalid Username";
 "Invalid E-mail" = "Invalid E-mail";
 "Password must contain at least 8 characters, lowercase, uppercase and special character" = "Password must contain at least 8 characters, lowercase, uppercase and special character";
-"Choose right gender" = "Choose right gender";
+"Please select your gender" = "Please select your gender";
 "Login successful" = "Login successful";
+
+//Firebase erros
+"Username already exists! Please try another one." = "Username already exists! Please try another one.";
+"The user you entered does not exist." = "The user you entered does not exist.";
+"The email address is already in use by another account." = "The email address is already in use by another account.";

@@ -153,7 +153,7 @@ class LoginViewController: BaseViewController {
 
 extension LoginViewController {
     fileprivate func addSubviews() {
-        titleLabel.text = "Sign In"
+        titleLabel.text = NSLocalizedString("Sign In", comment: "")
         self.backgroundViewHeightConsraint?.update(offset: view.frame.height / 3)
 
         backgroundView.addSubview(usernameTextField)

@@ -38,11 +38,10 @@ class RegistrationViewModel {
                     var subscribeEvent = Event(type: .registerButtonTappedEvent)
                     self.event.onNext(subscribeEvent)
 
-                    let usernameLogin = self.username.value.lowercased() + "@pickUp.com"
-                    let userData = ["fullname": self.fullname.value, "username": self.username.value.lowercased(), "usernameLogin": usernameLogin, "email": self.email.value.lowercased(), "password": self.password.value, "gender": self.gender.value] as [String: AnyObject]
+                    let userData = ["fullname": self.fullname.value, "username": self.username.value.lowercased(), "email": self.email.value.lowercased(), "password": self.password.value, "gender": self.gender.value] as [String: AnyObject]
 
                     AuthService.instance.registerUser(userData: userData, completion: { (status, error) in
-                        
+
                         if status {
                             self.validationRegistrationSuccess.accept(NSLocalizedString("Your account has been created.", comment: ""))
                             subscribeEvent = Event(type: .registerSuccess)
@@ -53,7 +52,7 @@ class RegistrationViewModel {
                             self.event.onNext(subscribeEvent)
                         }
                     })
-                
+                    
                 } else {
                     if (!self.isFullnameValid) {
                         self.validationRegistrationError.accept(NSLocalizedString("Invalid Fullname", comment: ""))
@@ -76,7 +75,7 @@ class RegistrationViewModel {
                         self.event.onNext(subscripeEvent)
                     }
                     if (!self.isGenderValid) {
-                        self.validationRegistrationError.accept(NSLocalizedString("Choose right gender", comment: ""))
+                        self.validationRegistrationError.accept(NSLocalizedString("Please select your gender", comment: ""))
                         let subscripeEvent = Event(type: .invalidRegisterGender)
                         self.event.onNext(subscripeEvent)
                     }

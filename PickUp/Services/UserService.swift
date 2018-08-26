@@ -14,6 +14,7 @@ class UserService {
     
     private var _REF_BASE = Settings.DB_BASE
     private var _REF_USERS = Settings.DB_BASE.child("users")
+    private var _REF_USERNAMES = Settings.DB_BASE.child("usernames")
     
     var REF_BASE: DatabaseReference {
         return _REF_BASE
@@ -23,8 +24,50 @@ class UserService {
         return _REF_USERS
     }
     
-    func createDBUser(uid: String, userData: Dictionary<String, AnyObject>) {
-        REF_USERS.child(uid).updateChildValues(userData)
+    var REF_USERNAMES: DatabaseReference {
+        return _REF_USERNAMES
     }
     
+    func createDBUser(uid: String, userData: Dictionary<String, AnyObject>) {
+        REF_USERS.child(uid).updateChildValues(userData)
+        
+        let username = userData["username"] as! String
+        let email = userData["email"] as! String
+        
+        REF_USERNAMES.child(username).updateChildValues(["email": email, "uid": uid])
+    }
+    
+    func checkUsernameExists(username: String, completion: @escaping (Bool, Error?) -> ()) {
+     
+        REF_USERNAMES.observe(.value) { (snapshot) in
+            
+            guard let dictionary = snapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            let error = NSError(domain: "", code: 409, userInfo: [NSLocalizedDescriptionKey: "Username already exists! Please try another one."]) as Error
+            
+            for usern in dictionary {
+                if (usern.key == username) {
+                    completion(true,error)
+                    break
+                }
+            }
+            completion(false, nil)
+        }
+    }
+    
+    func getUserEmail(username: String, completion: @escaping (_ email: String?,_ error: Error?) -> ()) {
+        
+        let error = NSError(domain: "", code: 404, userInfo: [NSLocalizedDescriptionKey: "The user you entered does not exist."]) as Error
+
+        REF_USERNAMES.child(username).observeSingleEvent(of: .value) { (snapshot) in
+
+            if (snapshot.value is NSNull) {
+                completion(nil, error)
+            } else {
+                let dictionary = snapshot.value! as! Dictionary<String, String>
+                let email = (dictionary["email"] as String?)!
+                completion(email,nil)
+            }
+        }
+    }
 }

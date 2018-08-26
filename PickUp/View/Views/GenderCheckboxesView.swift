@@ -28,6 +28,6 @@ class GenderCheckboxesView: UIView {
         maleCheckbox.tag = 0
         femaleCheckbox.tag = 1
         
-        group = BEMCheckBoxGroup(checkBoxes: [maleCheckbox, femaleCheckbox])
+        group = BEMCheckBoxGroup(checkBoxes: [maleCheckbox, femaleCheckbox])    
     }
 }
