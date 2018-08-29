@@ -89,26 +89,6 @@ class RegisterViewController: BaseViewController {
         return button
     }()
     
-    private let facebookButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .cBlue
-    
-        let signUpAttributedString = NSMutableAttributedString(string: NSLocalizedString("Sign Up With ", comment: ""), attributes: [
-            NSAttributedStringKey.foregroundColor : UIColor.white
-            ])
-        let facebookAttributedString = NSAttributedString(string: "Facebook", attributes: [
-                NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: UIFont.buttonFontSize),
-                NSAttributedStringKey.foregroundColor : UIColor.white
-            ])
-        signUpAttributedString.append(facebookAttributedString)
-        button.setAttributedTitle(signUpAttributedString, for: .normal)
-
-        
-        button.setTitleColor(.white, for: .normal)
-        button.makeShadowRounded()
-        return button
-    }()
-    
     private lazy var backLabel: UILabel = {
         let label = UILabel()
         
@@ -209,7 +189,6 @@ extension RegisterViewController {
         
         backgroundView.addSubview(checkboxes)
         backgroundView.addSubview(registerButton)
-        view.addSubview(facebookButton)
         view.addSubview(backLabel)
     }
     
@@ -258,15 +237,9 @@ extension RegisterViewController {
             make.height.equalTo(50)
         }
         
-        facebookButton.snp.makeConstraints { (make) in
-            make.top.equalTo(registerButton.snp.bottom).offset(15)
-            make.leading.trailing.height.equalTo(registerButton)
-        }
-        
         backLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(facebookButton.snp.bottom)
-            make.leading.trailing.equalTo(facebookButton)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.top.equalTo(registerButton.snp.bottom).offset(25)
+            make.leading.trailing.equalTo(registerButton)
         }
     }
     

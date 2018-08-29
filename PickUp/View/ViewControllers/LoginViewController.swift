@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class LoginViewController: BaseViewController {
     
@@ -50,8 +52,8 @@ class LoginViewController: BaseViewController {
         return button
     }()
     
-    private let facebookButton: UIButton = {
-        let button = UIButton()
+    private let facebookButton: FBSDKLoginButton = {
+        let button = FBSDKLoginButton()
         button.backgroundColor = .cBlue
         
         let signUpAttributedString = NSMutableAttributedString(string: NSLocalizedString("Sign In With ", comment: ""), attributes: [
@@ -63,10 +65,19 @@ class LoginViewController: BaseViewController {
             ])
         signUpAttributedString.append(facebookAttributedString)
         button.setAttributedTitle(signUpAttributedString, for: .normal)
-        
-        
+
         button.setTitleColor(.white, for: .normal)
+        
+        let layoutConstraintsArr = button.constraints
+        for lc in layoutConstraintsArr { // or attribute is NSLayoutAttributeHeight etc.
+            if (lc.constant == 28){
+                lc.isActive = false
+                break
+            }
+        }
+        button.readPermissions = ["public_profile", "email"]
         button.makeShadowRounded()
+
         return button
     }()
     
@@ -127,6 +138,8 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        facebookButton.delegate = self
         
         addSubviews()
         makeConstraints()
@@ -243,5 +256,30 @@ extension LoginViewController {
                     break
             }
         }).disposed(by: viewmodel.disposeBag)
+    }
+}
+
+extension LoginViewController: FBSDKLoginButtonDelegate {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        print("User Logged In")
+        if ((error) != nil)
+        {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("public_profile")
+            {
+                // Do work
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
     }
 }

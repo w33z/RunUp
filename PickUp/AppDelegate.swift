@@ -9,16 +9,18 @@
 import UIKit
 import Firebase
 import IQKeyboardManagerSwift
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 80
 
@@ -26,11 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         do {
             try Auth.auth().signOut()
+            FBSDKLoginManager().logOut()
         } catch let error {
             print(error.localizedDescription)
         }
         
-        if Auth.auth().currentUser == nil {
+        if (Auth.auth().currentUser == nil || !FBSDKAccessToken.currentAccessTokenIsActive()) {
             let loginViewController = ControllersFactory.allocController(.RegisterCtrl) as! RegisterViewController
 //            let loginViewController = ControllersFactory.allocController(.LoginCtrl) as! LoginViewController
             window?.rootViewController = loginViewController
@@ -66,6 +69,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+       
+        let handled: Bool = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: UIApplicationOpenURLOptionsKey.annotation)
+        
+        return handled
+    }
 }
 
