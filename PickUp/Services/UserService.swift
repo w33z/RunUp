@@ -12,13 +12,9 @@ import Firebase
 class UserService {
     static let instance = UserService()
     
-    private var _REF_BASE = Settings.DB_BASE
-    private var _REF_USERS = Settings.DB_BASE.child("users")
-    private var _REF_USERNAMES = Settings.DB_BASE.child("usernames")
+    private var _REF_USERS = Settings.REF_BASE.child("users")
+    private var _REF_USERNAMES = Settings.REF_BASE.child("usernames")
     
-    var REF_BASE: DatabaseReference {
-        return _REF_BASE
-    }
     
     var REF_USERS: DatabaseReference {
         return _REF_USERS
@@ -43,7 +39,7 @@ class UserService {
             
             guard let dictionary = snapshot.children.allObjects as? [DataSnapshot] else { return }
             
-            let error = NSError(domain: "", code: 409, userInfo: [NSLocalizedDescriptionKey: "Username already exists! Please try another one."]) as Error
+            let error = NSError(domain: "", code: 409, userInfo: [NSLocalizedDescriptionKey: "Username already exists! Please try another one"]) as Error
             
             for usern in dictionary {
                 if (usern.key == username) {
@@ -57,7 +53,7 @@ class UserService {
     
     func getUserEmail(username: String, completion: @escaping (_ email: String?,_ error: Error?) -> ()) {
         
-        let error = NSError(domain: "", code: 404, userInfo: [NSLocalizedDescriptionKey: "The user you entered does not exist."]) as Error
+        let error = NSError(domain: "", code: 404, userInfo: [NSLocalizedDescriptionKey: "The user you entered does not exist"]) as Error
 
         REF_USERNAMES.child(username).observeSingleEvent(of: .value) { (snapshot) in
 

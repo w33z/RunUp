@@ -43,7 +43,7 @@ class RegistrationViewModel {
                     AuthService.instance.registerUser(userData: userData, completion: { (status, error) in
 
                         if status {
-                            self.validationRegistrationSuccess.accept(NSLocalizedString("Your account has been created.", comment: ""))
+                            self.validationRegistrationSuccess.accept(NSLocalizedString("Your account has been created", comment: ""))
                             subscribeEvent = Event(type: .registerSuccess)
                             self.event.onNext(subscribeEvent)
                         } else {
@@ -56,27 +56,27 @@ class RegistrationViewModel {
                 } else {
                     if (!self.isFullnameValid) {
                         self.validationRegistrationError.accept(NSLocalizedString("Invalid Fullname", comment: ""))
-                        let subscripeEvent = Event(type: .invalidRegisterFullname)
+                        let subscripeEvent = Event(type: .invalidFullname)
                         self.event.onNext(subscripeEvent)
                     }
                     if (!self.isUsernameValid) {
                         self.validationRegistrationError.accept(NSLocalizedString("Invalid Username", comment: ""))
-                        let subscripeEvent = Event(type: .invalidRegisterUsername)
+                        let subscripeEvent = Event(type: .invalidUsername)
                         self.event.onNext(subscripeEvent)
                     }
                     if (!self.isEmailValid) {
                         self.validationRegistrationError.accept(NSLocalizedString("Invalid E-mail", comment: ""))
-                        let subscripeEvent = Event(type: .invalidRegisterEmail)
+                        let subscripeEvent = Event(type: .invalidEmail)
                         self.event.onNext(subscripeEvent)
                     }
                     if (!self.isPasswordValid) {
                         self.validationRegistrationError.accept(NSLocalizedString("Password must contain at least 8 characters, lowercase, uppercase and special character", comment: ""))
-                        let subscripeEvent = Event(type: .invalidRegisterPassword)
+                        let subscripeEvent = Event(type: .invalidPassword)
                         self.event.onNext(subscripeEvent)
                     }
                     if (!self.isGenderValid) {
                         self.validationRegistrationError.accept(NSLocalizedString("Please select your gender", comment: ""))
-                        let subscripeEvent = Event(type: .invalidRegisterGender)
+                        let subscripeEvent = Event(type: .invalidGender)
                         self.event.onNext(subscripeEvent)
                     }
                 }
@@ -124,7 +124,7 @@ class RegistrationViewModel {
     }
     
     private func validatePassword(password: String) -> Bool {
-        let passwordRegEx = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-]).{8,}$"
+        let passwordRegEx = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[!\"#$%&'()*+,-./:;<=>?@\\[\\\\\\]^_`{|}~]).{8,}$"
         
         let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: password)

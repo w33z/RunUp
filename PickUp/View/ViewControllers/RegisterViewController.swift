@@ -309,23 +309,23 @@ extension RegisterViewController {
                     [self.fullnameTextField,self.usernameTextField,self.emailTextField,self.passwordTextField].forEach({ $0.addShakeAnimation() })
                     self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationRegistrationError.value)
 
-                case .invalidRegisterFullname:
+                case .invalidFullname:
                     self.fullnameTextField.addShakeAnimation()
                     self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationRegistrationError.value)
 
-                case .invalidRegisterUsername:
+                case .invalidUsername:
                     self.usernameTextField.addShakeAnimation()
                     self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationRegistrationError.value)
 
-                case .invalidRegisterEmail:
+                case .invalidEmail:
                     self.emailTextField.addShakeAnimation()
                     self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationRegistrationError.value)
 
-                case .invalidRegisterPassword:
+                case .invalidPassword:
                     self.passwordTextField.addShakeAnimation()
                     self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationRegistrationError.value)
 
-                case .invalidRegisterGender:
+                case .invalidGender:
                     self.checkboxes.addShakeAnimation()
                     self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationRegistrationError.value)
                 default:

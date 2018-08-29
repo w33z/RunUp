@@ -230,12 +230,12 @@ extension LoginViewController {
                     [self.usernameTextField, self.passwordTextField].forEach({ $0.addShakeAnimation() })
                     self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationLoginError.value)
 
-                case .invalidLoginUsername:
+                case .invalidUsername:
                     self.usernameTextField.addShakeAnimation()
                     self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationLoginError.value)
 
                 
-                case .invalidLoginPassword:
+                case .invalidPassword:
                     self.passwordTextField.addShakeAnimation()
                     self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationLoginError.value)
 

@@ -29,6 +29,7 @@
 		256896A12131CB350087E6E0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256896A02131CB350087E6E0 /* LoginViewModel.swift */; };
 		256DD55B210F96310097818E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256DD55A210F96310097818E /* MainViewController.swift */; };
 		2574865720F369D600FB3DF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2574865620F369D600FB3DF1 /* GoogleService-Info.plist */; };
+		257BCD85213475EB007D57D4 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257BCD84213475EB007D57D4 /* ResetPasswordViewModel.swift */; };
 		259B4BD120EF7DC2001DBB23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B4BD020EF7DC2001DBB23 /* AppDelegate.swift */; };
 		259B4BD320EF7DC2001DBB23 /* HomeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B4BD220EF7DC2001DBB23 /* HomeMapViewController.swift */; };
 		259B4BD820EF7DC2001DBB23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259B4BD720EF7DC2001DBB23 /* Assets.xcassets */; };
@@ -74,6 +75,7 @@
 		256896A02131CB350087E6E0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		256DD55A210F96310097818E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2574865620F369D600FB3DF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Users/bartoszpawelczyk/Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		257BCD84213475EB007D57D4 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		259B4BCD20EF7DC2001DBB23 /* PickUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259B4BD020EF7DC2001DBB23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		259B4BD220EF7DC2001DBB23 /* HomeMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				256896A02131CB350087E6E0 /* LoginViewModel.swift */,
 				2559B832212836B6006A5E5E /* RegistrationViewModel.swift */,
+				257BCD84213475EB007D57D4 /* ResetPasswordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				2559B833212836B6006A5E5E /* RegistrationViewModel.swift in Sources */,
 				253CCA32212C97BC00C4AFED /* Event.swift in Sources */,
 				2559B83121283348006A5E5E /* AuthService.swift in Sources */,
+				257BCD85213475EB007D57D4 /* ResetPasswordViewModel.swift in Sources */,
 				2548FEBE2125F16600B881F5 /* LoginViewController.swift in Sources */,
 				252FD9FF211B4EF2005175EB /* UIColor.swift in Sources */,
 				253D92D1211C9D6900E381D2 /* RegisterViewController.swift in Sources */,

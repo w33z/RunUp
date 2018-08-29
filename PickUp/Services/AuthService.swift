@@ -59,4 +59,30 @@ class AuthService {
             }
         }
     }
+    
+    func resetUserPassword(username: String, email: String, completion: @escaping (_ status: Bool, _ error: Error?) -> ()) {
+        
+        UserService.instance.getUserEmail(username: username) { (userEmail, error) in
+            
+            if (email == userEmail) {
+                Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+                    
+                    if error != nil {
+                        completion(false, error)
+                    }
+                    
+                    completion(true, nil)
+                }
+            } else {
+                
+                guard let error = error else {
+                    let error = NSError(domain: "", code: 404, userInfo: [NSLocalizedDescriptionKey: "Entered data is incorrect"]) as Error
+                    completion(false, error)
+                    return
+                }
+
+                completion(false, error)
+            }
+        }
+    }
 }

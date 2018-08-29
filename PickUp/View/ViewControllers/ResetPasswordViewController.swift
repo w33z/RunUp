@@ -71,11 +71,14 @@ class ResetPasswordViewController: BaseViewController {
         return label
     }()
     
+    let viewmodel: ResetPasswordViewModel = ResetPasswordViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         addSubviews()
         makeConstraints()
+        bind()
     }
     
     override func viewDidLayoutSubviews() {
@@ -126,5 +129,48 @@ extension ResetPasswordViewController {
             make.top.equalTo(resetButton.snp.bottom).offset(15)
             make.leading.trailing.equalTo(resetButton)
         }
+    }
+    
+    fileprivate func bind() {
+        usernameTextField.rx.text
+            .orEmpty
+            .bind(to: viewmodel.username)
+            .disposed(by: viewmodel.disposeBag)
+        
+        emailTextField.rx.text
+            .orEmpty
+            .bind(to: viewmodel.email)
+            .disposed(by: viewmodel.disposeBag)
+        
+        viewmodel.resetButtonTappedEvent = resetButton.rx.tap
+        
+        viewmodel.event.subscribe(onNext: { (event) in
+            
+            switch event.type {
+                case .resetButtonTappedEvent:
+                    self.startAnimating(message: NSLocalizedString("Loading...", comment: ""))
+                    [self.usernameTextField, self.emailTextField].forEach({ $0.removeShakeAnimation() })
+                
+                case .resetSuccess:
+                    self.stopAnimating()
+                    self.showAlertController(title: NSLocalizedString("Congratulations!", comment: ""), message: self.viewmodel.validationResetSuccess.value)
+                
+                case .resetError:
+                    self.stopAnimating()
+                    [self.usernameTextField,self.emailTextField].forEach({ $0.addShakeAnimation() })
+                    self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationResetError.value)
+                
+                case .invalidUsername:
+                    self.usernameTextField.addShakeAnimation()
+                    self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationResetError.value)
+                
+                case .invalidEmail:
+                    self.usernameTextField.addShakeAnimation()
+                    self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: self.viewmodel.validationResetError.value)
+                
+            default:
+                break
+            }
+        }).disposed(by: viewmodel.disposeBag)
     }
 }

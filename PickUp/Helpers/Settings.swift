@@ -10,5 +10,14 @@ import Foundation
 import Firebase
 
 class Settings {
-    static let DB_BASE = Database.database().reference()
+    private static var _DB_BASE = Database.database().reference()
+    private static var _REF_BASE = Settings.DB_BASE
+
+    static var DB_BASE: DatabaseReference {
+        return _DB_BASE
+    }
+        
+    static var REF_BASE: DatabaseReference {
+        return _REF_BASE
+    }
 }

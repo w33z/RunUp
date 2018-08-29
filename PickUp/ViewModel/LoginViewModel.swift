@@ -47,12 +47,12 @@ class LoginViewModel {
                 } else {
                     if (!self.isUsernameValid) {
                         self.validationLoginError.accept(NSLocalizedString("Invalid Username", comment: ""))
-                        let subscripeEvent = Event(type: .invalidLoginUsername)
+                        let subscripeEvent = Event(type: .invalidUsername)
                         self.event.onNext(subscripeEvent)
                     }
                     if (!self.isPasswordValid) {
                         self.validationLoginError.accept(NSLocalizedString("Password must contain at least 8 characters, lowercase, uppercase and special character", comment: ""))
-                        let subscripeEvent = Event(type: .invalidLoginPassword)
+                        let subscripeEvent = Event(type: .invalidPassword)
                         self.event.onNext(subscripeEvent)
                     }
                 }
@@ -79,7 +79,7 @@ class LoginViewModel {
     }
     
     private func validatePassword(password: String) -> Bool {
-        let passwordRegEx = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-]).{8,}$"
+        let passwordRegEx = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[!\"#$%&'()*+,-./:;<=>?@\\[\\\\\\]^_`{|}~]).{8,}$"
         
         let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: password)

@@ -12,16 +12,17 @@ enum EventType {
     case registerButtonTappedEvent
     case registerSuccess
     case registerError
-    case invalidRegisterFullname
-    case invalidRegisterUsername
-    case invalidRegisterEmail
-    case invalidRegisterPassword
-    case invalidRegisterGender
+    case invalidFullname
+    case invalidUsername
+    case invalidEmail
+    case invalidPassword
+    case invalidGender
     case loginButtonTappedEvent
     case loginSuccess
     case loginError
-    case invalidLoginUsername
-    case invalidLoginPassword
+    case resetButtonTappedEvent
+    case resetSuccess
+    case resetError
 }
 
 class Event {
