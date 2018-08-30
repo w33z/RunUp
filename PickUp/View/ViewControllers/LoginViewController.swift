@@ -69,7 +69,7 @@ class LoginViewController: BaseViewController {
         button.setTitleColor(.white, for: .normal)
         
         let layoutConstraintsArr = button.constraints
-        for lc in layoutConstraintsArr { // or attribute is NSLayoutAttributeHeight etc.
+        for lc in layoutConstraintsArr {
             if (lc.constant == 28){
                 lc.isActive = false
                 break
@@ -77,7 +77,7 @@ class LoginViewController: BaseViewController {
         }
         button.readPermissions = ["public_profile", "email"]
         button.makeShadowRounded()
-
+        button.layer.masksToBounds = true
         return button
     }()
     
@@ -274,7 +274,12 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
             // should check if specific permissions missing
             if result.grantedPermissions.contains("public_profile")
             {
-                // Do work
+                FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id,name,email,gender,picture.type(large){url}"]).start { (connection, result, error) in
+
+                    let userData = UserService.instance.parseUserFacebookData(result: result)
+                    
+                    UserService.instance.setUserFacebookData(userData: userData)
+                }
             }
         }
     }

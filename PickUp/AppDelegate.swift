@@ -34,8 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if (Auth.auth().currentUser == nil || !FBSDKAccessToken.currentAccessTokenIsActive()) {
-            let loginViewController = ControllersFactory.allocController(.RegisterCtrl) as! RegisterViewController
-//            let loginViewController = ControllersFactory.allocController(.LoginCtrl) as! LoginViewController
+            let loginViewController = ControllersFactory.allocController(.MainCtrl) as! MainViewController
             window?.rootViewController = loginViewController
         } else {
             let homeMapViewController = HomeMapViewController()
