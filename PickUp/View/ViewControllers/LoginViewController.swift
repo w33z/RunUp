@@ -48,7 +48,7 @@ class LoginViewController: BaseViewController {
         button.backgroundColor = .cLightBlue
         button.setTitle(NSLocalizedString("Sign In", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.makeShadowRounded()
+        button.makeShadowRounded(radius: 25)
         return button
     }()
     
@@ -76,7 +76,7 @@ class LoginViewController: BaseViewController {
             }
         }
         button.readPermissions = ["public_profile", "email"]
-        button.makeShadowRounded()
+        button.makeShadowRounded(radius: 25)
         button.layer.masksToBounds = true
         return button
     }()
@@ -262,22 +262,22 @@ extension LoginViewController {
 extension LoginViewController: FBSDKLoginButtonDelegate {
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         print("User Logged In")
-        if ((error) != nil)
-        {
-            // Process error
+        if ((error) != nil) {
+            self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: error.localizedDescription)
         }
         else if result.isCancelled {
             // Handle cancellations
         }
         else {
-            // If you ask for multiple permissions at once, you
-            // should check if specific permissions missing
-            if result.grantedPermissions.contains("public_profile")
-            {
-                FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id,name,email,gender,picture.type(large){url}"]).start { (connection, result, error) in
+            if result.grantedPermissions.contains("public_profile") {
+                FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id,name,email,gender"]).start { (connection, result, error) in
 
-                    let userData = UserService.instance.parseUserFacebookData(result: result)
+                    if let error = error {
+                        self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: error.localizedDescription)
+                        return
+                    }
                     
+                    let userData = UserService.instance.parseUserFacebookData(result: result)
                     UserService.instance.setUserFacebookData(userData: userData)
                 }
             }

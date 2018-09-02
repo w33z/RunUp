@@ -14,6 +14,8 @@ enum ControllerType: String {
     case RegisterCtrl = "RegisterViewController"
     case ResetPasswordCtrl = "ResetPasswordViewController"
     case MapCtrl = "MapViewController"
+    case SlideMenuCtrl = "SlideMenuViewController"
+    case LeftSideCtrl = "LeftSidePanelViewController"
 }
 
 class ControllersFactory {

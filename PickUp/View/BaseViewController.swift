@@ -47,7 +47,7 @@ class BaseViewController: UIViewController, NVActivityIndicatorViewable {
         let view = UIImageView()
         view.backgroundColor = .white
         view.isUserInteractionEnabled = true
-        view.makeShadowRounded()
+        view.makeShadowRounded(radius: 25)
         return view
     }()
     
@@ -101,7 +101,7 @@ extension BaseViewController {
         }
         
         logoBGView.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(view.frame.height / 12)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height / 12)
             make.centerX.equalTo(view)
             make.width.height.equalTo(120)
         }

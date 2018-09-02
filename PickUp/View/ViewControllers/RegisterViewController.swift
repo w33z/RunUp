@@ -85,7 +85,7 @@ class RegisterViewController: BaseViewController {
         button.backgroundColor = .cLightBlue
         button.setTitle(NSLocalizedString("Sign Up", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.makeShadowRounded()
+        button.makeShadowRounded(radius: 25)
         return button
     }()
     

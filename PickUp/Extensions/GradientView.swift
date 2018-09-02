@@ -6,7 +6,7 @@
 //  Copyright © 2018 Bartosz Pawełczyk. All rights reserved.
 //
 
-import UIKit
+import UIKit.UIView
 
 
 extension UIView {

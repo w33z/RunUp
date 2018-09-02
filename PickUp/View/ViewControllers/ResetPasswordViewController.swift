@@ -46,7 +46,7 @@ class ResetPasswordViewController: BaseViewController {
         button.backgroundColor = .cLightBlue
         button.setTitle(NSLocalizedString("Reset", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.makeShadowRounded()
+        button.makeShadowRounded(radius: 25)
         return button
     }()
     

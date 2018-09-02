@@ -76,16 +76,13 @@ class UserService {
     }
     
     func parseUserFacebookData(result: Any?) -> Dictionary<String, AnyObject> {
+        
         let fields = result as? [String: AnyObject]
         let id = fields!["id"] as? String
         let fullname = fields!["name"] as? String
         let email = fields!["email"] as? String
         let gender = fields!["gender"] as? String
         
-        let picture = fields!["picture"] as? [String: AnyObject]
-        let data = picture!["data"] as? [String: AnyObject]
-        let pictureURL = data!["url"] as! String
-        
-        return ["id": id, "fullname": fullname, "email": email, "gender": gender, "pictureURL": pictureURL] as [String: AnyObject]
+        return ["id": id, "fullname": fullname, "email": email, "gender": gender] as [String: AnyObject]
     }
 }

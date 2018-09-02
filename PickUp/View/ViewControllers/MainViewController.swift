@@ -47,7 +47,7 @@ class MainViewController: UIViewController {
         button.backgroundColor = .cLightBlue
         button.setTitle(NSLocalizedString("Sign Up", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.makeShadowRounded()
+        button.makeShadowRounded(radius: 25)
         button.addTarget(self, action: #selector(presentSignUp), for: .touchUpInside)
         return button
     }()
@@ -58,7 +58,7 @@ class MainViewController: UIViewController {
         button.layer.borderWidth = 0.5        
         button.setTitle(NSLocalizedString("Sign In", comment: ""), for: .normal)
         button.setTitleColor(.cLightBlue, for: .normal)
-        button.makeShadowRounded()
+        button.makeShadowRounded(radius: 25)
         button.addTarget(self, action: #selector(presentSignIn), for: .touchUpInside)
         return button
     }()

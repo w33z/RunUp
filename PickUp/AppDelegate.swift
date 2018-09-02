@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import IQKeyboardManagerSwift
 import FBSDKCoreKit
-import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,20 +25,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        do {
-            try Auth.auth().signOut()
-            FBSDKLoginManager().logOut()
-        } catch let error {
-            print(error.localizedDescription)
-        }
+//        do {
+//            try Auth.auth().signOut()
+//            FBSDKLoginManager().logOut()
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
         
-        if (Auth.auth().currentUser == nil || !FBSDKAccessToken.currentAccessTokenIsActive()) {
-            let loginViewController = ControllersFactory.allocController(.MainCtrl) as! MainViewController
-            window?.rootViewController = loginViewController
-        } else {
-            let homeMapViewController = HomeMapViewController()
-            window?.rootViewController = UINavigationController(rootViewController: homeMapViewController)
-        }
+//        if (Auth.auth().currentUser == nil || !FBSDKAccessToken.currentAccessTokenIsActive()) {
+//            let loginViewController = ControllersFactory.allocController(.MainCtrl) as! MainViewController
+//            window?.rootViewController = loginViewController
+//        } else {
+            let slideMenuViewController = ControllersFactory.allocController(.SlideMenuCtrl) as! SlideMenuViewController
+            window?.rootViewController = slideMenuViewController // UINavigationController(rootViewController: slideMenuViewController)
+//        }
         window?.makeKeyAndVisible()
 
         
