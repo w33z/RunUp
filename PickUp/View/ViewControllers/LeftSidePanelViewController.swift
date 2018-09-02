@@ -18,7 +18,7 @@ class LeftSidePanelViewController: UIViewController {
     private let whiteView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
-        view.layer.cornerRadius = 50
+        view.layer.cornerRadius = 15
         view.layer.masksToBounds = true
         return view
     }()
@@ -26,32 +26,23 @@ class LeftSidePanelViewController: UIViewController {
     private let menuTableView: UITableView = {
         let tableView = UITableView()
         tableView.isScrollEnabled = false
+        tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: "LeftSidePanelTableViewCell", bundle: nil), forCellReuseIdentifier: LEFTSIDEPANELCELL)
         return tableView
     }()
     
-    private let profileImageView: UIImageView = {
-        let image = UIImage(named: "avatar")
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFit
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
-        imageView.addGestureRecognizer(tap)
-        return imageView
+    let profileImageView: UIView = {
+        let view = UIView.instanceFromNib(name: "ProfileImageView")
+        return view
     }()
     
-    private let fullnameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Fullname"
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.minimumScaleFactor = 0.5
-        label.adjustsFontSizeToFitWidth = true
-        return label
-    }()
+    let menuItems: [MenuItem] = [MenuItem(title: "History", imageName: .clock), MenuItem(title: "About app", imageName: .info), MenuItem(title: "Settings", imageName: .settings)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        menuTableView.delegate = self
+        menuTableView.dataSource = self
         
         addSubviews()
         addConstraints()
@@ -71,44 +62,61 @@ class LeftSidePanelViewController: UIViewController {
 extension LeftSidePanelViewController {
     
     fileprivate func addSubviews() {
-        
+
         view.addSubview(gradientView)
         gradientView.addSubview(profileImageView)
-        gradientView.addSubview(fullnameLabel)
         view.addSubview(whiteView)
         view.addSubview(menuTableView)
-
-
     }
     
     fileprivate func addConstraints() {
         
         gradientView.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(view.frame.height / 2.5)
-        }
-        
-        whiteView.snp.makeConstraints { (make) in
-            make.top.equalTo(gradientView.snp.bottom).offset(-45)
-            make.leading.trailing.equalToSuperview()
-            make.height.width.equalToSuperview()
+            make.height.equalTo(view.frame.height / 3)
         }
         
         profileImageView.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(-20)
-            make.width.height.equalTo(80)
+            make.leading.trailing.equalToSuperview()
         }
-        
-        fullnameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(profileImageView.snp.bottom).offset(15)
-            make.leading.equalToSuperview().offset(15)
-            make.trailing.equalToSuperview().offset(-15)
+
+        whiteView.snp.makeConstraints { (make) in
+            make.top.equalTo(gradientView.snp.bottom).offset(-50)
+            make.leading.trailing.equalToSuperview()
+            make.height.width.equalToSuperview()
         }
-        
+
         menuTableView.snp.makeConstraints { (make) in
             make.top.equalTo(gradientView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
+        
     }
+}
+
+
+extension LeftSidePanelViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LEFTSIDEPANELCELL, for: indexPath) as? LeftSidePanelTableViewCell else { return UITableViewCell() }
+        
+        if (indexPath.row == 0) {
+            cell.contentView.addTopBorder(color: UIColor.lightGray, thickness: 0.5)
+        }
+        
+        let menuItem = menuItems[indexPath.row]
+        cell.configureCell(menuItem: menuItem)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(60)
+    }
+    
 }

@@ -29,13 +29,13 @@ class MapViewController: UIViewController {
         didSet {
             if isOpen {
                 
-                UIView.transition(with: menuButton, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+                UIView.transition(with: menuButton, duration: 0.5, options: .transitionFlipFromRight, animations: {
                     self.menuButton.setImage(UIImage(named: "cancel")?.withRenderingMode(.alwaysTemplate), for: .normal)
                     self.menuButton.imageView?.tintColor = .white
                 }, completion: nil)
             } else {
                 
-                UIView.transition(with: menuButton, duration: 0.5, options: .transitionFlipFromRight, animations: {
+                UIView.transition(with: menuButton, duration: 0.5, options: .transitionFlipFromLeft, animations: {
                     self.menuButton.setImage(UIImage(named: "menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
                     self.menuButton.imageView?.tintColor = .black
                 }, completion: nil)

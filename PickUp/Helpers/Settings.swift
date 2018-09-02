@@ -21,3 +21,4 @@ class Settings {
         return _REF_BASE
     }
 }
+

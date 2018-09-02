@@ -6,7 +6,7 @@
   Copyright © 2018 Bartosz Pawełczyk. All rights reserved.
 */
 
-//Auth
+// Auth
 "Male" = "Mężczyzna";
 "Female" = "Kobieta";
 "Drive where you want" = "Drive where you want";
@@ -36,7 +36,10 @@
 "Password reset email sent" = "Email resetujacy hasło został wysłany";
 "Entered data is incorrect" = "Wprowadzone dane są nieprawidłowe";
 
-//Firebase erros
+// Firebase erros
 "Username already exists! Please try another one" = "Wybrany login już istnieje! Wybierz inny";
 "The user you entered does not exist" = "Taki użytkownik nie istnieje";
 "The email address is already in use by another account." = "Wybrany adres email jest już używany przez inne konto";
+
+// Menu
+"Your profile" = "Twój profil";

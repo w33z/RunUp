@@ -23,7 +23,7 @@ class AuthService {
             if !exists {
                 Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
 
-                    guard let user = user else {
+                    guard let user = user?.user else {
                         completion(false, error)
                         return
                     }

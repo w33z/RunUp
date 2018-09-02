@@ -18,8 +18,9 @@ target 'PickUp' do
     pod 'BEMCheckBox'
     pod 'NVActivityIndicatorView'
     pod 'IQKeyboardManagerSwift'
-    pod 'FBSDKLoginKit'
-
+    pod 'FBSDKCoreKit', '4.35'
+    pod 'FBSDKLoginKit', '4.35'
+    
   target 'PickUpTests' do
     inherit! :search_paths
     # Pods for testing
