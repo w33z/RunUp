@@ -10,8 +10,12 @@ import UIKit
 
 class LeftSidePanelViewController: UIViewController {
     
-    private let gradientView: UIView = {
+    private lazy var gradientView: UIView = {
         let view = UIView()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(gradientViewTapped(_ :)))
+        view.addGestureRecognizer(tap)
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -31,13 +35,15 @@ class LeftSidePanelViewController: UIViewController {
         return tableView
     }()
     
-    let profileImageView: UIView = {
-        let view = UIView.instanceFromNib(name: "ProfileImageView")
+    lazy var profileImageView: UIView = {
+        let view = UIView.instanceFromNib(name: "ProfileImageView") as! ProfileImageView
         return view
     }()
     
-    let menuItems: [MenuItem] = [MenuItem(title: "History", imageName: .clock), MenuItem(title: "About app", imageName: .info), MenuItem(title: "Settings", imageName: .settings)]
-
+    private let menuItems: [MenuItem] = [MenuItem(title: "History", imageName: .clock), MenuItem(title: "About app", imageName: .info), MenuItem(title: "Settings", imageName: .settings)]
+    
+    var delegate: CenterViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,8 +60,12 @@ class LeftSidePanelViewController: UIViewController {
         gradientView.makeGradientView()
     }
     
-    @objc fileprivate func profileImageViewTapped() {
+    @objc fileprivate func gradientViewTapped(_ sender: UITapGestureRecognizer) {
+        delegate?.closeLeftPanel()
         
+        let profileViewController = ControllersFactory.allocController(.ProfileCtrl) as! ProfileViewController
+        
+        self.present(profileViewController, animated: true, completion: nil)
     }
 }
 

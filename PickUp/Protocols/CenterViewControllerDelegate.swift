@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import UIKit.UIViewController
 
-protocol CenterViewControllerDelegate {
-    func toggleLeftPanel()
-    func closeLeftPanel()
-    func addLeftPanelViewController()
-    func animateLeftPanel(shouldExpand: Bool)
+@objc protocol CenterViewControllerDelegate {
+    @objc func toggleLeftPanel()
+    @objc func closeLeftPanel()
+    @objc func addLeftPanelViewController()
+    @objc func animateLeftPanel(shouldExpand: Bool)
 }

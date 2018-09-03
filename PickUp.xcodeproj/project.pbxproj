@@ -24,6 +24,7 @@
 		2542C9ED213C10DE00FCF041 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2542C9EC213C10DE00FCF041 /* Constants.swift */; };
 		2542C9EE213C14CE00FCF041 /* ProfileImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2542C9F0213C14CE00FCF041 /* ProfileImageView.xib */; };
 		2542C9F4213C183600FCF041 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2542C9F3213C183600FCF041 /* MenuItem.swift */; };
+		2542C9F6213C5FFE00FCF041 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2542C9F5213C5FFE00FCF041 /* ProfileViewController.swift */; };
 		2548FEBA2124A7F800B881F5 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2548FEB92124A7F800B881F5 /* ResetPasswordViewController.swift */; };
 		2548FEBC2124AF2900B881F5 /* PresentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2548FEBB2124AF2900B881F5 /* PresentDetail.swift */; };
 		2548FEBE2125F16600B881F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2548FEBD2125F16600B881F5 /* LoginViewController.swift */; };
@@ -77,6 +78,7 @@
 		2542C9EF213C14CE00FCF041 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProfileImageView.xib; sourceTree = "<group>"; };
 		2542C9F2213C14D000FCF041 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/ProfileImageView.strings; sourceTree = "<group>"; };
 		2542C9F3213C183600FCF041 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		2542C9F5213C5FFE00FCF041 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2548FEB92124A7F800B881F5 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		2548FEBB2124AF2900B881F5 /* PresentDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDetail.swift; sourceTree = "<group>"; };
 		2548FEBD2125F16600B881F5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				2548FEB92124A7F800B881F5 /* ResetPasswordViewController.swift */,
 				258262A9213AD51B0004CA11 /* SlideMenuViewController.swift */,
 				258262AB213AD5D40004CA11 /* LeftSidePanelViewController.swift */,
+				2542C9F5213C5FFE00FCF041 /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				253D92CD211B6D3500E381D2 /* ShadowRoundedView.swift in Sources */,
 				2536C4F6212DE0310005A7EA /* ShakeAnimationView.swift in Sources */,
 				2542C9ED213C10DE00FCF041 /* Constants.swift in Sources */,
+				2542C9F6213C5FFE00FCF041 /* ProfileViewController.swift in Sources */,
 				2559B833212836B6006A5E5E /* RegistrationViewModel.swift in Sources */,
 				253CCA32212C97BC00C4AFED /* Event.swift in Sources */,
 				25A51BD3213ACA6D00487501 /* MapViewController.swift in Sources */,

@@ -16,6 +16,7 @@ class ProfileImageView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        isUserInteractionEnabled = true
         profileImage.makeShadowRounded(radius: 25)
         fullnameLabel.adjustsFontSizeToFitWidth = true
         fullnameLabel.minimumScaleFactor = 0.5

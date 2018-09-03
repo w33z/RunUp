@@ -9,12 +9,14 @@
 import UIKit
 import SnapKit
 import MapKit
+import CoreLocation
 
 class MapViewController: UIViewController {
 
     private let mapView: MKMapView = {
         let mapView = MKMapView()
-        
+        mapView.showsUserLocation = true
+        mapView.showsTraffic = true
         return mapView
     }()
     
@@ -44,12 +46,21 @@ class MapViewController: UIViewController {
     }
     
     var delegate: CenterViewControllerDelegate?
+    var locationManager: CLLocationManager!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addSubviews()
         addConstraints()
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.startUpdatingLocation()
     }
     
     @objc func menuButtonTapped() {
@@ -84,5 +95,18 @@ extension MapViewController {
         mapView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+}
+
+extension MapViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let coordinate = manager.location?.coordinate else { return }
+
+        print(coordinate)
+        let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpanMake(0.01, 0.01))
+        mapView.setRegion(region, animated: true)
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error \(error)")
     }
 }

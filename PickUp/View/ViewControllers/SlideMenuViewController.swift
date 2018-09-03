@@ -99,12 +99,14 @@ extension SlideMenuViewController: CenterViewControllerDelegate {
             let swipe = UISwipeGestureRecognizer(target: self, action: #selector(closeLeftPanel))
             swipe.direction = .left
             leftSidePanelViewController.view.addGestureRecognizer(swipe)
+            leftSidePanelViewController.delegate = self
+            
             addChildSidePanelViewController(leftSidePanelViewController)
         }
     }
     
     
-    @objc func animateLeftPanel(shouldExpand: Bool) {
+    func animateLeftPanel(shouldExpand: Bool) {
         centerPanel = centerViewController.view.frame.width - centerPanelExpandedOffset
 
         if shouldExpand {
@@ -124,8 +126,8 @@ extension SlideMenuViewController: CenterViewControllerDelegate {
     @objc func closeLeftPanel() {
         isHidden = !isHidden
         mapViewController.isOpen = false
-        animateStatusBar()
         
+        animateStatusBar()
         hideBlackCoverView()
         animateCenterPanelXPosition(targetPosition: 0, completion: { (finished) in
             if finished == true {
@@ -166,7 +168,7 @@ extension SlideMenuViewController {
         }
     }
     
-    func addChildSidePanelViewController(_ sidePanelController: LeftSidePanelViewController) {
+    func addChildSidePanelViewController(_ sidePanelController: UIViewController) {
         view.insertSubview(sidePanelController.view, at: 0)
         view.bringSubview(toFront: sidePanelController.view)
         addChildViewController(sidePanelController)
@@ -198,6 +200,7 @@ extension SlideMenuViewController {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.95, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             
             guard let centerPanel = self.centerPanel else { return }
+            
             self.leftSidePanelViewController.view.frame.origin.x = (targetPosition != 0) ? 0 : (-centerPanel)
             self.centerViewController.view.frame.origin.x = targetPosition
         }, completion: completion)
