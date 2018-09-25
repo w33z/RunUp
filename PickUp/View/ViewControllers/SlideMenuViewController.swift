@@ -49,7 +49,7 @@ class SlideMenuViewController: UIViewController {
         controllerType = ctrlType
         
         if mapViewController == nil {
-            mapViewController = ControllersFactory.allocController(.MapCtrl) as! MapViewController
+            mapViewController = ControllersFactory.allocController(.MapCtrl) as? MapViewController
             mapViewController.delegate = self
         }
         
@@ -57,14 +57,14 @@ class SlideMenuViewController: UIViewController {
         
         if let center = centerViewController {
             center.view.removeFromSuperview()
-            center.removeFromParentViewController()
+            center.removeFromParent()
         }
         
         centerViewController = presentingViewController
         
         view.addSubview(centerViewController.view)
-        addChildViewController(centerViewController)
-        centerViewController.didMove(toParentViewController: self)
+        addChild(centerViewController)
+        centerViewController.didMove(toParent: self)
         
     }
     
@@ -93,7 +93,7 @@ extension SlideMenuViewController: CenterViewControllerDelegate {
     func addLeftPanelViewController() {
         
         if leftSidePanelViewController == nil {
-            leftSidePanelViewController = ControllersFactory.allocController(.LeftSideCtrl) as! LeftSidePanelViewController
+            leftSidePanelViewController = ControllersFactory.allocController(.LeftSideCtrl) as? LeftSidePanelViewController
             leftSidePanelViewController.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: view.frame.size.width - centerPanelExpandedOffset, height: view.frame.size.height))
             
             let swipe = UISwipeGestureRecognizer(target: self, action: #selector(closeLeftPanel))
@@ -170,9 +170,9 @@ extension SlideMenuViewController {
     
     func addChildSidePanelViewController(_ sidePanelController: UIViewController) {
         view.insertSubview(sidePanelController.view, at: 0)
-        view.bringSubview(toFront: sidePanelController.view)
-        addChildViewController(sidePanelController)
-        sidePanelController.didMove(toParentViewController: self)
+        view.bringSubviewToFront(sidePanelController.view)
+        addChild(sidePanelController)
+        sidePanelController.didMove(toParent: self)
     }
     
     func shouldShowShadowForCenterViewController(status: Bool) {

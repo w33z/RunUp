@@ -27,6 +27,17 @@ class MapViewController: UIViewController {
         return leftButton
     }()
     
+    private lazy var summaryView: UIView = {
+        let view = UIView()//ControllersFactory.allocController(.SummaryCtrl) as! SummaryCollectionViewController
+        view.backgroundColor = .red
+        
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(moveView(_:)))
+        view.addGestureRecognizer(pan)
+        return view
+    }()
+    
+    lazy var summaryViewCenterY = self.summaryView.center.y
+    
     var isOpen: Bool = false {
         didSet {
             if isOpen {
@@ -72,7 +83,21 @@ class MapViewController: UIViewController {
             delegate?.closeLeftPanel()
         }
         
-        view.bringSubview(toFront: menuButton)
+        view.bringSubviewToFront(menuButton)
+    }
+    
+    @objc func moveView(_ gestureRecognizer: UIPanGestureRecognizer) {
+        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+
+            let translation = gestureRecognizer.translation(in: self.view)
+            let y = gestureRecognizer.view!.center.y + translation.y
+            let maxHeight = (gestureRecognizer.view!.frame.height / 2)
+
+            if (y < summaryViewCenterY && y > maxHeight) {
+                gestureRecognizer.view!.center = CGPoint(x: gestureRecognizer.view!.center.x, y: y)
+                gestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
+            }
+        }
     }
 }
 
@@ -82,6 +107,7 @@ extension MapViewController {
         
         view.addSubview(mapView)
         view.addSubview(menuButton)
+        view.addSubview(summaryView)
     }
     
     fileprivate func addConstraints() {
@@ -95,18 +121,25 @@ extension MapViewController {
         mapView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
+        summaryView.snp.makeConstraints { (make) in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-100)
+            make.leading.trailing.height.equalToSuperview()
+        }
     }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let coordinate = manager.location?.coordinate else { return }
 
         print(coordinate)
-        let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpanMake(0.01, 0.01))
+        let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01))
         mapView.setRegion(region, animated: true)
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
+    
 }

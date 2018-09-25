@@ -57,11 +57,11 @@ class LoginViewController: BaseViewController {
         button.backgroundColor = .cBlue
         
         let signUpAttributedString = NSMutableAttributedString(string: NSLocalizedString("Sign In With ", comment: ""), attributes: [
-            NSAttributedStringKey.foregroundColor : UIColor.white
+            NSAttributedString.Key.foregroundColor : UIColor.white
             ])
         let facebookAttributedString = NSAttributedString(string: "Facebook", attributes: [
-            NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: UIFont.buttonFontSize),
-            NSAttributedStringKey.foregroundColor : UIColor.white
+            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: UIFont.buttonFontSize),
+            NSAttributedString.Key.foregroundColor : UIColor.white
             ])
         signUpAttributedString.append(facebookAttributedString)
         button.setAttributedTitle(signUpAttributedString, for: .normal)
@@ -88,14 +88,14 @@ class LoginViewController: BaseViewController {
         paragraphStyle.alignment = .center
         
         let dontHaveAttributedString = NSMutableAttributedString(string: NSLocalizedString("Don't Have an Account? ", comment: ""), attributes: [
-            NSAttributedStringKey.foregroundColor : UIColor.gray,
-            NSAttributedStringKey.paragraphStyle : paragraphStyle,
-            NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)
+            NSAttributedString.Key.foregroundColor : UIColor.gray,
+            NSAttributedString.Key.paragraphStyle : paragraphStyle,
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)
             ])
         
         let signUpAttributedString = NSAttributedString(string: NSLocalizedString("Sign Up", comment: ""), attributes: [
-            NSAttributedStringKey.foregroundColor : UIColor.gray,
-            NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)
+            NSAttributedString.Key.foregroundColor : UIColor.gray,
+            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)
             ])
         dontHaveAttributedString.append(signUpAttributedString)
         
@@ -115,14 +115,14 @@ class LoginViewController: BaseViewController {
         paragraphStyle.alignment = .center
 
         let forgotAttributedString = NSMutableAttributedString(string: NSLocalizedString("Forgot password? ", comment: ""), attributes: [
-                NSAttributedStringKey.foregroundColor : UIColor.gray,
-                NSAttributedStringKey.paragraphStyle : paragraphStyle,
-                NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)
+                NSAttributedString.Key.foregroundColor : UIColor.gray,
+                NSAttributedString.Key.paragraphStyle : paragraphStyle,
+                NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)
             ])
         
         let resetAttributedString = NSAttributedString(string: NSLocalizedString("Reset", comment: ""), attributes: [
-            NSAttributedStringKey.foregroundColor : UIColor.gray,
-            NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)
+            NSAttributedString.Key.foregroundColor : UIColor.gray,
+            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)
             ])
         
         forgotAttributedString.append(resetAttributedString)

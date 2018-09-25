@@ -63,7 +63,8 @@ class LeftSidePanelViewController: UIViewController {
     @objc fileprivate func gradientViewTapped(_ sender: UITapGestureRecognizer) {
         delegate?.closeLeftPanel()
         
-        let profileViewController = ControllersFactory.allocController(.ProfileCtrl) as! ProfileViewController
+        let profileViewController = ControllersFactory.allocController(.ProfileCtrl) as! ProfileViewController//UINavigationController(rootViewController: ControllersFactory.allocController(.ProfileCtrl) as! ProfileViewController)
+        profileViewController.modalPresentationStyle = .overCurrentContext
         
         self.present(profileViewController, animated: true, completion: nil)
     }

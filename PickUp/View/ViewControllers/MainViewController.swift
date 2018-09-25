@@ -22,17 +22,17 @@ class MainViewController: UIViewController {
         let label = UILabel()
         
         var title = NSMutableAttributedString(string: "PickUp\n", attributes: [
-                NSAttributedStringKey.foregroundColor : UIColor.darkGray,
-                NSAttributedStringKey.font : UIFont.systemFont(ofSize: 60)
+                NSAttributedString.Key.foregroundColor : UIColor.darkGray,
+                NSAttributedString.Key.font : UIFont.systemFont(ofSize: 60)
             ])
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.center
         
         let subtitle = NSMutableAttributedString(string: NSLocalizedString("Drive where you want", comment: ""), attributes: [
-                NSAttributedStringKey.foregroundColor : UIColor.gray,
-                NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15),
-                NSAttributedStringKey.paragraphStyle : paragraphStyle
+                NSAttributedString.Key.foregroundColor : UIColor.gray,
+                NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15),
+                NSAttributedString.Key.paragraphStyle : paragraphStyle
             ])
         
         title.append(subtitle)

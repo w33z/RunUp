@@ -96,14 +96,14 @@ class RegisterViewController: BaseViewController {
         paragraphStyle.alignment = .center
         
         let forgotAttributedString = NSMutableAttributedString(string: NSLocalizedString("Already have an account? ", comment: ""), attributes: [
-            NSAttributedStringKey.foregroundColor : UIColor.gray,
-            NSAttributedStringKey.paragraphStyle : paragraphStyle,
-            NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)
+            NSAttributedString.Key.foregroundColor : UIColor.gray,
+            NSAttributedString.Key.paragraphStyle : paragraphStyle,
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)
             ])
         
         let signInAttributedString = NSAttributedString(string: NSLocalizedString("Sign In", comment: ""), attributes: [
-            NSAttributedStringKey.foregroundColor : UIColor.gray,
-            NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)
+            NSAttributedString.Key.foregroundColor : UIColor.gray,
+            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)
             ])
         
         forgotAttributedString.append(signInAttributedString)
@@ -185,7 +185,7 @@ extension RegisterViewController {
         backgroundView.addSubview(passwordTextField)
         backgroundView.addSubview(genderImageView)
         
-        checkboxes = UIView.instanceFromNib(name: "GenderCheckboxes") as! GenderCheckboxesView
+        checkboxes = UIView.instanceFromNib(name: "GenderCheckboxes") as? GenderCheckboxesView
         
         backgroundView.addSubview(checkboxes)
         backgroundView.addSubview(registerButton)

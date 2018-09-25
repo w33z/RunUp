@@ -57,9 +57,9 @@ class ResetPasswordViewController: BaseViewController {
         paragraphStyle.alignment = .center
         
         let forgotAttributedString = NSAttributedString(string: NSLocalizedString("Back to login", comment: ""), attributes: [
-            NSAttributedStringKey.foregroundColor : UIColor.gray,
-            NSAttributedStringKey.paragraphStyle : paragraphStyle,
-            NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)
+            NSAttributedString.Key.foregroundColor : UIColor.gray,
+            NSAttributedString.Key.paragraphStyle : paragraphStyle,
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)
             ])
         
         label.attributedText = forgotAttributedString

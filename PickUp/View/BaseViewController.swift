@@ -107,7 +107,7 @@ extension BaseViewController {
         }
         
         logoImageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(10, 5, 5, 10))
+            make.edges.equalToSuperview().inset(UIEdgeInsets.init(top: 10, left: 5, bottom: 5, right: 10))
         }
         
         titleLabel.snp.makeConstraints { (make) in
