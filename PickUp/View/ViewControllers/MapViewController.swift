@@ -31,12 +31,32 @@ class MapViewController: UIViewController {
         let view = UIView()//ControllersFactory.allocController(.SummaryCtrl) as! SummaryCollectionViewController
         view.backgroundColor = .red
         
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(moveView(_:)))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePanGestureSummaryView(_:)))
         view.addGestureRecognizer(pan)
         return view
     }()
     
-    lazy var summaryViewCenterY = self.summaryView.center.y
+    private lazy var centerMapView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.75)
+        
+        let imageView = UIImageView(image: UIImage(named: "center")!)
+        imageView.contentMode = .scaleAspectFit
+        
+        view.addSubview(imageView)
+        
+        imageView.snp.makeConstraints({ (make) in
+            make.centerX.centerY.equalToSuperview()
+            make.width.height.equalToSuperview().offset(-10)
+        })
+        
+        view.makeShadowRounded(radius: 25)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(centerMap))
+        view.addGestureRecognizer(tap)
+        
+        return view
+    }()
     
     var isOpen: Bool = false {
         didSet {
@@ -58,10 +78,18 @@ class MapViewController: UIViewController {
     
     var delegate: CenterViewControllerDelegate?
     var locationManager: CLLocationManager!
-
+    
+    var summaryUpOffset: CGFloat = 100
+    var summaryUp: CGPoint!
+    var summaryDown: CGPoint!
+    var centerButtonUp: CGPoint!
+    var centerButtonDown: CGPoint!
+    var isCollapsed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.delegate = self
         
         addSubviews()
         addConstraints()
@@ -72,6 +100,17 @@ class MapViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.startUpdatingLocation()
+        
+        centerMap()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        summaryDown = summaryView.center
+        centerButtonDown = centerMapView.center
+        summaryUp = CGPoint(x: summaryView.center.x, y: summaryView.center.y - summaryUpOffset)
+        centerButtonUp = CGPoint(x: centerMapView.center.x, y: centerMapView.center.y - summaryUpOffset)
     }
     
     @objc func menuButtonTapped() {
@@ -86,18 +125,13 @@ class MapViewController: UIViewController {
         view.bringSubviewToFront(menuButton)
     }
     
-    @objc func moveView(_ gestureRecognizer: UIPanGestureRecognizer) {
-        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-
-            let translation = gestureRecognizer.translation(in: self.view)
-            let y = gestureRecognizer.view!.center.y + translation.y
-            let maxHeight = (gestureRecognizer.view!.frame.height / 2)
-
-            if (y < summaryViewCenterY && y > maxHeight) {
-                gestureRecognizer.view!.center = CGPoint(x: gestureRecognizer.view!.center.x, y: y)
-                gestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
-            }
-        }
+    @objc func centerMap() {
+        
+        guard let coordinate = locationManager.location?.coordinate else { return }
+        let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        mapView.setRegion(region, animated: true)
+        
+//        centerMapView.isHidden = true
     }
 }
 
@@ -108,6 +142,7 @@ extension MapViewController {
         view.addSubview(mapView)
         view.addSubview(menuButton)
         view.addSubview(summaryView)
+        view.addSubview(centerMapView)
     }
     
     fileprivate func addConstraints() {
@@ -123,23 +158,79 @@ extension MapViewController {
         }
         
         summaryView.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-100)
-            make.leading.trailing.height.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-50)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(250)
+        }
+        
+        centerMapView.snp.makeConstraints { (make) in
+            make.bottom.equalTo(summaryView.snp.top).offset(-25)
+            make.trailing.equalTo(summaryView).offset(-25)
+            make.width.height.equalTo(50)
         }
     }
 }
 
-extension MapViewController: CLLocationManagerDelegate {
+extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let coordinate = manager.location?.coordinate else { return }
-
-        print(coordinate)
-        let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        mapView.setRegion(region, animated: true)
+//        guard let coordinate = manager.location?.coordinate else { return }
+//
+//        print(coordinate)
+//        let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01))
+//        mapView.setRegion(region, animated: true)
     }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
+
+}
+
+extension MapViewController: UIGestureRecognizerDelegate {
     
+    @objc func handlePanGestureSummaryView(_ recognizer: UIPanGestureRecognizer) {
+        
+        let gestureIsDraggingFromDownToUp = (recognizer.velocity(in: view).y < 0)
+
+        switch recognizer.state {
+
+            case .changed:
+                if let rview = recognizer.view {
+                    
+                    if (isCollapsed && gestureIsDraggingFromDownToUp) {
+                        break
+                    } else {
+                        rview.center.y = rview.center.y + recognizer.translation(in: view).y
+                        recognizer.setTranslation(.zero, in: view)
+                    }
+                }
+            
+            case .ended:
+                if let rview = recognizer.view {
+                    
+                    if gestureIsDraggingFromDownToUp {
+                        
+                        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+                            rview.center = self.summaryUp
+                            self.centerMapView.center = self.centerButtonUp
+                        }) { (_) in
+                            self.isCollapsed = true
+                        }
+
+                    } else {
+
+                        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+                            rview.center = self.summaryDown
+                            self.centerMapView.center = self.centerButtonDown
+                        }) { (_) in
+                            self.isCollapsed = false
+                        }
+                    }
+                }
+            
+            default:
+                break
+        }
+    }
 }

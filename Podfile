@@ -6,20 +6,20 @@ target 'PickUp' do
   use_frameworks!
 
   # Pods for PickUp
-	pod 'Firebase/Core'
-	pod 'Firebase/Database'
-	pod 'Firebase/Auth'	
-	pod 'Firebase/Storage'	
-	pod 'SnapKit',    '~> 4.0'
-    pod 'RxSwift',    '~> 4.2.0'
-    pod 'RxCocoa',    '~> 4.2.0'
-    pod 'Alamofire',  '~> 4.7'
-    pod 'RealmSwift'
-    pod 'BEMCheckBox'
-    pod 'NVActivityIndicatorView'
-    pod 'IQKeyboardManagerSwift'
-    pod 'FBSDKCoreKit', '4.35'
-    pod 'FBSDKLoginKit', '4.35'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'SnapKit',    '~> 4.0.1'
+  pod 'RxSwift',    '~> 4.3.1'
+  pod 'RxCocoa',    '~> 4.3.1'
+  pod 'Alamofire',  '~> 4.7'
+  pod 'RealmSwift'
+  pod 'BEMCheckBox'
+  pod 'NVActivityIndicatorView',  '~> 4.4.0'
+  pod 'IQKeyboardManagerSwift'
+  pod 'FBSDKCoreKit', '4.35'
+  pod 'FBSDKLoginKit', '4.35'
     
   target 'PickUpTests' do
     inherit! :search_paths

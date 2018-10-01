@@ -63,11 +63,11 @@ extension ProfileViewController {
     }
     
     fileprivate func rotate360MenuButton() {
-        UIView.animate(withDuration: 0.35) {
+        UIView.animate(withDuration: 0.25) {
             self.menuButton.imageView?.transform = CGAffineTransform(rotationAngle: .pi)
         }
         
-        UIView.animate(withDuration: 0.35, delay: 0.3, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0.2, options: .curveEaseIn, animations: {
             self.menuButton.imageView?.transform = CGAffineTransform(rotationAngle: .pi * 2.0)
         }, completion: nil)
     }
