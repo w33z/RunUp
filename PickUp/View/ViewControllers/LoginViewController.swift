@@ -261,12 +261,16 @@ extension LoginViewController {
 
 extension LoginViewController: FBSDKLoginButtonDelegate {
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        print("User Logged In")
+        
+        startAnimating(message: "Loading...")
+        
         if ((error) != nil) {
+            stopAnimating()
             self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: error.localizedDescription)
         }
         else if result.isCancelled {
             // Handle cancellations
+            stopAnimating()
         }
         else {
             if result.grantedPermissions.contains("public_profile") {
@@ -281,6 +285,11 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
                     UserService.instance.setUserFacebookData(userData: userData)
                 }
             }
+            
+            stopAnimating()
+
+            let slideMenuViewController = ControllersFactory.allocController(.SlideMenuCtrl) as! SlideMenuViewController
+            present(slideMenuViewController, animated: true, completion: nil)
         }
     }
     

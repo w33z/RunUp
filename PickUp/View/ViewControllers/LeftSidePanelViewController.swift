@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FBSDKLoginKit
 
 class LeftSidePanelViewController: UIViewController {
     
@@ -131,8 +133,17 @@ extension LeftSidePanelViewController: UITableViewDelegate, UITableViewDataSourc
                 delegate?.navi?!.pushViewController(settingsApp, animated: true)
 
             case 3:
-                break
-                //logout
+                if Auth.auth().currentUser != nil {
+                    try! Auth.auth().signOut()
+                    
+                } else {
+                    
+                    let facebookLoginManager = FBSDKLoginManager()
+                    facebookLoginManager.logOut()
+                }
+            
+                let mainVC = ControllersFactory.allocController(.MainCtrl) as! MainViewController
+                present(mainVC, animated: true, completion: nil)
             
             default:
                 break

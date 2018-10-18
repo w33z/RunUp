@@ -24,21 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 80
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        
-//        do {
-//            try Auth.auth().signOut()
-//            FBSDKLoginManager().logOut()
-//        } catch let error {
-//            print(error.localizedDescription)
-//        }
-        
-//        if (Auth.auth().currentUser == nil || !FBSDKAccessToken.currentAccessTokenIsActive()) {
-//            let loginViewController = ControllersFactory.allocController(.MainCtrl) as! MainViewController
-//            window?.rootViewController = loginViewController
-//        } else {
+
+        if (Auth.auth().currentUser == nil && !FBSDKAccessToken.currentAccessTokenIsActive() ) {
+            let loginViewController = ControllersFactory.allocController(.MainCtrl) as! MainViewController
+            window?.rootViewController = loginViewController
+        } else {
             let slideMenuViewController = ControllersFactory.allocController(.SlideMenuCtrl) as! SlideMenuViewController
-            window?.rootViewController = slideMenuViewController // UINavigationController(rootViewController: slideMenuViewController)
-//        }
+            window?.rootViewController = slideMenuViewController 
+        }
         window?.makeKeyAndVisible()
 
         
