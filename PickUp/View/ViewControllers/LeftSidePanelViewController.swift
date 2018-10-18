@@ -19,14 +19,6 @@ class LeftSidePanelViewController: UIViewController {
         return view
     }()
     
-    private let whiteView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.white
-        view.layer.cornerRadius = 15
-        view.layer.masksToBounds = true
-        return view
-    }()
-    
     private let menuTableView: UITableView = {
         let tableView = UITableView()
         tableView.isScrollEnabled = false
@@ -40,7 +32,7 @@ class LeftSidePanelViewController: UIViewController {
         return view
     }()
     
-    private let menuItems: [MenuItem] = [MenuItem(title: "History", imageName: .clock), MenuItem(title: "About app", imageName: .info), MenuItem(title: "Settings", imageName: .settings)]
+    private let menuItems: [MenuItem] = [MenuItem(title: "History", imageName: .clock), MenuItem(title: "About app", imageName: .info), MenuItem(title: "Settings", imageName: .settings), MenuItem(title: "Logout", imageName: .logout)]
     
     var delegate: CenterViewControllerDelegate?
     
@@ -63,10 +55,8 @@ class LeftSidePanelViewController: UIViewController {
     @objc fileprivate func gradientViewTapped(_ sender: UITapGestureRecognizer) {
         delegate?.closeLeftPanel()
         
-        let profileViewController = ControllersFactory.allocController(.ProfileCtrl) as! ProfileViewController//UINavigationController(rootViewController: ControllersFactory.allocController(.ProfileCtrl) as! ProfileViewController)
-        profileViewController.modalPresentationStyle = .overCurrentContext
-        
-        self.present(profileViewController, animated: true, completion: nil)
+        let profileViewController = ControllersFactory.allocController(.ProfileCtrl) as! ProfileViewController
+        delegate?.navi?!.pushViewController(profileViewController, animated: true)
     }
 }
 
@@ -76,7 +66,6 @@ extension LeftSidePanelViewController {
 
         view.addSubview(gradientView)
         gradientView.addSubview(profileImageView)
-        view.addSubview(whiteView)
         view.addSubview(menuTableView)
     }
     
@@ -84,19 +73,14 @@ extension LeftSidePanelViewController {
         
         gradientView.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(view.frame.height / 3)
+            make.height.equalTo(view.frame.height / 2.5)
         }
         
         profileImageView.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview().offset(-20)
-            make.leading.trailing.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.leading.trailing.bottom.top.equalToSuperview()
         }
 
-        whiteView.snp.makeConstraints { (make) in
-            make.top.equalTo(gradientView.snp.bottom).offset(-50)
-            make.leading.trailing.equalToSuperview()
-            make.height.width.equalToSuperview()
-        }
 
         menuTableView.snp.makeConstraints { (make) in
             make.top.equalTo(gradientView.snp.bottom)
@@ -127,7 +111,31 @@ extension LeftSidePanelViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(60)
+        return CGFloat(65)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.closeLeftPanel()
+        
+        switch indexPath.row {
+            case 0:
+                let historyVC = ControllersFactory.allocController(.HistoryCtrl) as! HistoryViewController
+                delegate?.navi?!.pushViewController(historyVC, animated: true)
+
+            case 1:
+                let aboutAppVC = ControllersFactory.allocController(.AboutAppCtrl) as! AboutAppViewController
+                delegate?.navi?!.pushViewController(aboutAppVC, animated: true)
+
+            case 2:
+                let settingsApp = ControllersFactory.allocController(.SettingsCtrl) as! SettingsViewController
+                delegate?.navi?!.pushViewController(settingsApp, animated: true)
+
+            case 3:
+                break
+                //logout
+            
+            default:
+                break
+        }
+    }
 }

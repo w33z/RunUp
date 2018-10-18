@@ -12,6 +12,7 @@ enum ImageName: String {
     case clock
     case info
     case settings
+    case logout
 }
 
 struct MenuItem {

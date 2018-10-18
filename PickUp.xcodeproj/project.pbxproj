@@ -12,7 +12,7 @@
 		252C22542120B2070033814F /* GenderCheckboxesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252C22532120B2070033814F /* GenderCheckboxesView.swift */; };
 		252FD9FF211B4EF2005175EB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252FD9FE211B4EF2005175EB /* UIColor.swift */; };
 		253388DD2113A4C0005FBAD7 /* ControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253388DC2113A4C0005FBAD7 /* ControllersFactory.swift */; };
-		253388DF2113AAD9005FBAD7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253388DE2113AAD9005FBAD7 /* BaseViewController.swift */; };
+		253388DF2113AAD9005FBAD7 /* BaseAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253388DE2113AAD9005FBAD7 /* BaseAuthViewController.swift */; };
 		2536C4F6212DE0310005A7EA /* ShakeAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2536C4F5212DE0310005A7EA /* ShakeAnimationView.swift */; };
 		253CCA32212C97BC00C4AFED /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253CCA31212C97BC00C4AFED /* Event.swift */; };
 		253D92CD211B6D3500E381D2 /* ShadowRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253D92CC211B6D3500E381D2 /* ShadowRoundedView.swift */; };
@@ -48,7 +48,13 @@
 		25A51BD3213ACA6D00487501 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A51BD2213ACA6D00487501 /* MapViewController.swift */; };
 		25CF9187211CC4B9009BD14C /* AddBorderToEdgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF9186211CC4B9009BD14C /* AddBorderToEdgeView.swift */; };
 		25CF918E211CD21F009BD14C /* InitViewFromNIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF918D211CD21F009BD14C /* InitViewFromNIB.swift */; };
+		25EA36532168F9D90028D257 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA36522168F9D90028D257 /* HistoryViewController.swift */; };
+		25EA36552168FA020028D257 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA36542168FA020028D257 /* AboutAppViewController.swift */; };
+		25EA36572168FA1E0028D257 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA36562168FA1E0028D257 /* SettingsViewController.swift */; };
+		25EA36592168FCAA0028D257 /* BaseMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA36582168FCAA0028D257 /* BaseMenuViewController.swift */; };
 		25EDDF0D214FDA92000CB660 /* SummaryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDDF0C214FDA92000CB660 /* SummaryCollectionViewController.swift */; };
+		25FBF6522178A37D00DFE7F5 /* MapPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBF6512178A37D00DFE7F5 /* MapPanelView.swift */; };
+		25FBF65A2178B05200DFE7F5 /* MapPanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25FBF6582178B05200DFE7F5 /* MapPanelView.xib */; };
 		BCBA09A189A51CC8D284CBB9 /* Pods_PickUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E0496C3048BAF6499F2CA3 /* Pods_PickUpTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +72,7 @@
 		252C22532120B2070033814F /* GenderCheckboxesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCheckboxesView.swift; sourceTree = "<group>"; };
 		252FD9FE211B4EF2005175EB /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		253388DC2113A4C0005FBAD7 /* ControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersFactory.swift; sourceTree = "<group>"; };
-		253388DE2113AAD9005FBAD7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		253388DE2113AAD9005FBAD7 /* BaseAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthViewController.swift; sourceTree = "<group>"; };
 		2536C4F5212DE0310005A7EA /* ShakeAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeAnimationView.swift; sourceTree = "<group>"; };
 		253CCA31212C97BC00C4AFED /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		253D92CC211B6D3500E381D2 /* ShadowRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRoundedView.swift; sourceTree = "<group>"; };
@@ -111,7 +117,14 @@
 		25A51BD2213ACA6D00487501 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		25CF9186211CC4B9009BD14C /* AddBorderToEdgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBorderToEdgeView.swift; sourceTree = "<group>"; };
 		25CF918D211CD21F009BD14C /* InitViewFromNIB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitViewFromNIB.swift; sourceTree = "<group>"; };
+		25EA36522168F9D90028D257 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		25EA36542168FA020028D257 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
+		25EA36562168FA1E0028D257 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		25EA36582168FCAA0028D257 /* BaseMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMenuViewController.swift; sourceTree = "<group>"; };
 		25EDDF0C214FDA92000CB660 /* SummaryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCollectionViewController.swift; sourceTree = "<group>"; };
+		25FBF6512178A37D00DFE7F5 /* MapPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPanelView.swift; sourceTree = "<group>"; };
+		25FBF65B2178B05500DFE7F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MapPanelView.xib; sourceTree = "<group>"; };
+		25FBF65D2178B05A00DFE7F5 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/MapPanelView.strings; sourceTree = "<group>"; };
 		3109EE263342C58568A5CE2B /* Pods-PickUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PickUpTests/Pods-PickUpTests.release.xcconfig"; sourceTree = "<group>"; };
 		44E0496C3048BAF6499F2CA3 /* Pods_PickUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D18D32500714050A0AA34 /* Pods_PickUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +159,7 @@
 				25CF9188211CCF5A009BD14C /* XIB's */,
 				252C22532120B2070033814F /* GenderCheckboxesView.swift */,
 				2542C9E5213C007100FCF041 /* ProfileImageView.swift */,
+				25FBF6512178A37D00DFE7F5 /* MapPanelView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,6 +186,9 @@
 				258262AB213AD5D40004CA11 /* LeftSidePanelViewController.swift */,
 				2542C9F5213C5FFE00FCF041 /* ProfileViewController.swift */,
 				25EDDF0C214FDA92000CB660 /* SummaryCollectionViewController.swift */,
+				25EA36522168F9D90028D257 /* HistoryViewController.swift */,
+				25EA36542168FA020028D257 /* AboutAppViewController.swift */,
+				25EA36562168FA1E0028D257 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -225,7 +242,8 @@
 				253388DB2113A499005FBAD7 /* Cells */,
 				253388DA2113A492005FBAD7 /* ViewControllers */,
 				253388DC2113A4C0005FBAD7 /* ControllersFactory.swift */,
-				253388DE2113AAD9005FBAD7 /* BaseViewController.swift */,
+				253388DE2113AAD9005FBAD7 /* BaseAuthViewController.swift */,
+				25EA36582168FCAA0028D257 /* BaseMenuViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,6 +333,7 @@
 		25CF9188211CCF5A009BD14C /* XIB's */ = {
 			isa = PBXGroup;
 			children = (
+				25FBF6582178B05200DFE7F5 /* MapPanelView.xib */,
 				2542C9F0213C14CE00FCF041 /* ProfileImageView.xib */,
 				2568969D2131BD3A0087E6E0 /* GenderCheckboxes.xib */,
 			);
@@ -432,6 +451,7 @@
 			files = (
 				2542C9EE213C14CE00FCF041 /* ProfileImageView.xib in Resources */,
 				256896992131BB4A0087E6E0 /* Localizable.strings in Resources */,
+				25FBF65A2178B05200DFE7F5 /* MapPanelView.xib in Resources */,
 				259B4BDB20EF7DC2001DBB23 /* LaunchScreen.storyboard in Resources */,
 				2568969B2131BD3A0087E6E0 /* GenderCheckboxes.xib in Resources */,
 				2574865720F369D600FB3DF1 /* GoogleService-Info.plist in Resources */,
@@ -587,7 +607,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				252C22542120B2070033814F /* GenderCheckboxesView.swift in Sources */,
-				253388DF2113AAD9005FBAD7 /* BaseViewController.swift in Sources */,
+				253388DF2113AAD9005FBAD7 /* BaseAuthViewController.swift in Sources */,
 				256896A12131CB350087E6E0 /* LoginViewModel.swift in Sources */,
 				253D92CD211B6D3500E381D2 /* ShadowRoundedView.swift in Sources */,
 				2536C4F6212DE0310005A7EA /* ShakeAnimationView.swift in Sources */,
@@ -601,10 +621,12 @@
 				257BCD85213475EB007D57D4 /* ResetPasswordViewModel.swift in Sources */,
 				258262B0213B0A210004CA11 /* FadeToView.swift in Sources */,
 				2548FEBE2125F16600B881F5 /* LoginViewController.swift in Sources */,
+				25EA36532168F9D90028D257 /* HistoryViewController.swift in Sources */,
 				252FD9FF211B4EF2005175EB /* UIColor.swift in Sources */,
 				253D92D1211C9D6900E381D2 /* RegisterViewController.swift in Sources */,
 				258262AA213AD51B0004CA11 /* SlideMenuViewController.swift in Sources */,
 				25EDDF0D214FDA92000CB660 /* SummaryCollectionViewController.swift in Sources */,
+				25FBF6522178A37D00DFE7F5 /* MapPanelView.swift in Sources */,
 				258262AE213AD81C0004CA11 /* CenterViewControllerDelegate.swift in Sources */,
 				2559B82F21283170006A5E5E /* UserService.swift in Sources */,
 				2542C9EA213C0EE600FCF041 /* LeftSidePanelTableViewCell.swift in Sources */,
@@ -613,12 +635,15 @@
 				253D92CF211B7CC900E381D2 /* GradientView.swift in Sources */,
 				2559B82D21283101006A5E5E /* Settings.swift in Sources */,
 				2548FEBA2124A7F800B881F5 /* ResetPasswordViewController.swift in Sources */,
+				25EA36552168FA020028D257 /* AboutAppViewController.swift in Sources */,
 				258262AC213AD5D40004CA11 /* LeftSidePanelViewController.swift in Sources */,
 				2548FEBC2124AF2900B881F5 /* PresentDetail.swift in Sources */,
 				2542C9F4213C183600FCF041 /* MenuItem.swift in Sources */,
+				25EA36592168FCAA0028D257 /* BaseMenuViewController.swift in Sources */,
 				25CF9187211CC4B9009BD14C /* AddBorderToEdgeView.swift in Sources */,
 				25CF918E211CD21F009BD14C /* InitViewFromNIB.swift in Sources */,
 				259B4BD120EF7DC2001DBB23 /* AppDelegate.swift in Sources */,
+				25EA36572168FA1E0028D257 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +700,15 @@
 				256896962131BACA0087E6E0 /* pl */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		25FBF6582178B05200DFE7F5 /* MapPanelView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25FBF65B2178B05500DFE7F5 /* Base */,
+				25FBF65D2178B05A00DFE7F5 /* pl */,
+			);
+			name = MapPanelView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

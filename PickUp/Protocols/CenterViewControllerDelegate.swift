@@ -10,6 +10,7 @@ import Foundation
 import UIKit.UIViewController
 
 @objc protocol CenterViewControllerDelegate {
+    @objc optional var navi: UINavigationController? { get set }
     @objc func toggleLeftPanel()
     @objc func closeLeftPanel()
     @objc func addLeftPanelViewController()

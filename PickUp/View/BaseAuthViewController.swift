@@ -1,5 +1,5 @@
 //
-//  BaseViewController.swift
+//  BaseAuthViewController.swift
 //  PickUp
 //
 //  Created by Bartosz Pawełczyk on 02/08/2018.
@@ -12,7 +12,7 @@ import NVActivityIndicatorView
 import RxSwift
 import RxCocoa
 
-class BaseViewController: UIViewController, NVActivityIndicatorViewable {
+class BaseAuthViewController: UIViewController, NVActivityIndicatorViewable {
     
     private let gradientView: UIView = {
         let view = UIView()
@@ -82,7 +82,7 @@ class BaseViewController: UIViewController, NVActivityIndicatorViewable {
     }
 }
 
-extension BaseViewController {
+extension BaseAuthViewController {
     fileprivate func addSubviews() {
         view.backgroundColor = .cWhite
 

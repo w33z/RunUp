@@ -9,7 +9,7 @@
 import UIKit
 import BEMCheckBox
 
-class RegisterViewController: BaseViewController {
+class RegisterViewController: BaseAuthViewController {
     
     private let fullnameTextField: UITextField = {
         let textField = UITextField()

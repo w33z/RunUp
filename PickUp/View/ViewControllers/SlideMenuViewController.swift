@@ -21,6 +21,7 @@ class SlideMenuViewController: UIViewController {
     var mapViewController: MapViewController!
     var leftSidePanelViewController: LeftSidePanelViewController!
     var centerViewController: UIViewController!
+    
     var currentState: SlideOutState = .collapsed {
         didSet {
             let shouldShowShadow = (currentState != .collapsed)
@@ -34,6 +35,8 @@ class SlideMenuViewController: UIViewController {
     var centerPanel: CGFloat!
 
     var tap: UITapGestureRecognizer!
+    
+    var navi: UINavigationController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +54,11 @@ class SlideMenuViewController: UIViewController {
         if mapViewController == nil {
             mapViewController = ControllersFactory.allocController(.MapCtrl) as? MapViewController
             mapViewController.delegate = self
+            
         }
-        
-        presentingViewController = mapViewController
+        navi = UINavigationController(rootViewController: mapViewController)
+        navi?.modalPresentationStyle = .overCurrentContext
+        presentingViewController = navi!
         
         if let center = centerViewController {
             center.view.removeFromSuperview()
@@ -176,24 +181,24 @@ extension SlideMenuViewController {
     }
     
     func shouldShowShadowForCenterViewController(status: Bool) {
-        
-        if status == true {
-            
-            let layer: CAGradientLayer = CAGradientLayer()
-            layer.colors = [UIColor.white.cgColor, UIColor.clear.cgColor]
-            layer.startPoint = CGPoint(x: 0.0, y: 0.5)
-            layer.endPoint = CGPoint(x: 1.0, y: 0.5)
-            layer.frame = CGRect(origin: CGPoint(x: 0.4, y: 0), size: CGSize(width: 5, height: centerViewController.view.frame.height))
-            
-            centerViewController.view.layer.addSublayer(layer)
-        } else {
 
-            for (i,layer) in centerViewController.view.layer.sublayers!.enumerated() {
-                if (layer.isKind(of: CAGradientLayer.self)) {
-                    centerViewController.view.layer.sublayers?.remove(at: i)
-                }
-            }
-        }
+//        if status == true {
+//
+//            let layer: CAGradientLayer = CAGradientLayer()
+//            layer.colors = [UIColor.white.cgColor, UIColor.clear.cgColor]
+//            layer.startPoint = CGPoint(x: 0.0, y: 0.5)
+//            layer.endPoint = CGPoint(x: 1.0, y: 0.5)
+//            layer.frame = CGRect(origin: CGPoint(x: 0.4, y: 0), size: CGSize(width: 5, height: centerViewController.view.frame.height))
+//            
+//            centerViewController.view.layer.addSublayer(layer)
+//        } else {
+//
+//            for (i,layer) in centerViewController.view.layer.sublayers!.enumerated() {
+//                if (layer.isKind(of: CAGradientLayer.self)) {
+//                    centerViewController.view.layer.sublayers?.remove(at: i)
+//                }
+//            }
+//        }
     }
     
     func animateCenterPanelXPosition(targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {

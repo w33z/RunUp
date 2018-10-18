@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Workout"; ObjectID = "8TD-q9-nYa"; */
+"8TD-q9-nYa.text" = "Workout";
+
+/* Class = "UILabel"; text = "Tranning"; ObjectID = "Km3-8A-fpp"; */
+"Km3-8A-fpp.text" = "Tranning";
+
+/* Class = "UIButton"; normalTitle = "Start"; ObjectID = "S5b-cx-Fpk"; */
+"S5b-cx-Fpk.normalTitle" = "Start";
+
+/* Class = "UILabel"; text = "Activity"; ObjectID = "gSr-Fa-jf7"; */
+"gSr-Fa-jf7.text" = "Activity";
+
+/* Class = "UILabel"; text = "Running"; ObjectID = "riU-Zx-Kjb"; */
+"riU-Zx-Kjb.text" = "Running";

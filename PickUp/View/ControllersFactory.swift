@@ -18,6 +18,9 @@ enum ControllerType: String {
     case LeftSideCtrl = "LeftSidePanelViewController"
     case ProfileCtrl = "ProfileViewController"
     case SummaryCtrl = "SummaryCollectionViewController"
+    case HistoryCtrl = "HistoryViewController"
+    case AboutAppCtrl = "AboutAppViewController"
+    case SettingsCtrl = "SettingsViewController"
 }
 
 class ControllersFactory {

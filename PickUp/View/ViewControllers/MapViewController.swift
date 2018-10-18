@@ -22,16 +22,16 @@ class MapViewController: UIViewController {
     
     var menuButton: UIButton = {
         let leftButton = UIButton(type: .custom)
-        leftButton.setImage(UIImage(named: "menu"), for: .normal)
+        leftButton.setImage(UIImage(named: "menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        leftButton.imageView?.tintColor = .darkGray
         leftButton.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
         return leftButton
     }()
     
-    private lazy var summaryView: UIView = {
-        let view = UIView()//ControllersFactory.allocController(.SummaryCtrl) as! SummaryCollectionViewController
-        view.backgroundColor = .red
+    private lazy var panelView: MapPanelView = {
+        let view = UIView.instanceFromNib(name: "MapPanelView") as! MapPanelView
         
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePanGestureSummaryView(_:)))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesturePanelView(_:)))
         view.addGestureRecognizer(pan)
         return view
     }()
@@ -40,7 +40,8 @@ class MapViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = UIColor.white.withAlphaComponent(0.75)
         
-        let imageView = UIImageView(image: UIImage(named: "center")!)
+        let imageView = UIImageView(image: UIImage(named: "center")?.withRenderingMode(.alwaysTemplate))
+        imageView.tintColor = .darkGray
         imageView.contentMode = .scaleAspectFit
         
         view.addSubview(imageView)
@@ -70,7 +71,7 @@ class MapViewController: UIViewController {
                 
                 UIView.transition(with: menuButton, duration: 0.5, options: .transitionFlipFromLeft, animations: {
                     self.menuButton.setImage(UIImage(named: "menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
-                    self.menuButton.imageView?.tintColor = .black
+                    self.menuButton.imageView?.tintColor = .darkGray
                 }, completion: nil)
             }
         }
@@ -79,15 +80,17 @@ class MapViewController: UIViewController {
     var delegate: CenterViewControllerDelegate?
     var locationManager: CLLocationManager!
     
-    var summaryUpOffset: CGFloat = 100
-    var summaryUp: CGPoint!
-    var summaryDown: CGPoint!
+    var panelUpOffset: CGFloat = 100
+    var panelUp: CGPoint!
+    var panelDown: CGPoint!
     var centerButtonUp: CGPoint!
     var centerButtonDown: CGPoint!
     var isCollapsed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         mapView.delegate = self
         
@@ -107,10 +110,10 @@ class MapViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        summaryDown = summaryView.center
+        panelDown = panelView.center
         centerButtonDown = centerMapView.center
-        summaryUp = CGPoint(x: summaryView.center.x, y: summaryView.center.y - summaryUpOffset)
-        centerButtonUp = CGPoint(x: centerMapView.center.x, y: centerMapView.center.y - summaryUpOffset)
+        panelUp = CGPoint(x: panelView.center.x, y: panelView.center.y - panelUpOffset)
+        centerButtonUp = CGPoint(x: centerMapView.center.x, y: centerMapView.center.y - panelUpOffset)
     }
     
     @objc func menuButtonTapped() {
@@ -122,16 +125,16 @@ class MapViewController: UIViewController {
             delegate?.closeLeftPanel()
         }
         
-        view.bringSubviewToFront(menuButton)
+//        view.bringSubviewToFront(menuButton)
     }
     
     @objc func centerMap() {
         
         guard let coordinate = locationManager.location?.coordinate else { return }
-        let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
         mapView.setRegion(region, animated: true)
         
-//        centerMapView.isHidden = true
+        centerMapView.fadeTo(alphaValue: 0.0, withDuration: 0.2)
     }
 }
 
@@ -141,7 +144,7 @@ extension MapViewController {
         
         view.addSubview(mapView)
         view.addSubview(menuButton)
-        view.addSubview(summaryView)
+        view.addSubview(panelView)
         view.addSubview(centerMapView)
     }
     
@@ -157,15 +160,15 @@ extension MapViewController {
             make.edges.equalToSuperview()
         }
         
-        summaryView.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-50)
+        panelView.snp.makeConstraints { (make) in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-65)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(250)
+            make.height.equalTo(265)
         }
         
         centerMapView.snp.makeConstraints { (make) in
-            make.bottom.equalTo(summaryView.snp.top).offset(-25)
-            make.trailing.equalTo(summaryView).offset(-25)
+            make.bottom.equalTo(panelView.snp.top).offset(-25)
+            make.trailing.equalTo(panelView).offset(-25)
             make.width.height.equalTo(50)
         }
     }
@@ -184,12 +187,16 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
+    
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        centerMapView.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+    }
 
 }
 
 extension MapViewController: UIGestureRecognizerDelegate {
     
-    @objc func handlePanGestureSummaryView(_ recognizer: UIPanGestureRecognizer) {
+    @objc func handlePanGesturePanelView(_ recognizer: UIPanGestureRecognizer) {
         
         let gestureIsDraggingFromDownToUp = (recognizer.velocity(in: view).y < 0)
 
@@ -212,8 +219,10 @@ extension MapViewController: UIGestureRecognizerDelegate {
                     if gestureIsDraggingFromDownToUp {
                         
                         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
-                            rview.center = self.summaryUp
+                            rview.center = self.panelUp
                             self.centerMapView.center = self.centerButtonUp
+                            self.panelView.backgroundView.alpha = 0.98
+                            self.panelView.activityView.alpha = 1
                         }) { (_) in
                             self.isCollapsed = true
                         }
@@ -221,8 +230,10 @@ extension MapViewController: UIGestureRecognizerDelegate {
                     } else {
 
                         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
-                            rview.center = self.summaryDown
+                            rview.center = self.panelDown
                             self.centerMapView.center = self.centerButtonDown
+                            self.panelView.backgroundView.alpha = 0
+                            self.panelView.activityView.alpha = 0
                         }) { (_) in
                             self.isCollapsed = false
                         }

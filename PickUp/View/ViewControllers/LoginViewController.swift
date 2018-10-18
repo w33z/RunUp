@@ -10,7 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class LoginViewController: BaseViewController {
+class LoginViewController: BaseAuthViewController {
     
     private let usernameTextField: UITextField = {
         let textField = UITextField()

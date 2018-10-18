@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResetPasswordViewController: BaseViewController {
+class ResetPasswordViewController: BaseAuthViewController {
     
     private let usernameTextField: UITextField = {
         let textField = UITextField()
