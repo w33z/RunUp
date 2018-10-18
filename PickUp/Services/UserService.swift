@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import RealmSwift
 
 class UserService {
     static let instance = UserService()
@@ -67,9 +68,49 @@ class UserService {
         }
     }
     
-    func setUserFacebookData(userData: Dictionary<String, AnyObject>) {
+    func getUserDetails(uid: String, completion: @escaping (_ userData: Dictionary<String, String>) -> ()) {
         
-        let uid = userData["id"] as! String
+        var userData: [String: String] = [:]
+        
+        REF_USERS.child(uid).observe(.value) { (snapshot) in
+            
+            let id = snapshot.key
+            
+            if let dict = snapshot.value as? [String: String] {
+                
+                let email = dict["email"]!
+                let fullname = dict["fullname"]!
+                let gender = dict["gender"]!
+                let username = dict["username"]!
+                
+                userData = ["id": id, "fullname": fullname, "username": username, "email": email, "gender": gender]
+                
+                completion(userData)
+
+            }
+        }
+    }
+    
+    func createRealmUser(userData: Dictionary<String, String>) {
+        
+        let realm = try! Realm()
+        
+        let user = User()
+        user.id = userData["id"]!
+        user.fullname = userData["fullname"]!
+        user.username = userData["username"] ?? ""
+        user.email = userData["email"]!
+        user.gender = userData["gender"]!
+        user.profilePicURL = userData["profilePicURL"] ?? ""
+            
+        try! realm.write {
+            realm.add(user)
+        }
+    }
+    
+    func setUserFacebookData(userData: Dictionary<String, String>) {
+        
+        let uid = userData["id"]!
         var uData = userData.filter({ !($0.key == "id") })
         uData = userData.filter({ !($0.key == "pictureURL") })
         REF_USERS.child(uid).updateChildValues(uData)
@@ -82,7 +123,18 @@ class UserService {
         let fullname = fields!["name"] as? String
         let email = fields!["email"] as? String
         let gender = fields!["gender"] as? String
+        var profilePicURL = ""
         
-        return ["id": id, "fullname": fullname, "email": email, "gender": gender] as [String: AnyObject]
+        if let picture = fields!["picture"] as? NSDictionary {
+            if let data = picture["data"] as? NSDictionary{
+                if let pictureURL = data["url"] as? String {
+                    profilePicURL = pictureURL
+                }
+            }
+        }
+        
+        let data = ["id": id, "fullname": fullname, "email": email, "gender": gender, "profilePicURL": profilePicURL] as [String: AnyObject]
+        
+        return data
     }
 }

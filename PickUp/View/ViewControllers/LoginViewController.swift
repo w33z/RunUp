@@ -236,7 +236,9 @@ extension LoginViewController {
                 
                 case .loginSuccess:
                     self.stopAnimating()
-                    self.showAlertController(title: "", message: self.viewmodel.validationLoginSuccess.value)
+
+                    let slideMenuViewController = ControllersFactory.allocController(.SlideMenuCtrl) as! SlideMenuViewController
+                    self.present(slideMenuViewController, animated: true, completion: nil)
                 
                 case .loginError:
                     self.stopAnimating()
@@ -274,14 +276,15 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
         }
         else {
             if result.grantedPermissions.contains("public_profile") {
-                FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id,name,email,gender"]).start { (connection, result, error) in
+                FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id,name,email,gender,picture.type(normal)"]).start { (connection, result, error) in
 
                     if let error = error {
                         self.showAlertController(title: NSLocalizedString("Failure!", comment: ""), message: error.localizedDescription)
                         return
                     }
                     
-                    let userData = UserService.instance.parseUserFacebookData(result: result)
+                    let userData = UserService.instance.parseUserFacebookData(result: result) as! [String: String]
+                    UserService.instance.createRealmUser(userData: userData)
                     UserService.instance.setUserFacebookData(userData: userData)
                 }
             }

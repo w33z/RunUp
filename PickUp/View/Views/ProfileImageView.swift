@@ -16,9 +16,22 @@ class ProfileImageView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        setupView()
+    }
+    
+    fileprivate func setupView() {
         isUserInteractionEnabled = true
         profileImage.makeShadowRounded(radius: 25)
+        profileImage.clipsToBounds = true
+        
         fullnameLabel.adjustsFontSizeToFitWidth = true
         fullnameLabel.minimumScaleFactor = 0.5
+    }
+    
+    func configureProfileImageView(user: User?) {
+        guard let user = user else { return }
+        
+        fullnameLabel.text = user.fullname
+        profileImage.loadImageUsingCache(urlString: user.profilePicURL)
     }
 }

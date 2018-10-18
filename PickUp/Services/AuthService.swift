@@ -8,6 +8,8 @@
 
 import Foundation
 import Firebase
+import FBSDKLoginKit
+import RealmSwift
 
 class AuthService {
     static let instance = AuthService()
@@ -27,8 +29,13 @@ class AuthService {
                         completion(false, error)
                         return
                     }
-
+                    
                     UserService.instance.createDBUser(uid: user.uid, userData: userData.filter({ !($0.key == "password") }))
+                    
+                    UserService.instance.getUserDetails(uid: user.uid, completion: { (userData) in
+                        UserService.instance.createRealmUser(userData: userData)
+                    })
+                    
                     completion(true, nil)
                 }
             } else {
@@ -53,7 +60,11 @@ class AuthService {
                     return
                 }
                 
-                //make user model -> save to realm
+                let uid = user.user.uid
+                
+                UserService.instance.getUserDetails(uid: uid, completion: { (userData) in
+                    UserService.instance.createRealmUser(userData: userData)
+                })
                 
                 completion(true, nil)
             }
@@ -83,6 +94,24 @@ class AuthService {
 
                 completion(false, error)
             }
+        }
+    }
+    
+    func logout() {
+        if Auth.auth().currentUser != nil {
+            try! Auth.auth().signOut()
+            
+        } else {
+            
+            let facebookLoginManager = FBSDKLoginManager()
+            facebookLoginManager.logOut()
+        }
+        
+        let realm = try! Realm()
+        let user = realm.objects(User.self)
+        
+        try! realm.write {
+            realm.delete(user)
         }
     }
 }

@@ -67,10 +67,10 @@ class BaseAuthViewController: UIViewController, NVActivityIndicatorViewable {
         gradientView.makeGradientView()
     }
     
-    func showAlertController(title: String, message: String) {
+    func showAlertController(title: String, message: String, completion: (() -> ())? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default) { (_) in
-            alert.dismiss(animated: true, completion: nil)
+            alert.dismiss(animated: true, completion: completion)
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)

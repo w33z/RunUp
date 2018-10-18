@@ -275,8 +275,10 @@ extension RegisterViewController {
 
                 case .registerSuccess:
                     self.stopAnimating()
-                    self.showAlertController(title: NSLocalizedString("Congratulations!", comment: ""), message: self.viewmodel.validationRegistrationSuccess.value)
-
+                    
+                    let slideMenuViewController = ControllersFactory.allocController(.SlideMenuCtrl) as! SlideMenuViewController
+                    self.present(slideMenuViewController, animated: true, completion: nil)
+            
                 case .registerError:
                     self.stopAnimating()
                     [self.fullnameTextField,self.usernameTextField,self.emailTextField,self.passwordTextField].forEach({ $0.addShakeAnimation() })

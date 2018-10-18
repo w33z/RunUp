@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FBSDKLoginKit
+import RealmSwift
 
 class LeftSidePanelViewController: UIViewController {
     
@@ -29,7 +30,7 @@ class LeftSidePanelViewController: UIViewController {
         return tableView
     }()
     
-    lazy var profileImageView: UIView = {
+    lazy var profileImageView: ProfileImageView = {
         let view = UIView.instanceFromNib(name: "ProfileImageView") as! ProfileImageView
         return view
     }()
@@ -46,12 +47,20 @@ class LeftSidePanelViewController: UIViewController {
         
         addSubviews()
         addConstraints()
+        configureUserProfile()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         gradientView.makeGradientView()
+    }
+    
+    func configureUserProfile() {
+        let realm = try! Realm()
+        let user = realm.objects(User.self).first
+        
+        profileImageView.configureProfileImageView(user: user)
     }
     
     @objc fileprivate func gradientViewTapped(_ sender: UITapGestureRecognizer) {
@@ -133,14 +142,7 @@ extension LeftSidePanelViewController: UITableViewDelegate, UITableViewDataSourc
                 delegate?.navi?!.pushViewController(settingsApp, animated: true)
 
             case 3:
-                if Auth.auth().currentUser != nil {
-                    try! Auth.auth().signOut()
-                    
-                } else {
-                    
-                    let facebookLoginManager = FBSDKLoginManager()
-                    facebookLoginManager.logOut()
-                }
+                AuthService.instance.logout()
             
                 let mainVC = ControllersFactory.allocController(.MainCtrl) as! MainViewController
                 present(mainVC, animated: true, completion: nil)
