@@ -10,17 +10,19 @@ import UIKit
 
 class BaseMenuViewController: UIViewController {
     
-    var popButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "arrow")!.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
-        button.imageView?.tintColor = .darkGray
+    lazy var popBarButton: UIBarButtonItem = {
+        let image = UIImage(named: "arrow")!.withRenderingMode(.alwaysTemplate)
+        
+        let button = UIBarButtonItem(image: image, style: UIBarButtonItem.Style.plain, target: self, action: #selector(popBarButtonTapped))
+        
+        button.tintColor = .darkGray
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         addSubviews()
         addConstraints()
     }
@@ -29,10 +31,16 @@ class BaseMenuViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        roratePopButton()
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    @objc func menuButtonTapped() {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    @objc func popBarButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
     
@@ -40,36 +48,22 @@ class BaseMenuViewController: UIViewController {
 
 extension BaseMenuViewController {
     
-    fileprivate func addSubviews() {
-        addBlurBackgroundView()
+    fileprivate func setupNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
+
+        navigationItem.hidesBackButton = true
         
-        view.addSubview(popButton)
+        navigationItem.rightBarButtonItem = popBarButton
+    }
+    
+    fileprivate func addSubviews() {
+        view.backgroundColor = .cBG
     }
     
     fileprivate func addConstraints() {
         
-        popButton.snp.makeConstraints({ (make) in
-            make.top.equalTo(view).offset(60)
-            make.leading.equalTo(view).offset(25)
-            make.width.height.equalTo(20)
-        })
-    }
-    
-    fileprivate func addBlurBackgroundView() {
-        let blurEffect = UIBlurEffect(style: .prominent)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(blurEffectView)
-    }
-    
-    fileprivate func roratePopButton() {
-        UIView.animate(withDuration: 0.25) {
-            self.popButton.imageView?.transform = CGAffineTransform(rotationAngle: -.pi)
-        }
-        
-        UIView.animate(withDuration: 0.25, delay: 0.2, options: .curveEaseIn, animations: {
-            self.popButton.imageView?.transform = CGAffineTransform(rotationAngle: -.pi / 2)
-        }, completion: nil)
     }
 }

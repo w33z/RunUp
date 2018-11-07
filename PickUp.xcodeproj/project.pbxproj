@@ -28,7 +28,7 @@
 		2548FEBA2124A7F800B881F5 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2548FEB92124A7F800B881F5 /* ResetPasswordViewController.swift */; };
 		2548FEBC2124AF2900B881F5 /* PresentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2548FEBB2124AF2900B881F5 /* PresentDetail.swift */; };
 		2548FEBE2125F16600B881F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2548FEBD2125F16600B881F5 /* LoginViewController.swift */; };
-		2559B82D21283101006A5E5E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559B82C21283101006A5E5E /* Settings.swift */; };
+		2559B82D21283101006A5E5E /* ApiSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559B82C21283101006A5E5E /* ApiSettings.swift */; };
 		2559B82F21283170006A5E5E /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559B82E21283170006A5E5E /* UserService.swift */; };
 		2559B83121283348006A5E5E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559B83021283348006A5E5E /* AuthService.swift */; };
 		2559B833212836B6006A5E5E /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559B832212836B6006A5E5E /* RegistrationViewModel.swift */; };
@@ -48,6 +48,10 @@
 		25A51BD3213ACA6D00487501 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A51BD2213ACA6D00487501 /* MapViewController.swift */; };
 		25CF9187211CC4B9009BD14C /* AddBorderToEdgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF9186211CC4B9009BD14C /* AddBorderToEdgeView.swift */; };
 		25CF918E211CD21F009BD14C /* InitViewFromNIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF918D211CD21F009BD14C /* InitViewFromNIB.swift */; };
+		25E650A521847AE50065A7FB /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E650A321847AE50065A7FB /* SettingTableViewCell.swift */; };
+		25E650A621847AE50065A7FB /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25E650A421847AE50065A7FB /* SettingTableViewCell.xib */; };
+		25E650A9218489530065A7FB /* PopUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E650A7218489530065A7FB /* PopUpTableViewController.swift */; };
+		25E650AC21848C100065A7FB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E650AB21848C100065A7FB /* Settings.swift */; };
 		25EA36532168F9D90028D257 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA36522168F9D90028D257 /* HistoryViewController.swift */; };
 		25EA36552168FA020028D257 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA36542168FA020028D257 /* AboutAppViewController.swift */; };
 		25EA36572168FA1E0028D257 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA36562168FA1E0028D257 /* SettingsViewController.swift */; };
@@ -57,6 +61,14 @@
 		25FBF65A2178B05200DFE7F5 /* MapPanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25FBF6582178B05200DFE7F5 /* MapPanelView.xib */; };
 		25FBF6602178BA9C00DFE7F5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBF65F2178BA9C00DFE7F5 /* User.swift */; };
 		25FBF6622178F59500DFE7F5 /* CachingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBF6612178F59500DFE7F5 /* CachingImageView.swift */; };
+		25FBF664217B88F200DFE7F5 /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBF663217B88F200DFE7F5 /* ProfileDetailsView.swift */; };
+		25FBF6682180893100DFE7F5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBF6672180893100DFE7F5 /* Location.swift */; };
+		25FBF66A21808A4900DFE7F5 /* LocationInjectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBF66921808A4900DFE7F5 /* LocationInjectorProtocol.swift */; };
+		25FBF66C2180901E00DFE7F5 /* WorkoutPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBF66B2180901E00DFE7F5 /* WorkoutPanelView.swift */; };
+		25FBF66F2180903200DFE7F5 /* WorkoutPanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25FBF6712180903200DFE7F5 /* WorkoutPanelView.xib */; };
+		25FBF6752180961B00DFE7F5 /* WorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBF6742180961B00DFE7F5 /* WorkoutButton.swift */; };
+		25FBF6772180E85300DFE7F5 /* SettingTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBF6762180E85300DFE7F5 /* SettingTableViewHeader.swift */; };
+		25FBF67A2180E94500DFE7F5 /* SettingTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25FBF67C2180E94500DFE7F5 /* SettingTableViewHeader.xib */; };
 		BCBA09A189A51CC8D284CBB9 /* Pods_PickUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E0496C3048BAF6499F2CA3 /* Pods_PickUpTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,7 +103,7 @@
 		2548FEB92124A7F800B881F5 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		2548FEBB2124AF2900B881F5 /* PresentDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDetail.swift; sourceTree = "<group>"; };
 		2548FEBD2125F16600B881F5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		2559B82C21283101006A5E5E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		2559B82C21283101006A5E5E /* ApiSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiSettings.swift; sourceTree = "<group>"; };
 		2559B82E21283170006A5E5E /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		2559B83021283348006A5E5E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		2559B832212836B6006A5E5E /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
@@ -119,6 +131,10 @@
 		25A51BD2213ACA6D00487501 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		25CF9186211CC4B9009BD14C /* AddBorderToEdgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBorderToEdgeView.swift; sourceTree = "<group>"; };
 		25CF918D211CD21F009BD14C /* InitViewFromNIB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitViewFromNIB.swift; sourceTree = "<group>"; };
+		25E650A321847AE50065A7FB /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		25E650A421847AE50065A7FB /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		25E650A7218489530065A7FB /* PopUpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpTableViewController.swift; sourceTree = "<group>"; };
+		25E650AB21848C100065A7FB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		25EA36522168F9D90028D257 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		25EA36542168FA020028D257 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		25EA36562168FA1E0028D257 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +145,16 @@
 		25FBF65D2178B05A00DFE7F5 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/MapPanelView.strings; sourceTree = "<group>"; };
 		25FBF65F2178BA9C00DFE7F5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		25FBF6612178F59500DFE7F5 /* CachingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingImageView.swift; sourceTree = "<group>"; };
+		25FBF663217B88F200DFE7F5 /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
+		25FBF6672180893100DFE7F5 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		25FBF66921808A4900DFE7F5 /* LocationInjectorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInjectorProtocol.swift; sourceTree = "<group>"; };
+		25FBF66B2180901E00DFE7F5 /* WorkoutPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPanelView.swift; sourceTree = "<group>"; };
+		25FBF6702180903200DFE7F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/WorkoutPanelView.xib; sourceTree = "<group>"; };
+		25FBF6732180903400DFE7F5 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/WorkoutPanelView.strings; sourceTree = "<group>"; };
+		25FBF6742180961B00DFE7F5 /* WorkoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutButton.swift; sourceTree = "<group>"; };
+		25FBF6762180E85300DFE7F5 /* SettingTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewHeader.swift; sourceTree = "<group>"; };
+		25FBF67B2180E94500DFE7F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingTableViewHeader.xib; sourceTree = "<group>"; };
+		25FBF67E2180E94700DFE7F5 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/SettingTableViewHeader.strings; sourceTree = "<group>"; };
 		3109EE263342C58568A5CE2B /* Pods-PickUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickUpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PickUpTests/Pods-PickUpTests.release.xcconfig"; sourceTree = "<group>"; };
 		44E0496C3048BAF6499F2CA3 /* Pods_PickUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D18D32500714050A0AA34 /* Pods_PickUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +190,10 @@
 				252C22532120B2070033814F /* GenderCheckboxesView.swift */,
 				2542C9E5213C007100FCF041 /* ProfileImageView.swift */,
 				25FBF6512178A37D00DFE7F5 /* MapPanelView.swift */,
+				25FBF663217B88F200DFE7F5 /* ProfileDetailsView.swift */,
+				25FBF66B2180901E00DFE7F5 /* WorkoutPanelView.swift */,
+				25FBF6742180961B00DFE7F5 /* WorkoutButton.swift */,
+				25FBF6762180E85300DFE7F5 /* SettingTableViewHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,7 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				2536C4F3212DCEE10005A7EA /* Languages */,
-				2559B82C21283101006A5E5E /* Settings.swift */,
+				2559B82C21283101006A5E5E /* ApiSettings.swift */,
 				2542C9EC213C10DE00FCF041 /* Constants.swift */,
 			);
 			path = Helpers;
@@ -193,6 +223,7 @@
 				25EA36522168F9D90028D257 /* HistoryViewController.swift */,
 				25EA36542168FA020028D257 /* AboutAppViewController.swift */,
 				25EA36562168FA1E0028D257 /* SettingsViewController.swift */,
+				25E650A7218489530065A7FB /* PopUpTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -202,6 +233,7 @@
 			children = (
 				2542C9E7213C0EA600FCF041 /* XIB'S */,
 				2542C9E8213C0EE600FCF041 /* LeftSidePanelTableViewCell.swift */,
+				25E650A321847AE50065A7FB /* SettingTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -218,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				2542C9E9213C0EE600FCF041 /* LeftSidePanelTableViewCell.xib */,
+				25E650A421847AE50065A7FB /* SettingTableViewCell.xib */,
 			);
 			path = "XIB'S";
 			sourceTree = "<group>";
@@ -226,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				258262AD213AD81C0004CA11 /* CenterViewControllerDelegate.swift */,
+				25FBF66921808A4900DFE7F5 /* LocationInjectorProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -236,6 +270,8 @@
 				253CCA31212C97BC00C4AFED /* Event.swift */,
 				2542C9F3213C183600FCF041 /* MenuItem.swift */,
 				25FBF65F2178BA9C00DFE7F5 /* User.swift */,
+				25FBF6672180893100DFE7F5 /* Location.swift */,
+				25E650AB21848C100065A7FB /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -342,6 +378,8 @@
 				25FBF6582178B05200DFE7F5 /* MapPanelView.xib */,
 				2542C9F0213C14CE00FCF041 /* ProfileImageView.xib */,
 				2568969D2131BD3A0087E6E0 /* GenderCheckboxes.xib */,
+				25FBF6712180903200DFE7F5 /* WorkoutPanelView.xib */,
+				25FBF67C2180E94500DFE7F5 /* SettingTableViewHeader.xib */,
 			);
 			path = "XIB's";
 			sourceTree = "<group>";
@@ -458,9 +496,12 @@
 				2542C9EE213C14CE00FCF041 /* ProfileImageView.xib in Resources */,
 				256896992131BB4A0087E6E0 /* Localizable.strings in Resources */,
 				25FBF65A2178B05200DFE7F5 /* MapPanelView.xib in Resources */,
+				25E650A621847AE50065A7FB /* SettingTableViewCell.xib in Resources */,
 				259B4BDB20EF7DC2001DBB23 /* LaunchScreen.storyboard in Resources */,
 				2568969B2131BD3A0087E6E0 /* GenderCheckboxes.xib in Resources */,
+				25FBF67A2180E94500DFE7F5 /* SettingTableViewHeader.xib in Resources */,
 				2574865720F369D600FB3DF1 /* GoogleService-Info.plist in Resources */,
+				25FBF66F2180903200DFE7F5 /* WorkoutPanelView.xib in Resources */,
 				2528905E213B58BC002A189B /* Assets.xcassets in Resources */,
 				2542C9EB213C0EE600FCF041 /* LeftSidePanelTableViewCell.xib in Resources */,
 			);
@@ -562,6 +603,7 @@
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SelectionDialog/SelectionDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -581,6 +623,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SelectionDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -616,12 +659,14 @@
 				253388DF2113AAD9005FBAD7 /* BaseAuthViewController.swift in Sources */,
 				256896A12131CB350087E6E0 /* LoginViewModel.swift in Sources */,
 				253D92CD211B6D3500E381D2 /* ShadowRoundedView.swift in Sources */,
+				25E650A9218489530065A7FB /* PopUpTableViewController.swift in Sources */,
 				2536C4F6212DE0310005A7EA /* ShakeAnimationView.swift in Sources */,
 				2542C9ED213C10DE00FCF041 /* Constants.swift in Sources */,
 				2542C9F6213C5FFE00FCF041 /* ProfileViewController.swift in Sources */,
 				2559B833212836B6006A5E5E /* RegistrationViewModel.swift in Sources */,
 				253CCA32212C97BC00C4AFED /* Event.swift in Sources */,
 				25A51BD3213ACA6D00487501 /* MapViewController.swift in Sources */,
+				25FBF664217B88F200DFE7F5 /* ProfileDetailsView.swift in Sources */,
 				2542C9E6213C007100FCF041 /* ProfileImageView.swift in Sources */,
 				2559B83121283348006A5E5E /* AuthService.swift in Sources */,
 				25FBF6622178F59500DFE7F5 /* CachingImageView.swift in Sources */,
@@ -641,15 +686,22 @@
 				253388DD2113A4C0005FBAD7 /* ControllersFactory.swift in Sources */,
 				25FBF6602178BA9C00DFE7F5 /* User.swift in Sources */,
 				253D92CF211B7CC900E381D2 /* GradientView.swift in Sources */,
-				2559B82D21283101006A5E5E /* Settings.swift in Sources */,
+				25E650A521847AE50065A7FB /* SettingTableViewCell.swift in Sources */,
+				2559B82D21283101006A5E5E /* ApiSettings.swift in Sources */,
+				25FBF66C2180901E00DFE7F5 /* WorkoutPanelView.swift in Sources */,
 				2548FEBA2124A7F800B881F5 /* ResetPasswordViewController.swift in Sources */,
 				25EA36552168FA020028D257 /* AboutAppViewController.swift in Sources */,
 				258262AC213AD5D40004CA11 /* LeftSidePanelViewController.swift in Sources */,
+				25FBF6682180893100DFE7F5 /* Location.swift in Sources */,
 				2548FEBC2124AF2900B881F5 /* PresentDetail.swift in Sources */,
 				2542C9F4213C183600FCF041 /* MenuItem.swift in Sources */,
 				25EA36592168FCAA0028D257 /* BaseMenuViewController.swift in Sources */,
 				25CF9187211CC4B9009BD14C /* AddBorderToEdgeView.swift in Sources */,
+				25FBF6752180961B00DFE7F5 /* WorkoutButton.swift in Sources */,
+				25FBF6772180E85300DFE7F5 /* SettingTableViewHeader.swift in Sources */,
+				25FBF66A21808A4900DFE7F5 /* LocationInjectorProtocol.swift in Sources */,
 				25CF918E211CD21F009BD14C /* InitViewFromNIB.swift in Sources */,
+				25E650AC21848C100065A7FB /* Settings.swift in Sources */,
 				259B4BD120EF7DC2001DBB23 /* AppDelegate.swift in Sources */,
 				25EA36572168FA1E0028D257 /* SettingsViewController.swift in Sources */,
 			);
@@ -717,6 +769,24 @@
 				25FBF65D2178B05A00DFE7F5 /* pl */,
 			);
 			name = MapPanelView.xib;
+			sourceTree = "<group>";
+		};
+		25FBF6712180903200DFE7F5 /* WorkoutPanelView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25FBF6702180903200DFE7F5 /* Base */,
+				25FBF6732180903400DFE7F5 /* pl */,
+			);
+			name = WorkoutPanelView.xib;
+			sourceTree = "<group>";
+		};
+		25FBF67C2180E94500DFE7F5 /* SettingTableViewHeader.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25FBF67B2180E94500DFE7F5 /* Base */,
+				25FBF67E2180E94700DFE7F5 /* pl */,
+			);
+			name = SettingTableViewHeader.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

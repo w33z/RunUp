@@ -8,17 +8,23 @@
 
 import UIKit
 
-class HistoryViewController: BaseMenuViewController {
+class HistoryViewController: BaseMenuViewController, LocationInjectorProtocol{
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         addSubviews()
         addConstraints()
     }
 }
 
 extension HistoryViewController {
+    
+    fileprivate func setupNavigationBar() {
+
+        navigationItem.title = "History"
+    }
     
     fileprivate func addSubviews() {
 

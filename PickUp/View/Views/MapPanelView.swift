@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SelectionDialog
 
 class MapPanelView: UIView {
     
@@ -21,10 +22,14 @@ class MapPanelView: UIView {
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var workoutLabel: UILabel!
     
+    @IBOutlet weak var activView: UIView!
+    @IBOutlet weak var workoutView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setupView()
+        registerGestures()
     }
     
     fileprivate func setupView() {
@@ -35,5 +40,57 @@ class MapPanelView: UIView {
         workoutImageView.image = workoutImageView.image?.withRenderingMode(.alwaysTemplate)
         activityImageView.tintColor = UIColor.cLightBlue
         workoutImageView.tintColor = UIColor.cLightBlue
+    }
+    
+    fileprivate func registerGestures() {
+        let activityTap = UITapGestureRecognizer(target: self, action: #selector(activityViewTapped))
+        let workoutTap = UITapGestureRecognizer(target: self, action: #selector(workoutViewTapped))
+        
+        activView.addGestureRecognizer(activityTap)
+        workoutView.addGestureRecognizer(workoutTap)
+    }
+    
+    @objc func activityViewTapped() {
+        let dialog = SelectionDialog(title: NSLocalizedString("Activity", comment: ""), closeButtonTitle: NSLocalizedString("Close", comment: ""))
+        
+        dialog.addItem(item: "Walking") {
+            self.activityLabel.text = "Walking"
+            Settings.instance.activity = .Walking
+            dialog.close()
+        }
+        dialog.addItem(item: "Running") {
+            self.activityLabel.text = "Running"
+            Settings.instance.activity = .Running
+            dialog.close()
+        }
+        dialog.addItem(item: "Cycling") {
+            self.activityLabel.text = "Cycling"
+            Settings.instance.activity = .Cycling
+            dialog.close()
+        }
+        
+        dialog.show()
+    }
+    
+    @objc func workoutViewTapped() {
+        let dialog = SelectionDialog(title: "Workout", closeButtonTitle: NSLocalizedString("Close", comment: ""))
+
+        dialog.addItem(item: "Tranning") {
+            self.workoutLabel.text = "Tranning"
+            Settings.instance.workout = .Tranning
+            dialog.close()
+        }
+        dialog.addItem(item: "Speed") {
+            self.workoutLabel.text = "Speed"
+            Settings.instance.workout = .Speed
+            dialog.close()
+        }
+        dialog.addItem(item: "Distance") {
+            self.workoutLabel.text = "Distance"
+            Settings.instance.workout = .Distance
+            dialog.close()
+        }
+        
+        dialog.show()
     }
 }

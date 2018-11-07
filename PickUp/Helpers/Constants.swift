@@ -11,3 +11,5 @@ import Foundation
 
 // ReusableCellIdentifier
 let LEFTSIDEPANELCELL = "LeftSidePanelCell"
+
+//

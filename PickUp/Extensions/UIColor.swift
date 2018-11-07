@@ -29,4 +29,8 @@ extension UIColor {
     static var cBlue: UIColor {
         return UIColor(r: 34, g: 74, b: 174)
     }
+    
+    static var cBG: UIColor {
+        return UIColor(r: 234, g: 239, b: 242)
+    }
 }

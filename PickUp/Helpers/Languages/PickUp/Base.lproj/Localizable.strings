@@ -41,5 +41,16 @@
 "The user you entered does not exist" = "The user you entered does not exist";
 "The email address is already in use by another account." = "The email address is already in use by another account";
 
-//Menu
+// Menu
 "Your profile" = "Your profile";
+
+// Map
+"Activity" = "Activity";
+
+// Settings
+"Distance" = "Distance";
+"Speed" = "Speed";
+"Deegres" = "Deegres";
+"Satellite" = "Satellite";
+"Close" = "Close";
+

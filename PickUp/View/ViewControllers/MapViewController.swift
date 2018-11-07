@@ -11,7 +11,7 @@ import SnapKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, LocationInjectorProtocol {
 
     private let mapView: MKMapView = {
         let mapView = MKMapView()
@@ -33,6 +33,9 @@ class MapViewController: UIViewController {
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesturePanelView(_:)))
         view.addGestureRecognizer(pan)
+        
+//        view.startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
+        
         return view
     }()
     
@@ -59,6 +62,12 @@ class MapViewController: UIViewController {
         return view
     }()
     
+    private lazy var workOutPanelView: WorkoutPanelView = {
+        let view = UIView.instanceFromNib(name: "WorkoutPanelView") as! WorkoutPanelView
+        
+        return view
+    }()
+    
     var isOpen: Bool = false {
         didSet {
             if isOpen {
@@ -76,6 +85,7 @@ class MapViewController: UIViewController {
             }
         }
     }
+    
     
     var delegate: CenterViewControllerDelegate?
     var locationManager: CLLocationManager!
@@ -103,8 +113,13 @@ class MapViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.startUpdatingLocation()
-        
         centerMap()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -136,6 +151,36 @@ class MapViewController: UIViewController {
         
         centerMapView.fadeTo(alphaValue: 0.0, withDuration: 0.2)
     }
+    
+    var mapViewBottomConstraint: Constraint?
+    var workoutPanelBottomConstraint: Constraint?
+    
+    var isEnable: Bool = false
+    
+    @IBAction func startButtonTapped(_ sender: Any) {
+
+        mapViewBottomConstraint?.update(inset: workOutPanelView.frame.height)
+        workoutPanelBottomConstraint?.update(inset: 0)
+
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: { _ in
+            self.isEnable = !self.isEnable
+        })
+    }
+    
+    @IBAction func finishButtonTapped(_ sender: Any) {
+        
+        mapViewBottomConstraint?.update(offset: workOutPanelView.frame.height)
+        workoutPanelBottomConstraint?.update(offset: 350)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: { _ in
+
+            self.isEnable = !self.isEnable
+        })
+    }
 }
 
 extension MapViewController {
@@ -146,6 +191,7 @@ extension MapViewController {
         view.addSubview(menuButton)
         view.addSubview(panelView)
         view.addSubview(centerMapView)
+        view.addSubview(workOutPanelView)
     }
     
     fileprivate func addConstraints() {
@@ -157,7 +203,8 @@ extension MapViewController {
         })
         
         mapView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.leading.top.trailing.equalToSuperview()
+            self.mapViewBottomConstraint = make.bottom.equalToSuperview().constraint
         }
         
         panelView.snp.makeConstraints { (make) in
@@ -171,17 +218,28 @@ extension MapViewController {
             make.trailing.equalTo(panelView).offset(-25)
             make.width.height.equalTo(50)
         }
+        
+        workOutPanelView.snp.makeConstraints { (make) in
+            make.leading.trailing.equalToSuperview()
+            self.workoutPanelBottomConstraint = make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(350).constraint
+            make.height.equalTo(330)
+        }
     }
 }
 
 extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        guard let coordinate = manager.location?.coordinate else { return }
-//
-//        print(coordinate)
-//        let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01))
-//        mapView.setRegion(region, animated: true)
+        guard let coordinate = manager.location?.coordinate else { return }
+
+        location.setCordinates(coordinate.latitude, coordinate.longitude)
+        
+        if isEnable {
+            let region = MKCoordinateRegion(center: coordinate, span: .init(latitudeDelta: 0.005, longitudeDelta: 0.005))
+            mapView.setRegion(region, animated: true)
+        }
+        
+        let speed = (manager.location?.speed)! * 3.6
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -191,7 +249,7 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         centerMapView.fadeTo(alphaValue: 1.0, withDuration: 0.2)
     }
-
+    
 }
 
 extension MapViewController: UIGestureRecognizerDelegate {

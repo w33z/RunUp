@@ -19,8 +19,9 @@ extension UIImageView {
             return
         }
         
-        let url = URL(string: urlString)
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if error != nil {
                 debugPrint(error!.localizedDescription)
@@ -33,7 +34,7 @@ extension UIImageView {
                 
                 self.image = image
             }
-            }.resume()
+        }.resume()
     }
     
 }

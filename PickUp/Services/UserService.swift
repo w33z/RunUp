@@ -13,8 +13,8 @@ import RealmSwift
 class UserService {
     static let instance = UserService()
     
-    private var _REF_USERS = Settings.REF_BASE.child("users")
-    private var _REF_USERNAMES = Settings.REF_BASE.child("usernames")
+    private var _REF_USERS = ApiSettings.REF_BASE.child("users")
+    private var _REF_USERNAMES = ApiSettings.REF_BASE.child("usernames")
     
     
     var REF_USERS: DatabaseReference {

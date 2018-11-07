@@ -9,9 +9,9 @@
 import Foundation
 import Firebase
 
-class Settings {
+class ApiSettings {
     private static var _DB_BASE = Database.database().reference()
-    private static var _REF_BASE = Settings.DB_BASE
+    private static var _REF_BASE = ApiSettings.DB_BASE
 
     static var DB_BASE: DatabaseReference {
         return _DB_BASE

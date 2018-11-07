@@ -21,7 +21,7 @@ class ProfileImageView: UIView {
     
     fileprivate func setupView() {
         isUserInteractionEnabled = true
-        profileImage.makeShadowRounded(radius: 25)
+        profileImage.makeShadowRounded(radius: 40)
         profileImage.clipsToBounds = true
         
         fullnameLabel.adjustsFontSizeToFitWidth = true

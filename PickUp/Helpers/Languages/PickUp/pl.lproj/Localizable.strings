@@ -43,3 +43,14 @@
 
 // Menu
 "Your profile" = "Twój profil";
+
+// Map
+"Activity" = "Aktywność";
+
+// Settings
+"Distance" = "Dystans";
+"Speed" = "Prędkość";
+"Deegres" = "Stopnie";
+"Satellite" = "Satelita";
+"Close" = "Zamknij";
+

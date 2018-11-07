@@ -88,8 +88,8 @@ extension LeftSidePanelViewController {
         }
         
         profileImageView.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.leading.trailing.bottom.top.equalToSuperview()
+            make.top.equalToSuperview().offset(25)
+            make.leading.trailing.bottom.equalToSuperview()
         }
 
 

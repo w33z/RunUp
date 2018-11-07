@@ -20,10 +20,25 @@ target 'PickUp' do
   pod 'IQKeyboardManagerSwift'
   pod 'FBSDKCoreKit', '4.35'
   pod 'FBSDKLoginKit', '4.35'
-    
-  target 'PickUpTests' do
+  pod 'SelectionDialog'
+  
+end
+
+target 'PickUpTests' do
     inherit! :search_paths
     # Pods for testing
-  end
+end
 
+post_install do |installer|
+    installer.pods_project.build_configurations.each do |config|
+        config.build_settings.delete('CODE_SIGNING_ALLOWED')
+        config.build_settings.delete('CODE_SIGNING_REQUIRED')
+    end
+    installer.pods_project.targets.each do |target|
+        if ['SelectionDialog'].include? target.name
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '4.0'
+            end
+        end
+    end
 end

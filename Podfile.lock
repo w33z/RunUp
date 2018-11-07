@@ -92,6 +92,7 @@ PODS:
   - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
   - RxSwift (4.3.1)
+  - SelectionDialog (3.0.0)
   - SnapKit (4.0.1)
 
 DEPENDENCIES:
@@ -108,6 +109,7 @@ DEPENDENCIES:
   - RealmSwift
   - RxCocoa (~> 4.3.1)
   - RxSwift (~> 4.3.1)
+  - SelectionDialog
   - SnapKit (~> 4.0.1)
 
 SPEC CHECKSUMS:
@@ -135,8 +137,9 @@ SPEC CHECKSUMS:
   RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  SelectionDialog: 9f4b63f2fc004f2b834a9980870a698f98516897
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: 90d11a9301903ef324aecbc44138d00a5f520c40
+PODFILE CHECKSUM: 687eb64564db590b13860254a391fefb2a5602b3
 
 COCOAPODS: 1.4.0

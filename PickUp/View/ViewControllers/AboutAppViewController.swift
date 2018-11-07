@@ -13,12 +13,17 @@ class AboutAppViewController: BaseMenuViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         addSubviews()
         addConstraints()
     }
 }
 
 extension AboutAppViewController {
+    
+    fileprivate func setupNavigationBar() {
+        navigationItem.title = "About App"
+    }
     
     fileprivate func addSubviews() {
 
