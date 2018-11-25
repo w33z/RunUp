@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import CoreLocation.CLLocation
+import RealmSwift
 
-class Location {
-    var latitude: Double
-    var longitude: Double
+class Location: Object {
+    @objc dynamic var latitude: Double = 0
+    @objc dynamic var longitude: Double = 0
     
-    init() {
-        self.latitude = 0
-        self.longitude = 0
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
     func setCordinates(_ latitude: Double, _ longitude: Double) {

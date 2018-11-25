@@ -62,7 +62,7 @@ class MapViewController: UIViewController, LocationInjectorProtocol {
         return view
     }()
     
-    private lazy var workOutPanelView: WorkoutPanelView = {
+    private lazy var workoutPanelView: WorkoutPanelView = {
         let view = UIView.instanceFromNib(name: "WorkoutPanelView") as! WorkoutPanelView
         
         return view
@@ -86,7 +86,7 @@ class MapViewController: UIViewController, LocationInjectorProtocol {
         }
     }
     
-    
+    let viewmodel = MapViewModel()
     var delegate: CenterViewControllerDelegate?
     var locationManager: CLLocationManager!
     
@@ -103,6 +103,7 @@ class MapViewController: UIViewController, LocationInjectorProtocol {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         mapView.delegate = self
+        mapView.userTrackingMode = .followWithHeading
         
         addSubviews()
         addConstraints()
@@ -111,7 +112,8 @@ class MapViewController: UIViewController, LocationInjectorProtocol {
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.startUpdatingLocation()
         centerMap()
     }
@@ -151,6 +153,22 @@ class MapViewController: UIViewController, LocationInjectorProtocol {
         
         centerMapView.fadeTo(alphaValue: 0.0, withDuration: 0.2)
     }
+    @IBAction func pauseResumeWorkoutButtonTapped(_ sender: UIButton) {
+        
+        if viewmodel.isPaused {
+            sender.setImage(UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            viewmodel.resumeWorkout()
+            
+        } else {
+            sender.setImage(UIImage(named: "play")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            viewmodel.pauseWorkout()
+
+        }
+    }
+    
+    @objc func workoutDidStart() {
+        workoutPanelView.configure(workout: viewmodel.workout)
+    }
     
     var mapViewBottomConstraint: Constraint?
     var workoutPanelBottomConstraint: Constraint?
@@ -159,25 +177,35 @@ class MapViewController: UIViewController, LocationInjectorProtocol {
     
     @IBAction func startButtonTapped(_ sender: Any) {
 
-        mapViewBottomConstraint?.update(inset: workOutPanelView.frame.height)
+        mapViewBottomConstraint?.update(inset: workoutPanelView.frame.height)
         workoutPanelBottomConstraint?.update(inset: 0)
 
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         }, completion: { _ in
+            self.viewmodel.startWorkout()
+           NotificationCenter.default.addObserver(self, selector: #selector(self.workoutDidStart), name: Notification.Name.WorkoutDidStartNotification, object: nil)
             self.isEnable = !self.isEnable
         })
     }
     
     @IBAction func finishButtonTapped(_ sender: Any) {
         
-        mapViewBottomConstraint?.update(offset: workOutPanelView.frame.height)
+        mapViewBottomConstraint?.update(offset: workoutPanelView.frame.height)
         workoutPanelBottomConstraint?.update(offset: 350)
+        
+        viewmodel.stopWorkout()
+        workoutPanelView.reset()
+        
+        let overlays = mapView.overlays
+        mapView.removeOverlays(overlays)
+        
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.WorkoutDidStartNotification, object: nil)
+
         
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         }, completion: { _ in
-
             self.isEnable = !self.isEnable
         })
     }
@@ -191,7 +219,7 @@ extension MapViewController {
         view.addSubview(menuButton)
         view.addSubview(panelView)
         view.addSubview(centerMapView)
-        view.addSubview(workOutPanelView)
+        view.addSubview(workoutPanelView)
     }
     
     fileprivate func addConstraints() {
@@ -219,7 +247,7 @@ extension MapViewController {
             make.width.height.equalTo(50)
         }
         
-        workOutPanelView.snp.makeConstraints { (make) in
+        workoutPanelView.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             self.workoutPanelBottomConstraint = make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(350).constraint
             make.height.equalTo(330)
@@ -230,16 +258,51 @@ extension MapViewController {
 extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        guard let locat = manager.location else { return }
         guard let coordinate = manager.location?.coordinate else { return }
 
         location.setCordinates(coordinate.latitude, coordinate.longitude)
         
         if isEnable {
+            let myLocations = viewmodel.locations
+            viewmodel.locations.append(locations.first!)
+
             let region = MKCoordinateRegion(center: coordinate, span: .init(latitudeDelta: 0.005, longitudeDelta: 0.005))
             mapView.setRegion(region, animated: true)
+            
+            if myLocations.count > 1 {
+                let sourceIndex = myLocations.count - 1
+                let destinationIndex = myLocations.count - 2
+                
+                let coords1 = myLocations[sourceIndex].coordinate
+                let coords2 = myLocations[destinationIndex].coordinate
+                
+                var a = [coords1, coords2]
+                let polyline = MKGeodesicPolyline(coordinates: &a, count: a.count)
+                mapView.addOverlay(polyline)
+                
+                let distance = myLocations[sourceIndex].distance(from: myLocations[destinationIndex])
+                viewmodel.workout.distance += distance
+            }
+            
+            if let workout = viewmodel.workout {
+                workout.speed = locat.speed
+            }
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        if let overlay = overlay as? MKPolyline {
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = UIColor.cBlue
+            polylineRenderer.lineWidth = 4
+            
+            return polylineRenderer
         }
         
-        let speed = (manager.location?.speed)! * 3.6
+        fatalError("Something wrong...")
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -302,4 +365,8 @@ extension MapViewController: UIGestureRecognizerDelegate {
                 break
         }
     }
+}
+
+extension Notification.Name {
+    static let WorkoutDidStartNotification = Notification.Name("WorkoutDidStartNotification")
 }

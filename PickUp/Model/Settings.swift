@@ -17,16 +17,38 @@ enum SettingOptions: String {
     case Celsius
 }
 
-enum ActivityOptions: String {
+@objc enum ActivityOptions: Int {
     case Walking
     case Running
     case Cycling
+    
+    func name() -> String {
+        switch self {
+            case .Walking:
+                return "Walking"
+            case .Running:
+                return "Running"
+            case .Cycling:
+                return "Cycling"
+        }
+    }
 }
 
-enum WorkoutOptions: String {
+@objc enum WorkoutOptions: Int {
     case Tranning
     case Speed
     case Distance
+
+    func name() -> String {
+        switch self {
+            case .Tranning:
+                return "Tranning"
+            case .Speed:
+                return "Speed"
+            case .Distance:
+                return "Distance"
+        }
+    }
 }
 
 class Settings {
@@ -42,9 +64,5 @@ class Settings {
             NotificationCenter.default.post(name: Notification.Name.ActivityDidChangeNotification, object: nil)
         }
     }
-    var workout: WorkoutOptions = .Tranning {
-        didSet {
-            
-        }
-    }
+    var workout: WorkoutOptions = .Tranning
 }
