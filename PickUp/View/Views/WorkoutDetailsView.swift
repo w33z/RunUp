@@ -22,6 +22,9 @@ class WorkoutDetailsView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        if Settings.instance.satellite {
+            mapView.mapType = .hybridFlyover
+        }
     }
     
     func configureView(workout: Workout) {

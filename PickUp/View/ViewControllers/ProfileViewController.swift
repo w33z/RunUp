@@ -17,10 +17,12 @@ class ProfileViewController: BaseMenuViewController {
         return view
     }()
     
-    var profileDetailsView: UIView = {
-//        let view = UIView.instanceFromNib(name: "ProfileDetailsView") as! ProfileDetailsView
-        return UIView()
+    var profileDetailsView: ProfileDetailsView = {
+        let view = UIView.instanceFromNib(name: "ProfileDetailsView") as! ProfileDetailsView
+        return view
     }()
+    
+    let viewmodel = ProfileViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +30,26 @@ class ProfileViewController: BaseMenuViewController {
         setupNavigationBar()
         addSubviews()
         addConstraints()
+        
+        if let user = viewmodel.user {
+            profileImageView.configureView(user: user)
+            profileDetailsView.configureView(user: user)
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(userDidUpdate), name: Notification.Name.UserDidUpdateNotification, object: nil)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         backgroundView.makeGradientView()
+    }
+    
+    @objc fileprivate func userDidUpdate() {
+    
+        guard let height = Int(profileDetailsView.heightTextField.text!), let weight = Int(profileDetailsView.weightTextField.text!) else { return }
+        
+        viewmodel.updateUser(height: height, weight: weight)
     }
 }
 
@@ -48,6 +64,7 @@ extension ProfileViewController {
         
         view.addSubview(backgroundView)
         backgroundView.addSubview(profileImageView)
+        view.addSubview(profileDetailsView)
     }
     
     fileprivate func addConstraints() {
@@ -60,7 +77,17 @@ extension ProfileViewController {
         
         profileImageView.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
-            make.top.bottom.equalToSuperview().offset(-25)
+            make.top.bottom.equalToSuperview().offset(-5)
+        }
+        
+        profileDetailsView.snp.makeConstraints { (make) in
+            make.top.equalTo(backgroundView.snp.bottom).offset(15)
+            make.width.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
+}
+
+extension Notification.Name {
+    static let UserDidUpdateNotification = Notification.Name("UserDidUpdateNotification")
 }

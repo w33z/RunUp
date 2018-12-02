@@ -57,7 +57,11 @@ class Settings {
     var distance: SettingOptions = .Miles
     var speed: SettingOptions = .Mph
     var deegres: SettingOptions = .Fahrenheit
-    var satellite = false
+    var satellite = false {
+        didSet {
+            NotificationCenter.default.post(name: Notification.Name.SatelliteMapChangeNotification, object: nil)
+        }
+    }
     
     var activity: ActivityOptions = .Walking {
         didSet {

@@ -116,6 +116,8 @@ class MapViewController: UIViewController, LocationInjectorProtocol {
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.startUpdatingLocation()
         centerMap()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(satelliteMapToggled), name: Notification.Name.SatelliteMapChangeNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -163,6 +165,12 @@ class MapViewController: UIViewController, LocationInjectorProtocol {
             sender.setImage(UIImage(named: "play")?.withRenderingMode(.alwaysTemplate), for: .normal)
             viewmodel.pauseWorkout()
 
+        }
+    }
+    
+    @objc func satelliteMapToggled() {
+        if Settings.instance.satellite {
+            mapView.mapType = .hybridFlyover
         }
     }
     
@@ -369,4 +377,5 @@ extension MapViewController: UIGestureRecognizerDelegate {
 
 extension Notification.Name {
     static let WorkoutDidStartNotification = Notification.Name("WorkoutDidStartNotification")
+    static let SatelliteMapChangeNotification = Notification.Name("SatelliteMapChangeNotification")
 }

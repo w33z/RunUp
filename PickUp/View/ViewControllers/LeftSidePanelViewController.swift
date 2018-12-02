@@ -58,9 +58,10 @@ class LeftSidePanelViewController: UIViewController {
     
     func configureUserProfile() {
         let realm = try! Realm()
-        let user = realm.objects(User.self).first
         
-        profileImageView.configureProfileImageView(user: user)
+        if let user = realm.objects(User.self).first {
+            profileImageView.configureView(user: user)
+        }
     }
     
     @objc fileprivate func gradientViewTapped(_ sender: UITapGestureRecognizer) {

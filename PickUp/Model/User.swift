@@ -16,4 +16,6 @@ class User: Object {
     @objc dynamic var email = ""
     @objc dynamic var gender = ""
     @objc dynamic var profilePicURL = ""
+    @objc dynamic var height = 0
+    @objc dynamic var weight = 0
 }

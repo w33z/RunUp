@@ -21,13 +21,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BCO-KU-0ZI">
-                    <rect key="frame" x="0.0" y="20" width="375" height="250"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="280"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="250" id="iZC-m4-noI"/>
+                        <constraint firstAttribute="height" constant="280" id="iZC-m4-noI"/>
                     </constraints>
                 </mapView>
                 <view alpha="0.98000001907348633" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAx-N5-JDK">
-                    <rect key="frame" x="0.0" y="275" width="375" height="392"/>
+                    <rect key="frame" x="0.0" y="305" width="375" height="362"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.98000001907348633" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WALKING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ycE-dk-F3V">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
@@ -151,7 +151,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="Q8l-CB-KtX">
-                            <rect key="frame" x="0.0" y="115" width="375" height="50"/>
+                            <rect key="frame" x="0.0" y="160" width="375" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="vua-6S-r0M"/>
                             </constraints>
@@ -170,7 +170,7 @@
                         <constraint firstItem="Q8l-CB-KtX" firstAttribute="leading" secondItem="WAx-N5-JDK" secondAttribute="leading" id="Tqs-yY-AmD"/>
                         <constraint firstItem="cj5-Ij-b4h" firstAttribute="leading" secondItem="WAx-N5-JDK" secondAttribute="leading" id="lCP-dL-Sfx"/>
                         <constraint firstItem="cj5-Ij-b4h" firstAttribute="top" secondItem="ycE-dk-F3V" secondAttribute="bottom" id="mZS-fk-ZmI"/>
-                        <constraint firstItem="Q8l-CB-KtX" firstAttribute="top" secondItem="cj5-Ij-b4h" secondAttribute="bottom" id="p5B-8W-HQA"/>
+                        <constraint firstItem="Q8l-CB-KtX" firstAttribute="top" secondItem="cj5-Ij-b4h" secondAttribute="bottom" constant="45" id="p5B-8W-HQA"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="4je-QB-ppo"/>
                 </view>

@@ -28,9 +28,7 @@ class ProfileImageView: UIView {
         fullnameLabel.minimumScaleFactor = 0.5
     }
     
-    func configureProfileImageView(user: User?) {
-        guard let user = user else { return }
-        
+    func configureView(user: User) {
         fullnameLabel.text = user.fullname
         profileImage.loadImageUsingCache(urlString: user.profilePicURL)
     }
