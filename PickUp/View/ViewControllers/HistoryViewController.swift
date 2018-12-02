@@ -24,6 +24,24 @@ class HistoryViewController: BaseMenuViewController, LocationInjectorProtocol {
         return table
     }()
     
+    private var emptyLabel: UILabel = {
+        let label = UILabel()
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        
+        let attributedText = NSAttributedString(string: "No workout to show", attributes: [
+                NSAttributedString.Key.font : UIFont(name: "HelveticaNeue", size: 22)!,
+                NSAttributedString.Key.foregroundColor : UIColor.lightGray.withAlphaComponent(0.15),
+                NSAttributedString.Key.paragraphStyle : paragraphStyle,
+                NSAttributedString.Key.textEffect : NSAttributedString.TextEffectStyle.letterpressStyle
+            ])
+        
+        label.attributedText = attributedText
+        label.isHidden = true
+        return label
+    }()
+    
     let viewmodel = HistoryViewModel()
     
     private var workouts: [Workout]!
@@ -50,17 +68,30 @@ extension HistoryViewController {
     
     fileprivate func addSubviews() {
         view.addSubview(workoutTable)
+        view.addSubview(emptyLabel)
     }
     
     fileprivate func addConstraints() {
         workoutTable.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
+        emptyLabel.snp.makeConstraints { (make) in
+            make.centerX.centerY.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+        }
     }
 }
 
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if workouts.isEmpty {
+            emptyLabel.isHidden = false
+        } else {
+            emptyLabel.isHidden = true
+        }
+        
         return workouts.count
     }
     
