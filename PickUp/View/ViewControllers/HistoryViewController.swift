@@ -17,7 +17,7 @@ class HistoryViewController: BaseMenuViewController, LocationInjectorProtocol {
         table.dataSource = self
         table.register(UINib(nibName: "HistoryTableViewCell", bundle: nil), forCellReuseIdentifier: HistoryTableViewCell.identifier)
         
-        table.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
+        table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0)
         table.separatorStyle = .none
         table.alwaysBounceHorizontal = false
         table.showsHorizontalScrollIndicator = false
@@ -74,6 +74,15 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return 125
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let workout = workouts[indexPath.row]
+        
+        let workoutDetails = ControllersFactory.allocController(.WorkoutDetailsCtrl) as! WorkoutDetailsViewController
+        workoutDetails.workout = workout
+        
+        navigationController?.pushViewController(workoutDetails, animated: true)
     }
 }

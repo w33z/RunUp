@@ -33,4 +33,8 @@ extension UIColor {
     static var cBG: UIColor {
         return UIColor(r: 234, g: 239, b: 242)
     }
+    
+    static var mapBlue: UIColor {
+        return UIColor(r: 17, g: 147, b: 255)
+    }
 }

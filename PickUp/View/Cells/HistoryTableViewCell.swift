@@ -21,10 +21,18 @@ class HistoryTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        let inset = UIEdgeInsets(top: 15, left: 5, bottom: 5, right: 15)
-        contentView.frame = contentView.frame.inset(by: inset)
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let inset = UIEdgeInsets(top: 0, left: 2, bottom: 25, right: 2)
+        contentView.frame = contentView.frame.inset(by: inset)
+        
+        contentView.layer.cornerRadius = 15
+        contentView.layer.masksToBounds = true
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

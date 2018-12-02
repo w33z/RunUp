@@ -34,12 +34,6 @@ class BaseMenuViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
     @objc func popBarButtonTapped() {
         navigationController?.popViewController(animated: true)
     }

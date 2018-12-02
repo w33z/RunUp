@@ -55,7 +55,6 @@
 		25CF918E211CD21F009BD14C /* InitViewFromNIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF918D211CD21F009BD14C /* InitViewFromNIB.swift */; };
 		25E650A521847AE50065A7FB /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E650A321847AE50065A7FB /* SettingTableViewCell.swift */; };
 		25E650A621847AE50065A7FB /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25E650A421847AE50065A7FB /* SettingTableViewCell.xib */; };
-		25E650A9218489530065A7FB /* PopUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E650A7218489530065A7FB /* PopUpTableViewController.swift */; };
 		25E650AC21848C100065A7FB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E650AB21848C100065A7FB /* Settings.swift */; };
 		25EA36532168F9D90028D257 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA36522168F9D90028D257 /* HistoryViewController.swift */; };
 		25EA36552168FA020028D257 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA36542168FA020028D257 /* AboutAppViewController.swift */; };
@@ -63,6 +62,9 @@
 		25EA36592168FCAA0028D257 /* BaseMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA36582168FCAA0028D257 /* BaseMenuViewController.swift */; };
 		25ED269321A0562200B5FC9D /* AverageArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ED269221A0562200B5FC9D /* AverageArrayExtension.swift */; };
 		25EDDF0D214FDA92000CB660 /* SummaryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDDF0C214FDA92000CB660 /* SummaryCollectionViewController.swift */; };
+		25F4058521B413510025F91D /* WorkoutDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F4058421B413510025F91D /* WorkoutDetailsViewController.swift */; };
+		25F4058821B417B80025F91D /* WorkoutDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25F4058A21B417B80025F91D /* WorkoutDetailsView.xib */; };
+		25F4058E21B417D30025F91D /* WorkoutDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F4058D21B417D30025F91D /* WorkoutDetailsView.swift */; };
 		25FBF6522178A37D00DFE7F5 /* MapPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBF6512178A37D00DFE7F5 /* MapPanelView.swift */; };
 		25FBF65A2178B05200DFE7F5 /* MapPanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25FBF6582178B05200DFE7F5 /* MapPanelView.xib */; };
 		25FBF6602178BA9C00DFE7F5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBF65F2178BA9C00DFE7F5 /* User.swift */; };
@@ -146,7 +148,6 @@
 		25CF918D211CD21F009BD14C /* InitViewFromNIB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitViewFromNIB.swift; sourceTree = "<group>"; };
 		25E650A321847AE50065A7FB /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		25E650A421847AE50065A7FB /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
-		25E650A7218489530065A7FB /* PopUpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpTableViewController.swift; sourceTree = "<group>"; };
 		25E650AB21848C100065A7FB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		25EA36522168F9D90028D257 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		25EA36542168FA020028D257 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +155,10 @@
 		25EA36582168FCAA0028D257 /* BaseMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMenuViewController.swift; sourceTree = "<group>"; };
 		25ED269221A0562200B5FC9D /* AverageArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageArrayExtension.swift; sourceTree = "<group>"; };
 		25EDDF0C214FDA92000CB660 /* SummaryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCollectionViewController.swift; sourceTree = "<group>"; };
+		25F4058421B413510025F91D /* WorkoutDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailsViewController.swift; sourceTree = "<group>"; };
+		25F4058921B417B80025F91D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/WorkoutDetailsView.xib; sourceTree = "<group>"; };
+		25F4058C21B417B90025F91D /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/WorkoutDetailsView.strings; sourceTree = "<group>"; };
+		25F4058D21B417D30025F91D /* WorkoutDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailsView.swift; sourceTree = "<group>"; };
 		25FBF6512178A37D00DFE7F5 /* MapPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPanelView.swift; sourceTree = "<group>"; };
 		25FBF65B2178B05500DFE7F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MapPanelView.xib; sourceTree = "<group>"; };
 		25FBF65D2178B05A00DFE7F5 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/MapPanelView.strings; sourceTree = "<group>"; };
@@ -210,6 +215,7 @@
 				25FBF66B2180901E00DFE7F5 /* WorkoutPanelView.swift */,
 				25FBF6742180961B00DFE7F5 /* WorkoutButton.swift */,
 				25FBF6762180E85300DFE7F5 /* SettingTableViewHeader.swift */,
+				25F4058D21B417D30025F91D /* WorkoutDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,7 +245,7 @@
 				25EA36522168F9D90028D257 /* HistoryViewController.swift */,
 				25EA36542168FA020028D257 /* AboutAppViewController.swift */,
 				25EA36562168FA1E0028D257 /* SettingsViewController.swift */,
-				25E650A7218489530065A7FB /* PopUpTableViewController.swift */,
+				25F4058421B413510025F91D /* WorkoutDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 				2568969D2131BD3A0087E6E0 /* GenderCheckboxes.xib */,
 				25FBF6712180903200DFE7F5 /* WorkoutPanelView.xib */,
 				25FBF67C2180E94500DFE7F5 /* SettingTableViewHeader.xib */,
+				25F4058A21B417B80025F91D /* WorkoutDetailsView.xib */,
 			);
 			path = "XIB's";
 			sourceTree = "<group>";
@@ -527,6 +534,7 @@
 			files = (
 				2542C9EE213C14CE00FCF041 /* ProfileImageView.xib in Resources */,
 				256896992131BB4A0087E6E0 /* Localizable.strings in Resources */,
+				25F4058821B417B80025F91D /* WorkoutDetailsView.xib in Resources */,
 				25FBF65A2178B05200DFE7F5 /* MapPanelView.xib in Resources */,
 				25E650A621847AE50065A7FB /* SettingTableViewCell.xib in Resources */,
 				259B4BDB20EF7DC2001DBB23 /* LaunchScreen.storyboard in Resources */,
@@ -693,7 +701,6 @@
 				253388DF2113AAD9005FBAD7 /* BaseAuthViewController.swift in Sources */,
 				256896A12131CB350087E6E0 /* LoginViewModel.swift in Sources */,
 				253D92CD211B6D3500E381D2 /* ShadowRoundedView.swift in Sources */,
-				25E650A9218489530065A7FB /* PopUpTableViewController.swift in Sources */,
 				2536C4F6212DE0310005A7EA /* ShakeAnimationView.swift in Sources */,
 				2542C9ED213C10DE00FCF041 /* Constants.swift in Sources */,
 				2542C9F6213C5FFE00FCF041 /* ProfileViewController.swift in Sources */,
@@ -704,6 +711,7 @@
 				2542C9E6213C007100FCF041 /* ProfileImageView.swift in Sources */,
 				2559B83121283348006A5E5E /* AuthService.swift in Sources */,
 				25FBF6622178F59500DFE7F5 /* CachingImageView.swift in Sources */,
+				25F4058E21B417D30025F91D /* WorkoutDetailsView.swift in Sources */,
 				257BCD85213475EB007D57D4 /* ResetPasswordViewModel.swift in Sources */,
 				258262B0213B0A210004CA11 /* FadeToView.swift in Sources */,
 				2548FEBE2125F16600B881F5 /* LoginViewController.swift in Sources */,
@@ -725,6 +733,7 @@
 				253D92CF211B7CC900E381D2 /* GradientView.swift in Sources */,
 				25FC43352198B68C003561BD /* MapViewModel.swift in Sources */,
 				25FC43372198B741003561BD /* Workout.swift in Sources */,
+				25F4058521B413510025F91D /* WorkoutDetailsViewController.swift in Sources */,
 				25E650A521847AE50065A7FB /* SettingTableViewCell.swift in Sources */,
 				2559B82D21283101006A5E5E /* ApiSettings.swift in Sources */,
 				25FBF66C2180901E00DFE7F5 /* WorkoutPanelView.swift in Sources */,
@@ -800,6 +809,15 @@
 				256896962131BACA0087E6E0 /* pl */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		25F4058A21B417B80025F91D /* WorkoutDetailsView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25F4058921B417B80025F91D /* Base */,
+				25F4058C21B417B90025F91D /* pl */,
+			);
+			name = WorkoutDetailsView.xib;
 			sourceTree = "<group>";
 		};
 		25FBF6582178B05200DFE7F5 /* MapPanelView.xib */ = {

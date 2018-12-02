@@ -21,6 +21,7 @@ enum ControllerType: String {
     case HistoryCtrl = "HistoryViewController"
     case AboutAppCtrl = "AboutAppViewController"
     case SettingsCtrl = "SettingsViewController"
+    case WorkoutDetailsCtrl = "WorkoutDetailsViewController"
 }
 
 class ControllersFactory {
