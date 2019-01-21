@@ -41,7 +41,6 @@
 		2568969B2131BD3A0087E6E0 /* GenderCheckboxes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2568969D2131BD3A0087E6E0 /* GenderCheckboxes.xib */; };
 		256896A12131CB350087E6E0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256896A02131CB350087E6E0 /* LoginViewModel.swift */; };
 		256DD55B210F96310097818E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256DD55A210F96310097818E /* MainViewController.swift */; };
-		2574865720F369D600FB3DF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2574865620F369D600FB3DF1 /* GoogleService-Info.plist */; };
 		257BCD85213475EB007D57D4 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257BCD84213475EB007D57D4 /* ResetPasswordViewModel.swift */; };
 		258262AA213AD51B0004CA11 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258262A9213AD51B0004CA11 /* SlideMenuViewController.swift */; };
 		258262AC213AD5D40004CA11 /* LeftSidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258262AB213AD5D40004CA11 /* LeftSidePanelViewController.swift */; };
@@ -67,6 +66,7 @@
 		25F4058E21B417D30025F91D /* WorkoutDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F4058D21B417D30025F91D /* WorkoutDetailsView.swift */; };
 		25F4059021B42BAD0025F91D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F4058F21B42BAD0025F91D /* ProfileViewModel.swift */; };
 		25F4059321B437AB0025F91D /* ProfileDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25F4059521B437AB0025F91D /* ProfileDetailsView.xib */; };
+		25FB9CCF21F648110082E8E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25FB9CCE21F648110082E8E9 /* GoogleService-Info.plist */; };
 		25FBF6522178A37D00DFE7F5 /* MapPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBF6512178A37D00DFE7F5 /* MapPanelView.swift */; };
 		25FBF65A2178B05200DFE7F5 /* MapPanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25FBF6582178B05200DFE7F5 /* MapPanelView.xib */; };
 		25FBF6602178BA9C00DFE7F5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FBF65F2178BA9C00DFE7F5 /* User.swift */; };
@@ -131,7 +131,6 @@
 		2568969F2131BD3B0087E6E0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/GenderCheckboxes.strings; sourceTree = "<group>"; };
 		256896A02131CB350087E6E0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		256DD55A210F96310097818E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		2574865620F369D600FB3DF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Users/bartoszpawelczyk/Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		257BCD84213475EB007D57D4 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		258262A9213AD51B0004CA11 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
 		258262AB213AD5D40004CA11 /* LeftSidePanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSidePanelViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +163,7 @@
 		25F4058F21B42BAD0025F91D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		25F4059421B437AB0025F91D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProfileDetailsView.xib; sourceTree = "<group>"; };
 		25F4059721B437AD0025F91D /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/ProfileDetailsView.strings; sourceTree = "<group>"; };
+		25FB9CCE21F648110082E8E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		25FBF6512178A37D00DFE7F5 /* MapPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPanelView.swift; sourceTree = "<group>"; };
 		25FBF65B2178B05500DFE7F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MapPanelView.xib; sourceTree = "<group>"; };
 		25FBF65D2178B05A00DFE7F5 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/MapPanelView.strings; sourceTree = "<group>"; };
@@ -394,7 +394,7 @@
 				259B4BD720EF7DC2001DBB23 /* Assets.xcassets */,
 				259B4BD920EF7DC2001DBB23 /* LaunchScreen.storyboard */,
 				259B4BDC20EF7DC2001DBB23 /* Info.plist */,
-				2574865620F369D600FB3DF1 /* GoogleService-Info.plist */,
+				25FB9CCE21F648110082E8E9 /* GoogleService-Info.plist */,
 			);
 			path = PickUp;
 			sourceTree = "<group>";
@@ -548,11 +548,11 @@
 				259B4BDB20EF7DC2001DBB23 /* LaunchScreen.storyboard in Resources */,
 				2568969B2131BD3A0087E6E0 /* GenderCheckboxes.xib in Resources */,
 				25FBF67A2180E94500DFE7F5 /* SettingTableViewHeader.xib in Resources */,
-				2574865720F369D600FB3DF1 /* GoogleService-Info.plist in Resources */,
 				25FBF66F2180903200DFE7F5 /* WorkoutPanelView.xib in Resources */,
 				2528905E213B58BC002A189B /* Assets.xcassets in Resources */,
 				2506E9D421AB0F070076B3A1 /* HistoryTableViewCell.xib in Resources */,
 				2542C9EB213C0EE600FCF041 /* LeftSidePanelTableViewCell.xib in Resources */,
+				25FB9CCF21F648110082E8E9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

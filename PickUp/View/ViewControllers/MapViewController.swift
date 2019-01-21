@@ -189,6 +189,7 @@ class MapViewController: UIViewController, LocationInjectorProtocol {
         workoutPanelBottomConstraint?.update(inset: 0)
 
         UIView.animate(withDuration: 0.3, animations: {
+            self.panelView.alpha = 1
             self.view.layoutIfNeeded()
         }, completion: { _ in
             self.viewmodel.startWorkout()
@@ -200,7 +201,7 @@ class MapViewController: UIViewController, LocationInjectorProtocol {
     @IBAction func finishButtonTapped(_ sender: Any) {
         
         mapViewBottomConstraint?.update(offset: workoutPanelView.frame.height)
-        workoutPanelBottomConstraint?.update(offset: 350)
+        workoutPanelBottomConstraint?.update(offset: 380)
         
         viewmodel.stopWorkout()
         workoutPanelView.reset()
@@ -257,7 +258,7 @@ extension MapViewController {
         
         workoutPanelView.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
-            self.workoutPanelBottomConstraint = make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(350).constraint
+            self.workoutPanelBottomConstraint = make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(380).constraint
             make.height.equalTo(330)
         }
     }
