@@ -1,0 +1,56 @@
+/* 
+  Localizable.strings
+  RunUp
+
+  Created by Bartosz Pawełczyk on 25/08/2018.
+  Copyright © 2018 Bartosz Pawełczyk. All rights reserved.
+*/
+
+// Auth
+"Male" = "Mężczyzna";
+"Female" = "Kobieta";
+"Drive where you want" = "Drive where you want";
+"Sign Up" = "Zarejestruj się";
+"Sign In" = "Zaloguj się";
+"Username" = "Login";
+"Password" = "Hasło";
+"Sign In With " = "Zaloguj się przez ";
+"Don't Have an Account? " = "Nie masz konta? ";
+"Forgot password? " = "Zapomniałeś hasła? ";
+"Reset" = "Resetuj";
+"Fullname" = "Imię i nazwisko";
+"Sign Up With " = "Zarejestruj się przez ";
+"Already have an account? " = "Posiadasz już konto? ";
+"Loading..." = "Ładowanie...";
+"Congratulations!" = "Wspaniale!";
+"Failure!" = "Niepowodzenie!";
+"Back to login" = "Wróć do logowania";
+"Reset Password" = "Resetuj hasło";
+"Your account has been created." = "Twoje konto zostało utworzone.";
+"Invalid Fullname" = "Nieprawidłowe imię i nazwisko";
+"Invalid Username" = "Nieprawidłowy login";
+"Invalid E-mail" = "Nieprawidłowy adres E-mail";
+"Password must contain at least 8 characters, lowercase, uppercase and special character" = "Hasło musi składać się z minimum 8 znaków, małych i dużych liter oraz zawierać specjalny znak";
+"Please select your gender" = "Wybierz swoją płeć";
+"Login successful" = "Zalogowano pomyślnie";
+"Password reset email sent" = "Email resetujacy hasło został wysłany";
+"Entered data is incorrect" = "Wprowadzone dane są nieprawidłowe";
+
+// Firebase erros
+"Username already exists! Please try another one" = "Wybrany login już istnieje! Wybierz inny";
+"The user you entered does not exist" = "Taki użytkownik nie istnieje";
+"The email address is already in use by another account." = "Wybrany adres email jest już używany przez inne konto";
+
+// Menu
+"Your profile" = "Twój profil";
+
+// Map
+"Activity" = "Aktywność";
+
+// Settings
+"Distance" = "Dystans";
+"Speed" = "Prędkość";
+"Deegres" = "Stopnie";
+"Satellite" = "Satelita";
+"Close" = "Zamknij";
+

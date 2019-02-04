@@ -1,0 +1,56 @@
+/* 
+  Localizable.strings
+  RunUp
+
+  Created by Bartosz Pawełczyk on 25/08/2018.
+  Copyright © 2018 Bartosz Pawełczyk. All rights reserved.
+*/
+
+// Auth
+"Male" = "Male";
+"Female" = "Female";
+"Drive where you want" = "Drive where you want";
+"Sign Up" = "Sign Up";
+"Sign In" = "Sign In";
+"Username" = "Username";
+"Password" = "Password";
+"Sign In With " = "Sign In With ";
+"Don't Have an Account? " = "Don't Have an Account? ";
+"Forgot password? " = "Forgot password? ";
+"Reset" = "Reset";
+"Fullname" = "Fullname";
+"Sign Up With " = "Sign Up With ";
+"Already have an account? " = "Already have an account? ";
+"Loading..." = "Loading...";
+"Congratulations!" = "Congratulations!";
+"Failure!" = "Failure!";
+"Back to login" = "Back to login";
+"Reset Password" = "Reset Password";
+"Your account has been created" = "Your account has been created";
+"Invalid Fullname" = "Invalid Fullname";
+"Invalid Username" = "Invalid Username";
+"Invalid E-mail" = "Invalid E-mail";
+"Password must contain at least 8 characters, lowercase, uppercase and special character" = "Password must contain at least 8 characters, lowercase, uppercase and special character";
+"Please select your gender" = "Please select your gender";
+"Login successful" = "Login successful";
+"Password reset email sent" = "Password reset email sent";
+"Entered data is incorrect" = "Entered data is incorrect";
+
+// Firebase erros
+"Username already exists! Please try another one" = "Username already exists! Please try another one";
+"The user you entered does not exist" = "The user you entered does not exist";
+"The email address is already in use by another account." = "The email address is already in use by another account";
+
+// Menu
+"Your profile" = "Your profile";
+
+// Map
+"Activity" = "Activity";
+
+// Settings
+"Distance" = "Distance";
+"Speed" = "Speed";
+"Deegres" = "Deegres";
+"Satellite" = "Satellite";
+"Close" = "Close";
+
