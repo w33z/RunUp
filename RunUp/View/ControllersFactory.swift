@@ -28,7 +28,7 @@ class ControllersFactory {
     
     static func allocController(_ controllerType: ControllerType) -> UIViewController {
         
-        let className: String = "RunUp.\(controllerType.rawValue)"
+        let className: String = "Run_Up.\(controllerType.rawValue)"
         let aClass = NSClassFromString(className) as! UIViewController.Type
         let viewController = aClass.init()
         
